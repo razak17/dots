@@ -53,8 +53,8 @@ local opts = { expr = true }
 
 xmap("<C-l>", "<Plug>(vsnip-select-text)")
 -- nmap("<C-l>", "<Plug>(vsnip-select-text)")
-xmap("<C-x>", "<Plug>(vsnip-cut-text)")
-nmap("<C-x>", "<Plug>(vsnip-cut-text)")
+xmap("<C-y>", "<Plug>(vsnip-cut-text)")
+nmap("<C-y>", "<Plug>(vsnip-cut-text)")
 
 -- Autocompletion and snippets
 imap("<CR>", "v:lua.MUtils.completion_confirm()", opts)

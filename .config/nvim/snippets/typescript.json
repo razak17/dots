@@ -62,6 +62,10 @@
 		],
 		"description": "Property getter"
 	},
+  "log": {
+    "prefix": ["logg"],
+    "body": "console.log(${1:$TM_SELECTED_TEXT});"
+  },
 	"Log to the console": {
 		"prefix": "log",
 		"body": [

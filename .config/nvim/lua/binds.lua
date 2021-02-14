@@ -57,12 +57,13 @@ if vim.fn.exists('vim.g.vscode') == 0 then
   -- nnoremap('<Leader>cv', ':wincmd v<bar> :Ex <bar> :vertical resize 30<CR>')
   -- nnoremap('<Leader>cv', ':Sex!<CR> :vertical resize 30<CR>')
   -- nnoremap('<Leader>ca', ':vertical resize 30<CR>')
+  nnoremap('<Leader>aF', ':vertical resize 90<CR>')
   nnoremap('<Leader>+', ':vertical resize +5<CR>')
   nnoremap('<Leader>-', ':vertical resize -5<CR>')
 
   -- Search Files
-  nnoremap('<Leader>chw', ':h <C-R>=expand("<c)<CR><CR>')
-  nnoremap('<Leader>bs', '/<C-R>=escape(expand("<c), "/")<CR><CR>')
+  nnoremap('<Leader>chw', ':h <C-R>=expand("<cword>")<CR><CR>')
+  nnoremap('<Leader>bs', '/<C-R>=escape(expand("<cWORD>"), "/")<CR><CR>')
 
   -- Terminal window Navigation
   tnoremap('<C-h>', '<C-\\><C-N><C-w>h')
@@ -189,11 +190,6 @@ if vim.fn.exists('vim.g.vscode') == 0 then
   nnoremap('<Leader>Ps', ':PlugSync<CR>')
   nnoremap('<Leader>PU', ':PlugUpdate<CR>')
 
-  -- Other remaps
-  xnoremap('J', ":m '>+1<CR>gv=gv")
-  vnoremap('K', ":m '<-2<CR>gv=gv")
-  xnoremap('N', ":m '>+1<CR>gv=gv")
-
   -- Kommentary
   nmap("<leader>/", "<Plug>kommentary_line_default")
   nmap("<leader>a/", "<Plug>kommentary_motion_default")
@@ -210,5 +206,11 @@ if vim.fn.exists('vim.g.vscode') == 0 then
   nnoremap('<Leader>.', ':e $MYVIMRC<CR>')
   nnoremap('<Leader>,', ':e ~/.config/nvim/lua/init.lua<CR>')
   nnoremap('<Leader>fy', ':Format<CR>')
+
+  -- Other remaps
+  xnoremap('J', ":m '>+1<CR>gv=gv")
+  vnoremap('K', ":m '<-2<CR>gv=gv")
+  xnoremap('N', ":m '>+1<CR>gv=gv")
+  nnoremap('<Leader>IL', ':LspInfo<CR>')
 end
 

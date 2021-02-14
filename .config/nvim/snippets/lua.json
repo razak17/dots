@@ -10,10 +10,6 @@
       "body": [ "autocmd $TM_SELECTED_TEXT" ],
       "description": "Example for selected text"
     },
-    "log": {
-      "prefix": ["log"],
-      "body": "console.log(${1:$TM_SELECTED_TEXT});"
-    },
     "assert": {
         "body": "assert(${1:v}${2:[, message]})",
         "description": "5.1,5.2,5.3\n\nassert()",

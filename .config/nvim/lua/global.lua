@@ -3,6 +3,8 @@ local home = os.getenv("HOME")
 local path_sep = G.is_windows and '\\' or '/'
 
 function G.load_variables()
+  G.home = home
+  G.path_sep = path_sep
   G.is_mac = jit.os == 'OSX'
   G.is_linux = jit.os == 'Linux'
   G.is_windows = jit.os == 'Windows'
@@ -12,16 +14,12 @@ function G.load_variables()
   G.vim_path = G.config .. path_sep .. 'nvim' .. path_sep
   G.modules_dir = G.vim_path .. 'modules'
   G.fnm = home .. path_sep .. '.fnm' .. path_sep .. 'node-versions' .. path_sep
-  G.asdf = home .. path_sep .. '.asdf' .. path_sep .. 'installs' .. path_sep
   G.python3 = G.cache_dir .. 'venv' .. path_sep .. 'neovim' .. path_sep
-  G.yarn = G.config .. 'yarn' .. path_sep .. 'global' .. path_sep
-  G.berry = G.yarn .. 'node_modules/.bin/neovim-node-host'
-  -- G.node = G.asdf .. 'nodejs/15.5.1/.npm/bin/neovim-node-host'
   G.node = G.fnm .. "v15.5.1/installation/bin/neovim-node-host"
-  G.path_sep = path_sep
-  G.home = home
   G.local_nvim = G.share .. 'nvim' .. path_sep
   G.plugins = G.share .. 'nvim' .. path_sep .. 'site' .. path_sep .. 'pack' .. path_sep
+  G.sumneko_root_path = G.cache_dir .. 'nvim_lsp' .. path_sep .. 'lua-language-server' .. path_sep
+  G.sumneko_binary = G.sumneko_root_path .. 'bin' .. path_sep .. 'linux' .. path_sep .. 'lua-language-server'
 end
 
 --- Check if a file or directory exists in this path
