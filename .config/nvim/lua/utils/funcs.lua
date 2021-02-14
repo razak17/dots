@@ -1,3 +1,5 @@
+local M = {}
+
 function _G.dump(...)
     local objects = vim.tbl_map(vim.inspect, {...})
     print(unpack(objects))
@@ -10,4 +12,4 @@ function EmptyRegisters()
     end
 end
 
-
+return M

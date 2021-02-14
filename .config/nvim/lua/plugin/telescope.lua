@@ -1,13 +1,17 @@
 local mappings = require('utils.map')
+local actions = require 'telescope.actions'
 local nnoremap = mappings.nnoremap
 
 require('telescope').setup({
   defaults = {
     mappings = {
       i = {
-        ["<esc>"] = require('telescope.actions').close,
-        ["<C-e>"] = require('telescope.actions').goto_file_selection_tabedit,
-        ["<C-b>"] = require('telescope.actions').move_selection_previous,
+        ["<esc>"] = actions.close,
+        ["<C-x>"] = false,
+        ["<C-e>"] = actions.goto_file_selection_tabedit,
+        ["<C-b>"] = actions.move_selection_previous,
+        ["<C-y>"] = actions.goto_file_selection_split,
+        ["<C-l>"] = actions.send_to_qflist,
       },
     },
     vimgrep_arguments = {
@@ -48,17 +52,17 @@ require('telescope').setup({
   }
 })
 
--- Using lua functions
 nnoremap('<C-k>', ':lua require("telescope.builtin").find_files()<CR>')
 nnoremap('<Leader>ff', ':lua require("telescope.builtin").builtin()<CR>')
 nnoremap('<Leader>fr', ':lua require("telescope.builtin").keymaps()<CR>')
 nnoremap('<Leader>fb', ':lua require("telescope.builtin").buffers()<CR>')
+nnoremap('<Leader>fo', ':lua require("telescope.builtin").buffers()<CR>')
 nnoremap('<Leader>fh', ':lua require("telescope.builtin").help_tags()<CR>')
 nnoremap('<Leader>fl', ':lua require("telescope.builtin").live_grep()<CR>')
 nnoremap('<Leader>fc', ':lua require("telescope.builtin").grep_string { search = vim.fn.expand("<cword>") }<CR>')
 nnoremap('<Leader>fs', ':lua require("telescope.builtin").grep_string({ search = vim.fn.input("Grep For > ")})<CR>')
 
--- Git Pickers
+-- Git
 nnoremap('<Leader>fgb', ':lua require("telescope.builtin").git_branches()<CR>')
 nnoremap('<Leader>fgc', ':lua require("telescope.builtin").git_commits()<CR>')
 nnoremap('<Leader>fgC', ':lua require("telescope.builtin").git_bcommits()<CR>')

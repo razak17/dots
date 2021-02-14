@@ -37,21 +37,10 @@ local on_attach = function(client, bufnr)
   leader_buf_map(bufnr, "vdn", "require'lspsaga.diagnostic'.lsp_jump_diagnostic_next()", opts)
   leader_buf_map(bufnr, "vdc", "require'lspsaga.diagnostic'.show_line_diagnostics()", opts)
   leader_buf_map(bufnr, 'vdl', 'vim.lsp.diagnostic.set_loclist()', opts)
-  vim.api.nvim_command("au CursorMoved * lua require'lspsaga.diagnostic'.show_line_diagnostics()")
+  -- vim.api.nvim_command("au CursorMoved * lua require'lspsaga.diagnostic'.show_line_diagnostics()")
 
   if utils.can_format(client) then
-    local defs = {}
-    local ext = vim.fn.expand('%:e')
-    table.insert(defs,{"BufWritePre", '*.'..ext ,
-    "lua vim.lsp.buf.formatting_sync(nil,1000)"})
-    vim.api.nvim_command('augroup lsp_before_save')
-    vim.api.nvim_command('autocmd!')
-    for _, def in ipairs(defs) do
-    local command = table.concat(vim.tbl_flatten{'autocmd', def}, ' ')
-    vim.api.nvim_command(command)
-    end
-    vim.api.nvim_command('augroup END')
-    -- vim.api.nvim_buf_set_keymap(0, 'n', '<leader>vF', '<cmd>lua vim.lsp.buf.formatting()<cr>', opts)
+    require 'lsp.utils'.format()
   end
 
   if client.config.flags then

@@ -63,6 +63,7 @@ g.which_key_map = {
     f = "files",
     h = "help",
     l = "live",
+    o = "previous buffers",
     c = "find current word",
     r = "keymaps",
     s = "grep prompt",
@@ -98,6 +99,10 @@ g.which_key_map = {
     p = 'pull',
     r = 'remove',
     s = 'status',
+  },
+  I = {
+      name = "+Info",
+      L = "Lsp"
   },
   l = {
     name = "+Delete buffer",

@@ -4,9 +4,6 @@ local on_attach = require 'lsp.on_attach'
 local G = require('global')
 local M = {}
 
-local sumneko_root_path = G.cache_dir ..'nvim_lsp/lua-language-server/'
-local sumneko_binary = sumneko_root_path..'/bin/Linux/lua-language-server'
-
 -- List of servers where config = {on_attach = on_attach}
 local simple_lsp = {
   dockerls = "docker-langserver",
@@ -57,10 +54,10 @@ function M.setup()
     }
   end
 
-  if fn.executable(sumneko_binary) == 1 then
+  if fn.executable(G.sumneko_binary) == 1 then
     lspconfig.sumneko_lua.setup {
       on_attach = on_attach,
-      cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"},
+      cmd = {G.sumneko_binary, "-E", G.sumneko_root_path .. "/main.lua"},
       settings = {
         Lua = {
           runtime = {version = "LuaJIT", path = vim.split(package.path, ';')},
@@ -92,7 +89,8 @@ function M.setup()
         "typescriptreact",
         "typescript.tsx"
       },
-      root_dir = lspconfig.util.root_pattern("package.json", "tsconfig.json", ".git"),
+      -- root_dir = lspconfig.util.root_pattern("package.json", "tsconfig.json", ".git"),
+      root_dir = vim.loop.cwd,
       on_attach = on_attach
     }
   end
