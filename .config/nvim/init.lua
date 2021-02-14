@@ -1,10 +1,10 @@
 require 'setup'
 require 'conf'
 require 'opts'
-require 'binds'
 require 'plugins'
+require 'binds'
 
-if vim.fn.exists('vim.g.vscode') == 0 then
+if vim.fn.has('nvim') ~= 0 then
   require 'autocmd'
   require 'aesth.bg'
   require 'utils.plug_cmd'

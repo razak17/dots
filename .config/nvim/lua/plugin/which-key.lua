@@ -29,6 +29,7 @@ g.which_key_map = {
     name = "+Actions",
     d = "delete all buffers and exit",
     D = "delete all",
+    F = "resize 90%",
     h = "horizontal split",
     n = "no highlight",
     N = "toggle line numbers",

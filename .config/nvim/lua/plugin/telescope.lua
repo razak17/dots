@@ -11,7 +11,6 @@ require('telescope').setup({
         ["<C-e>"] = actions.goto_file_selection_tabedit,
         ["<C-b>"] = actions.move_selection_previous,
         ["<C-y>"] = actions.goto_file_selection_split,
-        ["<C-l>"] = actions.send_to_qflist,
       },
     },
     vimgrep_arguments = {
@@ -23,15 +22,11 @@ require('telescope').setup({
       '--column',
       '--smart-case'
     },
-    prompt_position = "bottom",
     prompt_prefix = ">",
     initial_mode = "insert",
     selection_strategy = "reset",
     sorting_strategy = "descending",
     layout_strategy = "horizontal",
-    layout_defaults = {
-      -- TODO add builtin options.
-    },
     file_sorter =  require'telescope.sorters'.get_fzy_sorter,
     file_ignore_patterns = {"target/*"},
     generic_sorter =  require'telescope.sorters'.get_generic_fuzzy_sorter,
@@ -45,10 +40,10 @@ require('telescope').setup({
     borderchars = { '─', '│', '─', '│', '╭', '╮', '╯', '╰'},
     color_devicons = true,
     use_less = true,
-    set_env = { ['COLORTERM'] = 'truecolor' }, -- default { }, currently unsupported for shells like cmd.exe / powershell.exe
-    file_previewer = require'telescope.previewers'.vim_buffer_cat.new, -- For buffer previewer use `require'telescope.previewers'.vim_buffer_cat.new`
-    grep_previewer = require'telescope.previewers'.vim_buffer_vimgrep.new, -- For buffer previewer use `require'telescope.previewers'.vim_buffer_vimgrep.new`
-    qflist_previewer = require'telescope.previewers'.vim_buffer_qflist.new, -- For buffer previewer use `require'telescope.previewers'.vim_buffer_qflist.new`
+    set_env = { ['COLORTERM'] = 'truecolor' },
+    file_previewer = require'telescope.previewers'.vim_buffer_cat.new,
+    grep_previewer = require'telescope.previewers'.vim_buffer_vimgrep.new,
+    qflist_previewer = require'telescope.previewers'.vim_buffer_qflist.new,
   }
 })
 
