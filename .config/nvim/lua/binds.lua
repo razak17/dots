@@ -6,6 +6,16 @@ local nmap, vmap, nnoremap, inoremap, vnoremap, xnoremap, tnoremap = mappings.nm
 nnoremap('n', 'j')
 nnoremap('z', 'u')
 
+-- Next greatest remap ever : asbjornHaland
+nnoremap('<Leader>y', '"+y')
+vnoremap('<Leader>y', '"+y')
+nnoremap('<Leader>aY', 'gg"+yG')
+nnoremap('<Leader>aV', 'gg"+VG')
+nnoremap('<Leader>aD', 'gg"+VGd')
+
+-- Yank from cursor position to end-of-line
+nnoremap('Y', 'y$')
+
 -- Move selected line / block of text in visual mode
 -- shift + k to move up
 -- shift + j to move down
@@ -14,7 +24,7 @@ xnoremap('J', ":move '>+1<CR>gv-gv")
 xnoremap('N', ":move '>+1<CR>gv-gv")
 
 -- no way
-if vim.fn.exists('vim.g.vscode') == 0 then
+if vim.fn.has('nvim') == 1 then
   -- Open url
   nnoremap('gx', ":sil !xdg-open <c-r><c-a><cr>")
 
@@ -107,15 +117,6 @@ if vim.fn.exists('vim.g.vscode') == 0 then
 
   -- Greatest remap ever
   vnoremap('<Leader>p', '"_dP')
-
-  -- next greatest remap ever : asbjornHaland
-  nnoremap('<Leader>y', '"+y')
-  vnoremap('<Leader>y', '"+y')
-  nnoremap('<Leader>aY', 'gg"+yG')
-  nnoremap('<Leader>aV', 'gg"+VG')
-  nnoremap('<Leader>aD', 'gg"+VGd')
-  -- Yank from cursor position to end-of-line
-  nnoremap('Y', 'y$')
 
   --- :: Visual mode insert text around visual block
   -- Replace type  with Option<Type>

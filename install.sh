@@ -1,34 +1,50 @@
 #!/usr/bin/env bash
 
-mkdir -p ~/.config/nvim/plugin
-mkdir -p ~/.config/nvim/after/plugin
-mkdir -p ~/.config/nvim/vscode
-mkdir -p ~/.config/nvim/snippets
-mkdir -p ~/.config/nvim/lua
-mkdir -p ~/.config/nvim/lua/aesth
-mkdir -p ~/.config/nvim/lua/lsp
-mkdir -p ~/.config/nvim/lua/packer
-mkdir -p ~/.config/nvim/lua/plugin
-mkdir -p ~/.config/nvim/lua/utils
+dirs=(
+  '.config/alacritty'
+  '.config/nvim'
+  '.config/ranger'
+  '.config/redshift'
+  '.config/tmux'
+  '.config/zsh'
+  '.config/nvim/plugin'
+  '.config/nvim/after/plugin'
+  '.config/nvim/vscode'
+  '.config/nvim/snippets'
+  '.config/nvim/lua'
+  '.config/nvim/lua/aesth'
+  '.config/nvim/lua/lsp'
+  '.config/nvim/lua/packer'
+  '.config/nvim/lua/plugin'
+  '.config/nvim/lua/utils'
+)
 
 link() {
-  file_path=$1
-  ln -s ~/dots/.config/nvim/$1 ~/.config/nvim/$1
+  if [[ "$#" -gt 0 ]]; then
+    ln -s ~/dots/.config/nvim/$1 ~/.config/nvim/$1
+  else
+    ln -s ~/dots/.config/nvim/ ~/.config/
+  fi
 }
 
-while [[ "$#" -gt 0 ]]; do
-  curr=$1
-  shift
+create_dirs() {
+  for d in ${dirs[@]}; do
+    echo creating dir: $d
+    mkdir -p ~/$d
+  done
+}
 
-  case "$curr" in
-  "-f")
-    link $1
-    ;;
-  *) echo "Unavailable command... $curr"
-  esac
-done
+link_folders() {
+  for i in ${dirs[@]}; do
+    echo linking: ~/dots/$i to ~/$i
+    ln -s ~/dots/$i ~/$i
+  done
+}
 
 run () {
+  # nvim
+  link
+
   # alacritty
   for f in `find ./.config/alacritty -regex ".*\.yml$"`; do
     echo f: $f
@@ -36,7 +52,7 @@ run () {
     ln -s ~/dots/$f ~/$f
   done
 
-  ranger
+  # ranger
   for f in `find ./.config/ranger -regex ".*\rc.conf$"`; do
     echo f: $f
     rm -rf ~$f
@@ -64,13 +80,6 @@ run () {
     ln -s ~/dots/$f ~/$f
   done
 
-  # nvim
-  for f in `find ./.config/nvim -regex ".*\.vim$\|.*\.lua$\|.*\.json$"`; do
-    echo f: $f
-    rm -rf ~/$f
-    ln -s ~/dots/$f ~/$f
-  done
-
   # tmux
   for f in `find ./.config/tmux -regex ".*\.conf$"`; do
     echo f: $f
@@ -78,3 +87,17 @@ run () {
     ln -s ~/dots/$f ~/$f
   done
 }
+
+while [[ "$#" -gt 0 ]]; do
+  curr=$1
+  shift
+  case "$curr" in
+  "-r")
+    run
+    ;;
+  "-f")
+    link $1
+    ;;
+  *) echo "Unavailable command... $curr"
+  esac
+done

@@ -83,7 +83,9 @@ local function packerInit()
     end
 end
 
-createDirs()
-pythonvenvInit()
-nodeHostInit()
-packerInit()
+if vim.fn.has('nvim') == 1 then
+  createDirs()
+  pythonvenvInit()
+  nodeHostInit()
+  packerInit()
+end

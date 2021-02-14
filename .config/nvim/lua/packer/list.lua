@@ -19,6 +19,10 @@ function M.load_plugins()
     { repo = "hrsh7th/vim-vsnip-integ" },
     { repo = 'kyazdani42/nvim-tree.lua' },
     {
+      repo = 'glacambre/firenvim',
+      run = function() vim.fn['firenvim#install'](0) end
+    },
+    {
       repo = 'mattn/emmet-vim',
       config = function() require 'plugin.emmet' end
     },

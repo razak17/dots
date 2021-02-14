@@ -15,16 +15,16 @@ function M.load_plugin(use, item)
     opt = item.opt
   end
   if item.requires then
-    opt = item.requires
+    requires = item.requires
   end
   if item.run then
-    opt = item.run
+    run = item.run
   end
   if item.ft then
-    opt = item.ft
+    ft = item.ft
   end
   if item.event then
-    opt = item.event
+    event = item.event
   end
   use {
     item.repo,
