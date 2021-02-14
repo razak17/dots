@@ -99,9 +99,10 @@ if !exists('g:vscode')
   nnoremap <silent> <Leader>lh :call <SID>DelToLeft()<CR>
   nnoremap <silent> <Leader>lx :call <SID>DelAllExcept()<CR>
   " xnoremap <expr><silent> <Leader>/  <SID>VComment()
+else
+  fun VSCodium()
+    exec "echo exists('g:vscode')"
+  endfunction
 endif
 
 
-fun VSCode()
-  exec "echo exists('g:vscode')"
-endfunction

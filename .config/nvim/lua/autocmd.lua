@@ -76,8 +76,7 @@ local windows = {
 }
 
 local plugins = {
-  -- {"CursorHold", "*", "lua vim.lsp.diagnostic.show_line_diagnostics()"},
-  -- {"BufEnter", "*", "lua require('completion').on_attach()"},
+  {"CursorHold", "*", "lua vim.lsp.diagnostic.show_line_diagnostics()"},
   {
     "InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost",
     "*.rs",
