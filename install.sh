@@ -20,10 +20,10 @@ dirs=(
 )
 
 link() {
-  if [[ "$#" -gt 0 ]]; then
-    ln -s ~/dots/.config/nvim/$1 ~/.config/nvim/$1
+  if [[ "$#" -gt 1 ]]; then
+    ln -s $1 $2
   else
-    ln -s ~/dots/.config/nvim/ ~/.config/
+    echo missing args
   fi
 }
 
@@ -43,7 +43,7 @@ link_folders() {
 
 run () {
   # nvim
-  link
+  link "~/dots/.config/nvim/" "~/.config"
 
   # alacritty
   for f in `find ./.config/alacritty -regex ".*\.yml$"`; do

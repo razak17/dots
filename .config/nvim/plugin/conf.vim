@@ -47,24 +47,17 @@ if !exists('g:vscode')
   nmap <silent> <Leader>Cs viw<Leader>Cs
   vnoremap <silent> <Leader>Cs :s/\%V\(\l\)\(\u\)/\1_\l\2/g<CR>`<vu
 
-" snake_case -> kebab-case
-" TODO: implement
+  " snake_case -> kebab-case
+  " TODO: implement
 
-  " augroup LSP_highlight
-    " autocmd!
-    " au CursorHold <buffer> silent! lua vim.lsp.buf.document_highlight()
-    " au CursorHoldI <buffer> silent! lua vim.lsp.buf.document_highlight()
-    " au FileType typescriptreact setlocal commentstring=//\ %s
-  " augroup END
+  command! Scratch lua require'utils.funcs'.makeScratch()
 
-  " autocmd
   augroup Razak_Mo
     autocmd!
     " au TermOpen * startinsert
     au BufWritePre * :call TrimWhitespace()
-    " au CursorMoved * lua require 'lsp.utils'.show_lsp_diagnostics()
-    " au CursorMoved * :echo mode()
-    " au CursorMoved * :echo exists('g:vscode')
+    au CursorMoved * lua require 'lsp.utils'.show_lsp_diagnostics()
+    " au CursorMoved * :VSCode
     autocmd! FileType which_key
     autocmd  FileType which_key set laststatus=0 noshowmode noruler
      \| autocmd BufLeave <buffer> set laststatus=2 noshowmode ruler

@@ -83,7 +83,7 @@ local function packerInit()
     end
 end
 
-if vim.fn.has('nvim') == 1 then
+if vim.fn.exists('g:vscode') ~= 1 then
   createDirs()
   pythonvenvInit()
   nodeHostInit()

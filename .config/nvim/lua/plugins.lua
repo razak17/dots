@@ -38,7 +38,7 @@ local function init()
   use {'wbthomason/packer.nvim', opt = true}
   use 'tpope/vim-surround'
 
-  if vim.fn.has('nvim') == 1 then
+  if vim.fn.exists('g:vscode') ~= 1 then
     for  _, item in ipairs(plug_list()) do
       utils.load_plugin(use, item)
     end

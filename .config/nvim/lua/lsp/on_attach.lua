@@ -24,7 +24,6 @@ local on_attach = function(client, bufnr)
   buf_map("vlr",  "vim.lsp.buf.references()")
   buf_map("vlsd", "vim.lsp.buf.document_symbol()")
   buf_map("vlsw", "vim.lsp.buf.workspace_symbol()")
-  -- buf_map("vld",  "vim.lsp.buf.definition()")
   map(bufnr, 'n', "K", "<cmd>lua require('lspsaga.hover').render_hover_doc()<CR>", opts)
 
   -- Telescope
@@ -51,6 +50,7 @@ local on_attach = function(client, bufnr)
     vim.api.nvim_command('augroup lsp_aucmds')
     vim.api.nvim_command('au!')
     vim.api.nvim_command('au CursorHold <buffer> lua vim.lsp.buf.document_highlight()')
+    vim.api.nvim_command('au CursorHoldI <buffer> lua vim.lsp.buf.document_highlight()')
     vim.api.nvim_command('au CursorMoved <buffer> lua vim.lsp.buf.clear_references()')
     vim.api.nvim_command('augroup END')
   end

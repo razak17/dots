@@ -1,4 +1,4 @@
-local g = vim.g
+local vim, g = vim, vim.g
 local api = vim.api
 local fn = vim.fn
 
@@ -27,6 +27,7 @@ g.which_key_map = {
   y = "Yank",
   a = {
     name = "+Actions",
+    ["/"] = "comment motion default",
     d = "delete all buffers and exit",
     D = "delete all",
     F = "resize 90%",
@@ -64,7 +65,7 @@ g.which_key_map = {
     f = "files",
     h = "help",
     l = "live",
-    o = "previous buffers",
+    o = "old files",
     c = "find current word",
     r = "keymaps",
     s = "grep prompt",
@@ -72,7 +73,6 @@ g.which_key_map = {
     y = "format",
     g = {
       name = '+Git',
-      ["."] = "yay",
       b = "branches",
       c = "commits",
       C = "bcommits",
@@ -103,6 +103,7 @@ g.which_key_map = {
   },
   I = {
       name = "+Info",
+      c = "check health",
       L = "Lsp"
   },
   l = {

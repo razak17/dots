@@ -23,8 +23,31 @@ xnoremap('K', ":move '<-2<CR>gv-gv")
 xnoremap('J', ":move '>+1<CR>gv-gv")
 xnoremap('N', ":move '>+1<CR>gv-gv")
 
+-- Greatest remap ever
+vnoremap('<Leader>p', '"_dP')
+
+--- :: Visual mode insert text around visual block
+-- Replace type  with Option<Type>
+vnoremap("<leader>mO", [[:s/\%V\(.*\)\%V/Option<\1>/ <CR> <bar> :nohlsearch<CR>]])
+-- Replace type  with Result<Type, Err>
+vnoremap("<leader>mR", [[:s/\%V\(.*\)\%V/Result<\1, Err>/ <CR> <bar> :nohlsearch<CR>]])
+-- Replace val  with Some(val)
+vnoremap("<leader>ms", [[:s/\%V\(.*\)\%V/Some(\1)/ <CR> <bar> :nohlsearch<CR>]])
+-- Replace val  with Some(val)
+vnoremap("<leader>ms", [[:s/\%V\(.*\)\%V/Some(\1)/ <CR> <bar> :nohlsearch<CR>]])
+-- Replace val  with Ok(val)
+vnoremap("<leader>mo", [[:s/\%V\(.*\)\%V/Ok(\1)/ <CR> <bar> :nohlsearch<CR>]])
+-- Replace val  with Err(val)
+vnoremap("<leader>me", [[:s/\%V\(.*\)\%V/Err(\1)/ <CR> <bar> :nohlsearch<CR>]])
+-- Replace val  with (val)
+vnoremap("<leader>m(", [[:s/\%V\(.*\)\%V/(\1)/ <CR> <bar> :nohlsearch<CR>]])
+-- Replace val  with 'val'
+vnoremap("<leader>m'", [[:s/\%V\(.*\)\%V/'\1'/ <CR> <bar> :nohlsearch<CR>]])
+-- Replace val  with "val"
+vnoremap("<leader>m\"", [[:s/\%V\(.*\)\%V/"\1"/ <CR> <bar> :nohlsearch<CR>]])
+
 -- no way
-if vim.fn.has('nvim') == 1 then
+  if vim.fn.exists('g:vscode') ~= 1 then
   -- Open url
   nnoremap('gx', ":sil !xdg-open <c-r><c-a><cr>")
 
@@ -115,32 +138,6 @@ if vim.fn.has('nvim') == 1 then
   vnoremap('<', '<gv')
   vnoremap('>', '>gv')
 
-  -- Greatest remap ever
-  vnoremap('<Leader>p', '"_dP')
-
-  --- :: Visual mode insert text around visual block
-  -- Replace type  with Option<Type>
-  vnoremap("<leader>mO", [[:s/\%V\(.*\)\%V/Option<\1>/ <CR> <bar> :nohlsearch<CR>]])
-  -- Replace type  with Result<Type, Err>
-  vnoremap("<leader>mR", [[:s/\%V\(.*\)\%V/Result<\1, Err>/ <CR> <bar> :nohlsearch<CR>]])
-  -- Replace val  with Some(val)
-  vnoremap("<leader>ms", [[:s/\%V\(.*\)\%V/Some(\1)/ <CR> <bar> :nohlsearch<CR>]])
-  -- Replace val  with Some(val)
-  vnoremap("<leader>ms", [[:s/\%V\(.*\)\%V/Some(\1)/ <CR> <bar> :nohlsearch<CR>]])
-  -- Replace val  with Ok(val)
-  vnoremap("<leader>mo", [[:s/\%V\(.*\)\%V/Ok(\1)/ <CR> <bar> :nohlsearch<CR>]])
-  -- Replace val  with Err(val)
-  vnoremap("<leader>me", [[:s/\%V\(.*\)\%V/Err(\1)/ <CR> <bar> :nohlsearch<CR>]])
-  -- Replace val  with (val)
-  vnoremap("<leader>m(", [[:s/\%V\(.*\)\%V/(\1)/ <CR> <bar> :nohlsearch<CR>]])
-  -- Replace val  with 'val'
-  vnoremap("<leader>m'", [[:s/\%V\(.*\)\%V/'\1'/ <CR> <bar> :nohlsearch<CR>]])
-  -- Replace val  with "val"
-  vnoremap("<leader>m\"", [[:s/\%V\(.*\)\%V/"\1"/ <CR> <bar> :nohlsearch<CR>]])
-
-  -- Yank from cursor position to end-of-line
-  nnoremap('Y', 'y$')
-
   -- actions
   nnoremap("<Leader>=", "<C-W>=")
   nnoremap("<Leader>ah", "<C-W>s")
@@ -152,6 +149,23 @@ if vim.fn.has('nvim') == 1 then
   nnoremap("<Leader>av", "<C-W>v")
   nnoremap("<Leader>ax", ":wq!<CR>")
   nnoremap("<Leader>az", ":q!<CR>")
+
+  -- Session
+  nnoremap("<Leader>Sc", "SClose<CR>")
+  nnoremap("<Leader>Sd", ":SDelete<CR>")
+  nnoremap("<Leader>Sl", ":SLoad<CR>")
+  nnoremap("<Leader>Ss", ":SSave<CR>")
+
+  ------------------------------------------------------------------------------
+  -- Plugins
+  ------------------------------------------------------------------------------
+
+  -- Packer
+  nnoremap('<Leader>Pc', ':PlugCompile<CR>')
+  nnoremap('<Leader>PC', ':PlugClean<CR>')
+  nnoremap('<Leader>Pi', ':PlugInstall<CR>')
+  nnoremap('<Leader>Ps', ':PlugSync<CR>')
+  nnoremap('<Leader>PU', ':PlugUpdate<CR>')
 
   -- Git
   nnoremap("<Leader>ga", ":Git fetch --all<CR>")
@@ -168,12 +182,6 @@ if vim.fn.has('nvim') == 1 then
   nnoremap("<Leader>gr", ":GRemove<CR>")
   nnoremap("<Leader>gs", ":G<CR>")
 
-  -- Session
-  nnoremap("<Leader>Sc", "SClose<CR>")
-  nnoremap("<Leader>Sd", ":SDelete<CR>")
-  nnoremap("<Leader>Sl", ":SLoad<CR>")
-  nnoremap("<Leader>Ss", ":SSave<CR>")
-
   -- Terminal
   nnoremap("<Leader>Te", ":FloatermToggle<CR>")
   nnoremap("<Leader>Tn", ":FloatermNew node<CR>")
@@ -181,26 +189,16 @@ if vim.fn.has('nvim') == 1 then
   nnoremap("<Leader>Tp", ":FloatermNew python<CR>")
   nnoremap("<Leader>Tr", ":FloatermNew ranger<CR>")
 
-  ------------------------------------------------------------------------------
-  -- Plugins
-  ------------------------------------------------------------------------------
-  -- Packer
-  nnoremap('<Leader>Pc', ':PlugCompile<CR>')
-  nnoremap('<Leader>PC', ':PlugClean<CR>')
-  nnoremap('<Leader>Pi', ':PlugInstall<CR>')
-  nnoremap('<Leader>Ps', ':PlugSync<CR>')
-  nnoremap('<Leader>PU', ':PlugUpdate<CR>')
-
   -- Kommentary
   nmap("<leader>/", "<Plug>kommentary_line_default")
   nmap("<leader>a/", "<Plug>kommentary_motion_default")
   vmap("<leader>/", "<Plug>kommentary_visual_default")
-  vim.api.nvim_set_keymap("n", "<leader>cic", "<Plug>kommentary_line_increase", {})
+  --[[ vim.api.nvim_set_keymap("n", "<leader>cic", "<Plug>kommentary_line_increase", {})
   vim.api.nvim_set_keymap("n", "<leader>ci", "<Plug>kommentary_motion_increase", {})
   vim.api.nvim_set_keymap("v", "<leader>ci", "<Plug>kommentary_visual_increase", {})
   vim.api.nvim_set_keymap("n", "<leader>cdc", "<Plug>kommentary_line_decrease", {})
   vim.api.nvim_set_keymap("n", "<leader>cd", "<Plug>kommentary_motion_decrease", {})
-  vim.api.nvim_set_keymap("v", "<leader>cd", "<Plug>kommentary_visual_decrease", {})
+  vim.api.nvim_set_keymap("v", "<leader>cd", "<Plug>kommentary_visual_decrease", {}) ]]
 
   -- Source init.vim
   nnoremap('<Leader><CR>', ':so ~/.config/nvim/init.vim<CR>')
@@ -213,5 +211,6 @@ if vim.fn.has('nvim') == 1 then
   vnoremap('K', ":m '<-2<CR>gv=gv")
   xnoremap('N', ":m '>+1<CR>gv=gv")
   nnoremap('<Leader>IL', ':LspInfo<CR>')
+  nnoremap('<Leader>Ic', ':checkhealth<CR>')
 end
 
