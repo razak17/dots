@@ -19,7 +19,8 @@ function G.load_variables()
   G.local_nvim = G.share .. 'nvim' .. path_sep
   G.plugins = G.share .. 'nvim' .. path_sep .. 'site' .. path_sep .. 'pack' .. path_sep
   G.sumneko_root_path = G.cache_dir .. 'nvim_lsp' .. path_sep .. 'lua-language-server' .. path_sep
-  G.sumneko_binary = G.sumneko_root_path .. 'bin' .. path_sep .. 'linux' .. path_sep .. 'lua-language-server'
+  G.sumneko_binary = G.sumneko_root_path .. 'bin' .. path_sep .. 'Linux' .. path_sep .. 'lua-language-server'
+  G.sumneko_binary = G.sumneko_root_path .. '/bin/Linux/lua-language-server'
 end
 
 --- Check if a file or directory exists in this path

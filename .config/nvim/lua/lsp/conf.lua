@@ -89,8 +89,7 @@ function M.setup()
         "typescriptreact",
         "typescript.tsx"
       },
-      -- root_dir = lspconfig.util.root_pattern("package.json", "tsconfig.json", ".git"),
-      root_dir = vim.loop.cwd,
+      root_dir = lspconfig.util.root_pattern("package.json", "tsconfig.json", ".git"),
       on_attach = on_attach
     }
   end

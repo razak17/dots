@@ -44,7 +44,7 @@ local bufs = {
 local files = {
   {"BufWritePre", "*.tmp,*.bak", "setlocal noundofile"},
   {"BufLeave", "*", "silent! update"},
-  {"BufWritePost", "plugins.lua", "PackerCompile"},
+  {"BufWritePost", "plugins.lua", "PlugCompile"},
   {"BufWritePost,BufRead", "*.md", "setlocal spell"},
   {"FileType", "py", "set tabstop=4 shiftwidth=4"},
   {"FileType", "which_key", "set nonumber norelativenumber"},
