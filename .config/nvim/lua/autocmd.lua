@@ -30,7 +30,7 @@ local bufs = {
   },
   {
     "BufWritePost",
-    "bash,c,cs,slojure,cpp,css,dart,erlang,fennel,gdscript3,go,graphql,html,java,javascript,javascriptreact,jsdoc,julia,kotlin.lua,nix,ocaml,php,python,ql,rst,ruby,rust,scala,sparql,teal,toml,turtle,typescript,typescriptreact, verilog",
+    "bash,c,cs,cpp,css,go,graphql,html,javascript,javascriptreact,jsdoc,julia,lua,python,rust,typescript,typescriptreact",
     "edit | TSBufEnable highlight"
   },
   {"BufWritePre", "COMMIT_EDITMSG", "setlocal noundofile"},
@@ -50,6 +50,8 @@ local files = {
   {"FileType", "which_key", "set nonumber norelativenumber"},
   {"FileType", "NvimTree", "set nonumber norelativenumber"},
   {"FileType", "markdown", "set tabstop=4 shiftwidth=4 conceallevel=2"},
+  {"BufWritePre", "*", ":call TrimWhitespace()"},
+  {"TermOpen", "*", "startinsert"},
 }
 
 local niceties = {
@@ -76,13 +78,12 @@ local windows = {
 }
 
 local plugins = {
-  {"CursorHold", "*", "lua vim.lsp.diagnostic.show_line_diagnostics()"},
   {
     "InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost",
     "*.rs",
     [[ lua require'lsp_extensions'.inlay_hints{ prefix = '', highlight = "Comment", enabled = {"TypeHint", "ChainingHint", "ParameterHint"}} ]]
   },
-  -- {"BufEnter", "*", "call v:lua.WhichKey.SetKeyOnFT()"},
+  {"BufEnter", "*", "call v:lua.WhichKey.SetKeyOnFT()"},
 }
 
 local definitions = {

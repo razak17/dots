@@ -12,28 +12,9 @@ if !exists('g:vscode')
   if exists('+termguicolors')
     let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
     let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
-    set termguicolors
   endif
 
-  "hi
-  highlight LSPCurlyUnderline gui=undercurl
-  highlight LSPUnderline gui=underline
-
-  highlight! LspDiagnosticsUnderlineHint gui=undercurl
-  highlight! LspDiagnosticsUnderlineInformation gui=undercurl
-  highlight! LspDiagnosticsUnderlineWarning gui=undercurl guisp=darkyellow
-  highlight! LspDiagnosticsUnderlineError gui=undercurl guisp=red
-
-  highlight! LspDiagnosticsSignHint guifg=yellow
-  highlight! LspDiagnosticsSignInformation guifg=lightblue
-  highlight! LspDiagnosticsSignWarning guifg=darkyellow
-  highlight! LspDiagnosticsSignError guifg=red
-
   " Binds
-  nnoremap <silent> <Leader>vwm :call ColorMyPencils()<CR>
-  nnoremap <Leader>aT :call OpenTerminal()<CR>
-
-  " Case-conversion tools
   " shake_case -> camelCase
   nnoremap <silent> <Leader>Cc viw<Leader>cc
   vnoremap <silent> <Leader>Cc :s/\%V_\(.\)/\U\1/g<CR>
@@ -50,14 +31,8 @@ if !exists('g:vscode')
   " snake_case -> kebab-case
   " TODO: implement
 
-  command! Scratch lua require'utils.funcs'.makeScratch()
-
   augroup Razak_Mo
     autocmd!
-    " au TermOpen * startinsert
-    au BufWritePre * :call TrimWhitespace()
-    au CursorMoved * lua require 'lsp.utils'.show_lsp_diagnostics()
-    " au CursorMoved * :VSCode
     autocmd! FileType which_key
     autocmd  FileType which_key set laststatus=0 noshowmode noruler
      \| autocmd BufLeave <buffer> set laststatus=2 noshowmode ruler

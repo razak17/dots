@@ -2,24 +2,13 @@
 
 dirs=(
   '.config/alacritty'
-  '.config/nvim'
   '.config/ranger'
   '.config/redshift'
   '.config/tmux'
   '.config/zsh'
-  '.config/nvim/plugin'
-  '.config/nvim/after/plugin'
-  '.config/nvim/vscode'
-  '.config/nvim/snippets'
-  '.config/nvim/lua'
-  '.config/nvim/lua/aesth'
-  '.config/nvim/lua/lsp'
-  '.config/nvim/lua/packer'
-  '.config/nvim/lua/plugin'
-  '.config/nvim/lua/utils'
 )
 
-link() {
+link_util() {
   if [[ "$#" -gt 1 ]]; then
     ln -s $1 $2
   else
@@ -42,8 +31,11 @@ link_folders() {
 }
 
 run () {
-  # nvim
-  link "~/dots/.config/nvim/" "~/.config"
+  # create directories
+  create_dirs
+
+  link_util ~/dots/.config/nvim/ ~/.config/
+  link_util ~/dots/.config/nvim/init.vim /home/razak/.config/nvim/init.vim
 
   # alacritty
   for f in `find ./.config/alacritty -regex ".*\.yml$"`; do
@@ -92,6 +84,9 @@ while [[ "$#" -gt 0 ]]; do
   curr=$1
   shift
   case "$curr" in
+  "-d")
+    demo
+    ;;
   "-r")
     run
     ;;

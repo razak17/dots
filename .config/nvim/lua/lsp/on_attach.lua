@@ -1,4 +1,4 @@
-local vim, api = vim, vim.api
+local vim = vim
 local map = vim.api.nvim_buf_set_keymap;
 local utils = require 'lsp.utils'
 local saga = require 'lspsaga'
@@ -26,17 +26,13 @@ local on_attach = function(client, bufnr)
   buf_map("vlsw", "vim.lsp.buf.workspace_symbol()")
   map(bufnr, 'n', "K", "<cmd>lua require('lspsaga.hover').render_hover_doc()<CR>", opts)
 
-  -- Telescope
-  api.nvim_buf_set_keymap(bufnr, "n", "gr", ":Telescope lsp_references<CR>", opts)
-  api.nvim_buf_set_keymap(bufnr, "n", "<leader>fw", ":Telescope lsp_workspace_symbols<CR>", opts)
-
   -- Diagnostics
   saga.init_lsp_saga(require 'plugin.saga')
   leader_buf_map(bufnr, "vdb", "require'lspsaga.diagnostic'.lsp_jump_diagnostic_prev()", opts)
   leader_buf_map(bufnr, "vdn", "require'lspsaga.diagnostic'.lsp_jump_diagnostic_next()", opts)
   leader_buf_map(bufnr, "vdc", "require'lspsaga.diagnostic'.show_line_diagnostics()", opts)
   leader_buf_map(bufnr, 'vdl', 'vim.lsp.diagnostic.set_loclist()', opts)
-  -- vim.api.nvim_command("au CursorMoved * lua require'lspsaga.diagnostic'.show_line_diagnostics()")
+  vim.api.nvim_command("au CursorMoved * lua require 'lsp.utils'.show_lsp_diagnostics()")
 
   if utils.can_format(client) then
     require 'lsp.utils'.format()

@@ -70,7 +70,6 @@ if exists('g:vscode')
       endif
   endfunction
 
-
   command! -complete=file -nargs=? Split call <SID>split('h', <q-args>)
   command! -complete=file -nargs=? Vsplit call <SID>split('v', <q-args>)
   command! -complete=file -nargs=? New call <SID>split('h', '__vscode_new__')
