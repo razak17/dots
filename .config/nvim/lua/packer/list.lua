@@ -5,18 +5,13 @@ function M.load_plugins()
     { repo = 'christianchiarulli/nvcode-color-schemes.vim' },
     { repo = 'norcalli/nvim-colorizer.lua' },
     { repo = 'tpope/vim-fugitive' },
-    { repo = 'jparise/vim-graphql' },
     { repo = 'b3nj5m1n/kommentary' },
-    { repo = 'honza/vim-snippets' },
-    { repo = 'nvim-lua/plenary.nvim' },
-    { repo = 'nvim-lua/popup.nvim' },
     { repo = 'mbbill/undotree' },
     { repo = 'tjdevries/lsp_extensions.nvim' },
     { repo = 'kyazdani42/nvim-web-devicons' },
     { repo = 'glepnir/lspsaga.nvim' },
     { repo = 'onsails/lspkind-nvim' },
     { repo = 'tweekmonster/startuptime.vim', cmd = "StartupTime" },
-    { repo = "hrsh7th/vim-vsnip-integ" },
     { repo = 'kyazdani42/nvim-tree.lua' },
     {
       repo = 'glacambre/firenvim',
@@ -44,7 +39,8 @@ function M.load_plugins()
     },
     {
       repo = "hrsh7th/vim-vsnip",
-      config = function() require 'plugin.vsnip' end
+      config = function() require 'plugin.vsnip' end,
+      requires = {{'hrsh7th/vim-vsnip-integ'}}
     },
     {
       repo = 'brooth/far.vim',
@@ -60,7 +56,8 @@ function M.load_plugins()
     },
     {
       repo = 'nvim-telescope/telescope.nvim',
-      config = function() require 'plugin.telescope' end
+      config = function() require 'plugin.telescope' end,
+      requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
     },
     {
       repo = 'romainl/vim-cool',

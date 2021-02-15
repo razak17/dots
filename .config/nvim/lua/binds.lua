@@ -5,49 +5,17 @@ local nmap, vmap, nnoremap, inoremap, vnoremap, xnoremap, tnoremap = mappings.nm
 -- Basic Key Mappings
 nnoremap('n', 'j')
 nnoremap('z', 'u')
-
--- Next greatest remap ever : asbjornHaland
-nnoremap('<Leader>y', '"+y')
-vnoremap('<Leader>y', '"+y')
-nnoremap('<Leader>aY', 'gg"+yG')
-nnoremap('<Leader>aV', 'gg"+VG')
-nnoremap('<Leader>aD', 'gg"+VGd')
-
+--
 -- Yank from cursor position to end-of-line
 nnoremap('Y', 'y$')
 
 -- Move selected line / block of text in visual mode
--- shift + k to move up
--- shift + j to move down
 xnoremap('K', ":move '<-2<CR>gv-gv")
 xnoremap('J', ":move '>+1<CR>gv-gv")
 xnoremap('N', ":move '>+1<CR>gv-gv")
 
--- Greatest remap ever
-vnoremap('<Leader>p', '"_dP')
-
---- :: Visual mode insert text around visual block
--- Replace type  with Option<Type>
-vnoremap("<leader>mO", [[:s/\%V\(.*\)\%V/Option<\1>/ <CR> <bar> :nohlsearch<CR>]])
--- Replace type  with Result<Type, Err>
-vnoremap("<leader>mR", [[:s/\%V\(.*\)\%V/Result<\1, Err>/ <CR> <bar> :nohlsearch<CR>]])
--- Replace val  with Some(val)
-vnoremap("<leader>ms", [[:s/\%V\(.*\)\%V/Some(\1)/ <CR> <bar> :nohlsearch<CR>]])
--- Replace val  with Some(val)
-vnoremap("<leader>ms", [[:s/\%V\(.*\)\%V/Some(\1)/ <CR> <bar> :nohlsearch<CR>]])
--- Replace val  with Ok(val)
-vnoremap("<leader>mo", [[:s/\%V\(.*\)\%V/Ok(\1)/ <CR> <bar> :nohlsearch<CR>]])
--- Replace val  with Err(val)
-vnoremap("<leader>me", [[:s/\%V\(.*\)\%V/Err(\1)/ <CR> <bar> :nohlsearch<CR>]])
--- Replace val  with (val)
-vnoremap("<leader>m(", [[:s/\%V\(.*\)\%V/(\1)/ <CR> <bar> :nohlsearch<CR>]])
--- Replace val  with 'val'
-vnoremap("<leader>m'", [[:s/\%V\(.*\)\%V/'\1'/ <CR> <bar> :nohlsearch<CR>]])
--- Replace val  with "val"
-vnoremap("<leader>m\"", [[:s/\%V\(.*\)\%V/"\1"/ <CR> <bar> :nohlsearch<CR>]])
-
 -- no way
-  if vim.fn.exists('g:vscode') ~= 1 then
+if vim.fn.exists('g:vscode') ~= 1 then
   -- Open url
   nnoremap('gx', ":sil !xdg-open <c-r><c-a><cr>")
 
@@ -138,6 +106,37 @@ vnoremap("<leader>m\"", [[:s/\%V\(.*\)\%V/"\1"/ <CR> <bar> :nohlsearch<CR>]])
   vnoremap('<', '<gv')
   vnoremap('>', '>gv')
 
+  -- Greatest remap ever
+  vnoremap('<Leader>p', '"_dP')
+
+  -- Next greatest remap ever : asbjornHaland
+  nnoremap('<Leader>y', '"+y')
+  vnoremap('<Leader>y', '"+y')
+  nnoremap('<Leader>aY', 'gg"+yG')
+  nnoremap('<Leader>aV', 'gg"+VG')
+  nnoremap('<Leader>aD', 'gg"+VGd')
+
+
+  --- :: Visual mode insert text around visual block
+  -- Replace type  with Option<Type>
+  vnoremap("<leader>mO", [[:s/\%V\(.*\)\%V/Option<\1>/ <CR> <bar> :nohlsearch<CR>]])
+  -- Replace type  with Result<Type, Err>
+  vnoremap("<leader>mR", [[:s/\%V\(.*\)\%V/Result<\1, Err>/ <CR> <bar> :nohlsearch<CR>]])
+  -- Replace val  with Some(val)
+  vnoremap("<leader>ms", [[:s/\%V\(.*\)\%V/Some(\1)/ <CR> <bar> :nohlsearch<CR>]])
+  -- Replace val  with Some(val)
+  vnoremap("<leader>ms", [[:s/\%V\(.*\)\%V/Some(\1)/ <CR> <bar> :nohlsearch<CR>]])
+  -- Replace val  with Ok(val)
+  vnoremap("<leader>mo", [[:s/\%V\(.*\)\%V/Ok(\1)/ <CR> <bar> :nohlsearch<CR>]])
+  -- Replace val  with Err(val)
+  vnoremap("<leader>me", [[:s/\%V\(.*\)\%V/Err(\1)/ <CR> <bar> :nohlsearch<CR>]])
+  -- Replace val  with (val)
+  vnoremap("<leader>m(", [[:s/\%V\(.*\)\%V/(\1)/ <CR> <bar> :nohlsearch<CR>]])
+  -- Replace val  with 'val'
+  vnoremap("<leader>m'", [[:s/\%V\(.*\)\%V/'\1'/ <CR> <bar> :nohlsearch<CR>]])
+  -- Replace val  with "val"
+  vnoremap("<leader>m\"", [[:s/\%V\(.*\)\%V/"\1"/ <CR> <bar> :nohlsearch<CR>]])
+
   -- actions
   nnoremap("<Leader>=", "<C-W>=")
   nnoremap("<Leader>ah", "<C-W>s")
@@ -212,5 +211,6 @@ vnoremap("<leader>m\"", [[:s/\%V\(.*\)\%V/"\1"/ <CR> <bar> :nohlsearch<CR>]])
   xnoremap('N', ":m '>+1<CR>gv=gv")
   nnoremap('<Leader>IL', ':LspInfo<CR>')
   nnoremap('<Leader>Ic', ':checkhealth<CR>')
+  nnoremap('<Leader>vwm', ':call ColorMyPencils()<CR>')
+  nnoremap('<Leader>aT', ':call OpenTerminal()<CR>')
 end
-

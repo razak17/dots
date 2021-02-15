@@ -55,7 +55,7 @@ end
 
 M.show_lsp_diagnostics = (function()
   local debounced =
-    M.debounce(vim.lsp.diagnostic.show_line_diagnostics, 300)
+    M.debounce(require'lspsaga.diagnostic'.show_line_diagnostics, 300)
   local cursorpos = M.get_cursor_pos()
   return function()
     local new_cursor = M.get_cursor_pos()

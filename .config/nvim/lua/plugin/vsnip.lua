@@ -1,7 +1,7 @@
 local G = require "global"
 local g =  vim.g
 local mappings = require('utils.map')
-local xmap, nmap, imap, smap, nnoremap = mappings.xmap, mappings.nmap, mappings.imap, mappings.smap, mappings.nnoremap
+local xmap, inoremap, snoremap, imap, smap, nnoremap = mappings.xmap, mappings.inoremap, mappings.snoremap, mappings.imap, mappings.smap, mappings.nnoremap
 local npairs = require('nvim-autopairs')
 
 _G.MUtils = {}
@@ -52,9 +52,7 @@ g["vsnip_snippet_dir"] = G.vim_path .. "snippets"
 local opts = { expr = true }
 
 xmap("<C-l>", "<Plug>(vsnip-select-text)")
--- nmap("<C-l>", "<Plug>(vsnip-select-text)")
 xmap("<C-y>", "<Plug>(vsnip-cut-text)")
-nmap("<C-y>", "<Plug>(vsnip-cut-text)")
 
 -- Autocompletion and snippets
 imap("<CR>", "v:lua.MUtils.completion_confirm()", opts)
@@ -64,9 +62,5 @@ imap("<S-Tab>", "v:lua.MUtils.s_tab()", opts)
 nnoremap('<Leader>cs', ':VsnipOpen<CR> 1<CR><CR>')
 imap("<C-l>", "vsnip#available(1) ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'", opts)
 smap("<C-l>", "vsnip#available(1) ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'", opts)
--- inoremap('<C-space>', "vsnip#expandable() ? '<Plug>(vsnip-expand)' : '<C-space>'", opts)
--- snoremap('<C-space>', "vsnip#expandable() ? '<Plug>(vsnip-expand)' : '<C-space>'", opts)
--- inoremap('<Tab>', "vsnip#jumpable(1) ? '<Plug>(vsnip-jump-next)' : '<Tab>'", opts)
--- snoremap('<Tab>', "vsnip#jumpable(1) ? '<Plug>(vsnip-jump-next)' : '<Tab>'", opts)
--- inoremap('<S-Tab>', "vsnip#jumpable(-1) ? '<Plug>(vsnip-jump-prev)' : '<S-Tab>'", opts)
--- snoremap('<S-Tab>', "vsnip#jumpable(-1) ? '<Plug>(vsnip-jump-prev)' : '<S-Tab>'", opts)
+inoremap('<C-space>', "vsnip#expandable() ? '<Plug>(vsnip-expand)' : '<C-space>'", opts)
+snoremap('<C-space>', "vsnip#expandable() ? '<Plug>(vsnip-expand)' : '<C-space>'", opts)
