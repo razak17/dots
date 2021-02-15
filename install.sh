@@ -80,6 +80,15 @@ run () {
   done
 }
 
+demo() {
+  # tmux
+  for f in `find ./.config/tmux -regex ".*\.conf$"`; do
+    echo f: $f
+    rm -rf ~/$f
+    ln -s ~/dots/$f ~/$f
+  done
+}
+
 while [[ "$#" -gt 0 ]]; do
   curr=$1
   shift
