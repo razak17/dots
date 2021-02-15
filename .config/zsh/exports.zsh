@@ -21,6 +21,7 @@ if [ -x "$HOME/.fnm/fnm" ]; then
   export FNMPATH="/home/razak/.fnm"
   NODE="$FNMPATH/node-versions/v15.5.1/installation"
   node_modules="$PATH:$NODE/bin"
+  node_modules_alt="$PATH:$NODE/lib/node_modules/bin"
 fi
 
 # Which plugins would you like to load?
@@ -33,7 +34,7 @@ plugins=(
   zsh-syntax-highlighting
 )
 
-path=("$HOME/.local/bin" "$GOPATH" "$FNMPATH" "$node_modules" "$path[@]")
+path=("$HOME/.local/bin" "$GOPATH" "$FNMPATH" "$node_modules_alt"  "$node_modules" "$path[@]")
 
 export PATH
 export npm_config_prefix="$NODE/lib/node_modules"

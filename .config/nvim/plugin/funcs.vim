@@ -1,9 +1,4 @@
 if !exists('g:vscode')
-  fun! OpenTerminal()
-    split term://zsh
-    resize 10
-  endfunction
-
   fun! TrimWhitespace()
     let l:save = winsaveview()
     keeppatterns %s/\s\+$//e
@@ -49,37 +44,6 @@ if !exists('g:vscode')
     return join(reverse(l:chars), '')
   endfunction
 
-  fun! ColorMyPencils()
-    set background=dark
-
-    highlight Normal guibg=none
-    highlight LineNr guifg=#5eacd3
-    highlight netrwDir guifg=#5eacd3
-    highlight qfFileName guifg=#aed75f
-  endfun
-
-  fun! RunPython()
-    let s:current_file = expand("%")
-    enew|silent execute ".!python " . shellescape(s:current_file, 1)
-    setlocal buftype=nofile bufhidden=wipe noswapfile nowrap
-    setlocal nobuflisted
-  endfunction
-
-  fun Run()
-    exec "! node %"
-  endfunction
-
-  fun RunT()
-    exec "! ts-node %"
-  endfunction
-
-  autocmd FileType typescript noremap <F10> :call RunT() <cr>
-  autocmd FileType python noremap <F10> :call RunPython()<CR>
-  autocmd FileType c noremap <F10> :!gcc % -o %< && ./%< <CR>
-  autocmd FileType cpp noremap <F10> :!g++ % -o %< && ./%< <CR>
-  autocmd FileType javascript noremap <F10> :call Run() <cr>
-
-  " Vim with me
   nnoremap <silent> <Leader>d  :call <SID>DellThisBuf()<CR>
   nnoremap <silent> <Leader>ld :call <SID>DellAllBuf()<CR> :q!<CR>
   nnoremap <silent> <Leader>lh :call <SID>DelToLeft()<CR>

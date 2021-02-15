@@ -5,14 +5,21 @@ local nmap, vmap, nnoremap, inoremap, vnoremap, xnoremap, tnoremap = mappings.nm
 -- Basic Key Mappings
 nnoremap('n', 'j')
 nnoremap('z', 'u')
---
+
 -- Yank from cursor position to end-of-line
 nnoremap('Y', 'y$')
+
+-- Easier line-wise movement
+nnoremap("gh", "g^")
+nnoremap("gl", "g$")
 
 -- Move selected line / block of text in visual mode
 xnoremap('K', ":move '<-2<CR>gv-gv")
 xnoremap('J', ":move '>+1<CR>gv-gv")
 xnoremap('N', ":move '>+1<CR>gv-gv")
+xnoremap('K', ":m '<-2<CR>gv=gv")
+xnoremap('J', ":m '>+1<CR>gv=gv")
+xnoremap('N', ":m '>+1<CR>gv=gv")
 
 -- no way
 if vim.fn.exists('g:vscode') ~= 1 then
@@ -27,10 +34,6 @@ if vim.fn.exists('g:vscode') ~= 1 then
 
   -- Start new line from any cursor position
   inoremap("<S-Return>", "<C-o>o")
-
-  -- Easier line-wise movement
-  nnoremap("gh", "g^")
-  nnoremap("gl", "g$")
 
   -- g Leader key
   nnoremap('<Space>', '<Nop>')
@@ -49,10 +52,6 @@ if vim.fn.exists('g:vscode') ~= 1 then
   nnoremap('<M-k>', ':resize +2<CR>')
   nnoremap('<M-h>', ':vertical resize -2<CR>')
   nnoremap('<M-l>', ':vertical resize +2<CR>')
-
-  -- Fast Commentsc
-  nnoremap('<Leader>/', ':Commentary<CR>')
-  inoremap('<Leader>/', '<C-O>:Commentary<CR>')
 
   -- Window Resize
   -- nnoremap('<Leader>cv', ':wincmd v<bar> :Ex <bar> :vertical resize 30<CR>')
@@ -192,25 +191,14 @@ if vim.fn.exists('g:vscode') ~= 1 then
   nmap("<leader>/", "<Plug>kommentary_line_default")
   nmap("<leader>a/", "<Plug>kommentary_motion_default")
   vmap("<leader>/", "<Plug>kommentary_visual_default")
-  --[[ vim.api.nvim_set_keymap("n", "<leader>cic", "<Plug>kommentary_line_increase", {})
-  vim.api.nvim_set_keymap("n", "<leader>ci", "<Plug>kommentary_motion_increase", {})
-  vim.api.nvim_set_keymap("v", "<leader>ci", "<Plug>kommentary_visual_increase", {})
-  vim.api.nvim_set_keymap("n", "<leader>cdc", "<Plug>kommentary_line_decrease", {})
-  vim.api.nvim_set_keymap("n", "<leader>cd", "<Plug>kommentary_motion_decrease", {})
-  vim.api.nvim_set_keymap("v", "<leader>cd", "<Plug>kommentary_visual_decrease", {}) ]]
 
-  -- Source init.vim
+  -- Other remaps
   nnoremap('<Leader><CR>', ':so ~/.config/nvim/init.vim<CR>')
   nnoremap('<Leader>.', ':e $MYVIMRC<CR>')
   nnoremap('<Leader>,', ':e ~/.config/nvim/lua/init.lua<CR>')
   nnoremap('<Leader>fy', ':Format<CR>')
-
-  -- Other remaps
-  xnoremap('J', ":m '>+1<CR>gv=gv")
-  vnoremap('K', ":m '<-2<CR>gv=gv")
-  xnoremap('N', ":m '>+1<CR>gv=gv")
   nnoremap('<Leader>IL', ':LspInfo<CR>')
   nnoremap('<Leader>Ic', ':checkhealth<CR>')
-  nnoremap('<Leader>vwm', ':call ColorMyPencils()<CR>')
-  nnoremap('<Leader>aT', ':call OpenTerminal()<CR>')
+  nnoremap('<Leader>vwm', ':lua require "utils.funcs".ColorMyPencils()<CR>')
+  nnoremap('<Leader>aT', ':lua require "utils.funcs".OpenTerminal()<CR>')
 end

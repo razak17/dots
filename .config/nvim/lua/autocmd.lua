@@ -42,6 +42,8 @@ local bufs = {
 }
 
 local files = {
+  {"BufWritePre", "*", ":call TrimWhitespace()"},
+  {"TermOpen", "*", "startinsert"},
   {"BufWritePre", "*.tmp,*.bak", "setlocal noundofile"},
   {"BufLeave", "*", "silent! update"},
   {"BufWritePost", "plugins.lua", "PlugCompile"},
@@ -50,8 +52,11 @@ local files = {
   {"FileType", "which_key", "set nonumber norelativenumber"},
   {"FileType", "NvimTree", "set nonumber norelativenumber"},
   {"FileType", "markdown", "set tabstop=4 shiftwidth=4 conceallevel=2"},
-  {"BufWritePre", "*", ":call TrimWhitespace()"},
-  {"TermOpen", "*", "startinsert"},
+  {"FileType", "python", "noremap <F10> :lua require 'utils.funcs'.RunPython()<CR>"},
+  {"FileType", "typescript", "noremap <F10> :lua require 'utils.funcs'.RunTS()<CR>"},
+  {"FileType", "javascript", "noremap <F10> :lua require 'utils.funcs'.RunJS()<CR>"},
+  {"FileType", "c", "noremap <F10> :!gcc % -o %< && ./%< <CR>"},
+  {"FileType", "cpp", "noremap <F10> :!g++ % -o %< && ./%< <CR>"},
 }
 
 local niceties = {
