@@ -1,7 +1,8 @@
-vim.g.floaterm_borderchars = {'─', '│', '─', '│', '╭', '╮', '╯', '╰'}
+-- vim.g.floaterm_borderchars = {'─', '│', '─', '│', '╭', '╮', '╯', '╰'}
+vim.g.floaterm_borderchars = {'═', '║', '═', '║', '╔', '╗', '╝', '╚'}
 
 -- Set floaterm window's background to black
-vim.cmd("hi FloatermBorder guifg=cyan")
+vim.cmd("hi FloatermBorder guifg=#7ec0ee")
 vim.cmd("autocmd FileType floaterm setlocal winblend=0")
 
 -- vim.g.floaterm_wintype='normal'

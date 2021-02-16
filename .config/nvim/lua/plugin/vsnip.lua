@@ -52,7 +52,7 @@ g["vsnip_snippet_dir"] = G.vim_path .. "snippets"
 local opts = { expr = true }
 
 xmap("<C-l>", "<Plug>(vsnip-select-text)")
-xmap("<C-y>", "<Plug>(vsnip-cut-text)")
+xmap("<C-x>", "<Plug>(vsnip-cut-text)")
 
 -- Autocompletion and snippets
 imap("<CR>", "v:lua.MUtils.completion_confirm()", opts)
