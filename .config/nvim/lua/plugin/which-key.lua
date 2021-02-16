@@ -73,6 +73,7 @@ g.which_key_map = {
       k = "keymaps",
       o = "old files",
       r = "registers",
+      s = "custom finder",
       T = "treesitter",
       v = "vim options",
       z = "current file fuzzy find",

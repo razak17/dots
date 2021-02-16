@@ -21,7 +21,6 @@ opt('o', 'pumheight', 15)                      -- Pop-up menu's line height
 opt('o', 'helpheight', 12)                     -- Minimum help window height
 opt('o', 'previewheight', 12)                  -- Completion preview height
 opt('o', 'synmaxcol', 2500)                    -- Don't syntax highlight long lines
-opt('o', 'lazyredraw', true)                   -- Don't redraw screen while running macros
 opt("b", "formatoptions", "1jcroql")           -- Don't break lines after a one-letter word & Don't auto-wrap text
 
 -- Neovim Directories
@@ -39,14 +38,15 @@ opt('w', 'listchars' , 'tab:»·,nbsp:+,trail:·,precedes:,extends:')
 opt('o', 'display', 'lastline')
 opt('o', 'termguicolors', true)
 opt('o', 'showbreak', '↳  ')
-opt('o', 'pumblend', 10)
+opt('o', 'pumblend', 10)                       -- transparency for the popup-menu
+opt('o', 'lazyredraw', true)                   -- Don't redraw screen while running macros
 opt('w', 'signcolumn', 'yes')                  -- Always show the signcolumn, otherwise it would shift the text each time
 opt('w', 'colorcolumn', '80')                  -- Highlight the 80th character limit
 opt('w', 'number', true)                       -- Print line number
 opt('w', 'relativenumber', true)               -- Show line number relative to current line
 opt('w', 'list', true)                         -- Show hidden characters
--- opt('w', 'cursorline', false)                  -- Don't Highlight the current line (handled by autocmd)
-opt('o', 'laststatus', 2)                      -- Always display the status line
+opt('w', 'cursorline', false)                  -- Don't Highlight the current line (handled by autocmd)
+opt('o', 'laststatus', 0)                      -- Always display the status line
 opt('o', 'background', 'dark')                 -- Tell vim what the background color looks like
 opt('o', 'cmdheight', 2)                       -- More space for displaying messages
 opt('o', 'showcmd', false)                     -- Don't show command in status line
