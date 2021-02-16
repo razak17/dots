@@ -8,11 +8,14 @@ function M.load_plugins()
     { repo = 'b3nj5m1n/kommentary' },
     { repo = 'mbbill/undotree' },
     { repo = 'tjdevries/lsp_extensions.nvim' },
-    { repo = 'kyazdani42/nvim-web-devicons' },
     { repo = 'glepnir/lspsaga.nvim' },
     { repo = 'onsails/lspkind-nvim' },
     { repo = 'tweekmonster/startuptime.vim', cmd = "StartupTime" },
     { repo = 'kyazdani42/nvim-tree.lua' },
+    {
+      repo = 'airblade/vim-rooter',
+      config = function() require 'plugin.rooter' end
+    },
     {
       repo = 'glacambre/firenvim',
       run = function() vim.fn['firenvim#install'](0) end
@@ -40,7 +43,7 @@ function M.load_plugins()
     {
       repo = "hrsh7th/vim-vsnip",
       config = function() require 'plugin.vsnip' end,
-      requires = {{'hrsh7th/vim-vsnip-integ'}}
+      requires = {'hrsh7th/vim-vsnip-integ'}
     },
     {
       repo = 'brooth/far.vim',
@@ -74,7 +77,8 @@ function M.load_plugins()
     {
       repo = 'glepnir/galaxyline.nvim',
       branch = 'main',
-      config = function() require 'aesth.statusline' end
+      config = function() require 'aesth.statusline' end,
+      requires = {'kyazdani42/nvim-web-devicons'}
     },
     {
       repo = 'nvim-treesitter/nvim-treesitter',

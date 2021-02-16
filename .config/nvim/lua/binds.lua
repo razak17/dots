@@ -192,6 +192,9 @@ if vim.fn.exists('g:vscode') ~= 1 then
   nmap("<leader>a/", "<Plug>kommentary_motion_default")
   vmap("<leader>/", "<Plug>kommentary_visual_default")
 
+  -- Rooter
+  nnoremap('<Leader>cR', ':RooterToggle>CR>')
+
   -- Other remaps
   nnoremap('<Leader><CR>', ':so ~/.config/nvim/init.vim<CR>')
   nnoremap('<Leader>.', ':e $MYVIMRC<CR>')

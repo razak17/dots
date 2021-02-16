@@ -37,7 +37,8 @@ require('telescope').setup({
     results_height = 1,
     results_width = 0.8,
     border = {},
-    borderchars = { '─', '│', '─', '│', '╭', '╮', '╯', '╰'},
+    -- borderchars = { '─', '│', '─', '│', '╭', '╮', '╯', '╰'},
+    borderchars = {'═', '║', '═', '║', '╔', '╗', '╝', '╚'},
     color_devicons = true,
     use_less = true,
     set_env = { ['COLORTERM'] = 'truecolor' },
@@ -47,10 +48,13 @@ require('telescope').setup({
   }
 })
 
+vim.cmd("hi TelescopeBorder guifg=#7ec0ee")
+
 -- Finder
 nnoremap('<C-k>', ':lua require("telescope.builtin").find_files()<CR>')
 
 -- Commands
+nnoremap('<Leader>fce', ':lua require"telescope.builtin".planets{}<CR>')
 nnoremap('<Leader>fcA', ':lua require("telescope.builtin").autocommands()<CR>')
 nnoremap('<Leader>fcb', ':lua require("telescope.builtin").buffers()<CR>')
 nnoremap('<Leader>fcc', ':lua require("telescope.builtin").commands()<CR>')

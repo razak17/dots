@@ -66,6 +66,7 @@ g.which_key_map = {
       A = "autocmds",
       c = "commands",
       b = "buffers",
+      e = "planets",
       f = "builtin",
       h = "help",
       H = "history",
