@@ -13,6 +13,10 @@ function M.load_plugins()
     { repo = 'tweekmonster/startuptime.vim', cmd = "StartupTime" },
     { repo = 'kyazdani42/nvim-tree.lua' },
     {
+      repo = 'glepnir/dashboard-nvim',
+      config = function() require 'plugin.dashboard' end
+    },
+    {
       repo = 'airblade/vim-rooter',
       config = function() require 'plugin.rooter' end
     },
@@ -60,7 +64,7 @@ function M.load_plugins()
     {
       repo = 'nvim-telescope/telescope.nvim',
       config = function() require 'plugin.telescope' end,
-      requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
+      requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}, {'kyazdani42/nvim-web-devicons'}}
     },
     {
       repo = 'romainl/vim-cool',

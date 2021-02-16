@@ -1,5 +1,7 @@
 local M = {}
 local api =  vim.api
+local G = require 'global'
+local HOME = G.home
 
 function _G.dump(...)
   local objects = vim.tbl_map(vim.inspect, {...})
@@ -23,6 +25,12 @@ end
 function M.OpenTerminal()
   api.nvim_command("split term://zsh")
   api.nvim_command("resize 10")
+end
+
+function M.search_dotfiles()
+  require('telescope.builtin').find_files {
+    find_command = {'git', '--git-dir=', HOME .. '/dots/', '--work-tree', HOME, 'ls-tree', '--full-tree', '-r', '--name-only', 'HEAD'}
+  }
 end
 
 function M.ColorMyPencils()

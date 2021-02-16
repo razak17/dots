@@ -35,21 +35,25 @@ local bufs = {
   },
   {"BufWritePre", "COMMIT_EDITMSG", "setlocal noundofile"},
   {"BufWritePre", "MERGE_MSG", "setlocal noundofile"},
-  {"BufEnter,FocusGained,InsertLeave", "*", "set relativenumber"},
   {"BufEnter,FocusGained,InsertLeave", "NvimTree", "set norelativenumber"},
-  {"BufEnter,FocusGained,InsertLeave", "WhichKey", "set norelativenumber"},
+  {"BufEnter,FocusGained,InsertLeave", "WhichKey", "set norelativenumber"}, -- TODO
+  {"BufEnter,FocusGained,InsertLeave", "dashboard", "set norelativenumber"}, -- TODO
+  {"BufEnter,FocusGained,InsertLeave", "Telescope", "set norelativenumber"}, -- TODO
+  {"BufEnter,FocusGained,InsertLeave", "*", "set relativenumber"},
   {"BufLeave,FocusLost,InsertEnter", "*", "set norelativenumber"},
   {"BufEnter,WinEnter,InsertLeave,VimEnter", "*", "set cursorline"},
   {"BufLeave,WinLeave,InsertEnter", "*", "set nocursorline"},
+  {"BufWritePre", "*", ":call TrimWhitespace()"},
+  {"BufWritePost", "plugins.lua", "PlugCompile"},
+  {"BufWritePost,BufRead", "*.md", "setlocal spell"},
+  {"BufWritePre", "*.tmp,*.bak", "setlocal noundofile"},
+  {"BufEnter", "*", "set fo-=c fo-=r fo -=o"},
 }
 
 local files = {
-  {"BufWritePre", "*", ":call TrimWhitespace()"},
   {"TermOpen", "*", "startinsert"},
-  {"BufWritePre", "*.tmp,*.bak", "setlocal noundofile"},
   {"BufLeave", "*", "silent! update"},
-  {"BufWritePost", "plugins.lua", "PlugCompile"},
-  {"BufWritePost,BufRead", "*.md", "setlocal spell"},
+  -- {"FileType", "*", "set showtabline=2"},
   {"FileType", "py", "set tabstop=4 shiftwidth=4"},
   {"FileType", "markdown", "set tabstop=4 shiftwidth=4 conceallevel=2"},
   {"FileType", "python", "noremap <F10> :lua require 'utils.funcs'.RunPython()<CR>"},
@@ -61,7 +65,6 @@ local files = {
 
 local niceties = {
   {"TextYankPost", "*", [[ silent! lua vim.highlight.on_yank({higroup="IncSearch", timeout=200})]]},
-  {"BufEnter", "*", "set fo-=c fo-=r fo -=o"},
   {"Syntax", "*", [[if line('$') > 5000 | syntax sync minlines=300 | endif]]},
   {
     "BufWritePost",

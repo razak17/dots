@@ -2,6 +2,8 @@ local mappings = require('utils.map')
 local actions = require 'telescope.actions'
 local nnoremap = mappings.nnoremap
 
+vim.cmd("hi TelescopeBorder guifg=#7ec0ee")
+
 require('telescope').setup({
   defaults = {
     mappings = {
@@ -37,8 +39,8 @@ require('telescope').setup({
     results_height = 1,
     results_width = 0.8,
     border = {},
-    -- borderchars = { '─', '│', '─', '│', '╭', '╮', '╯', '╰'},
-    borderchars = {'═', '║', '═', '║', '╔', '╗', '╝', '╚'},
+    borderchars = { '─', '│', '─', '│', '╭', '╮', '╯', '╰'},
+    -- borderchars = {'═', '║', '═', '║', '╔', '╗', '╝', '╚'},
     color_devicons = true,
     use_less = true,
     set_env = { ['COLORTERM'] = 'truecolor' },
@@ -48,10 +50,9 @@ require('telescope').setup({
   }
 })
 
-vim.cmd("hi TelescopeBorder guifg=#7ec0ee")
-
 -- Finder
 nnoremap('<C-k>', ':lua require("telescope.builtin").find_files()<CR>')
+nnoremap('<Leader>fcs', ':lua require("utils.funcs").search_dotfiles()<CR>')
 
 -- Commands
 nnoremap('<Leader>fce', ':lua require"telescope.builtin".planets{}<CR>')
