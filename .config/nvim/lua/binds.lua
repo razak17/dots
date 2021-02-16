@@ -175,7 +175,7 @@ if vim.fn.exists('g:vscode') ~= 1 then
   nnoremap("<Leader>gh", ":diffget //3<CR>")
   nnoremap("<Leader>gk", ":diffget //2<CR>")
   nnoremap("<Leader>gl", ":Git log<CR>")
-  nnoremap("<Leader>gp", ":Git push<CR>")
+  nnoremap("<Leader>ge", ":Git push<CR>")
   nnoremap("<Leader>gP", ":Git pull<CR>")
   nnoremap("<Leader>gr", ":GRemove<CR>")
   nnoremap("<Leader>gs", ":G<CR>")
