@@ -30,10 +30,12 @@ g.which_key_map = {
     ["/"] = "comment motion default",
     d = "delete all buffers and exit",
     D = "delete all",
+    e = "turn off guides",
     F = "resize 90%",
     h = "horizontal split",
     n = "no highlight",
     N = "toggle line numbers",
+    o = "turn on guides",
     R = "toggle relative line numbers",
     s = "save and exit",
     T = "terminal",
@@ -59,6 +61,19 @@ g.which_key_map = {
     s = "edit snippet",
     v = "nvim-tree toggle",
   },
+  C = {
+    name = "+Switch case",
+    c =  'shake_case -> camelCase',
+    P =  'snake_case -> PascalCase',
+    s =  'camelCase/PascalCase -> snake_case',
+  },
+  e = {
+    name = "+Treesitter",
+    h = "toggle highlight groups",
+    m = "scope incremental",
+    n = "init selection",
+    v = "toggle virtual text",
+  },
   f = {
     name = "+Telescope",
     c = {
@@ -77,6 +92,10 @@ g.which_key_map = {
       T = "treesitter",
       v = "vim options",
       z = "current file fuzzy find",
+    },
+    e = {
+      name = "+Extensions",
+      e = "packer"
     },
     l = {
       name = "+Live",
@@ -115,6 +134,7 @@ g.which_key_map = {
     b = 'branches',
     A = 'blame',
     c = 'commit',
+    C = 'checkout',
     d = 'diff',
     D = 'diff split',
     h = 'diffget',
@@ -136,11 +156,16 @@ g.which_key_map = {
     h = "to left",
     x = "all except current",
   },
-  C = {
-    name = "+Switch case",
-    c =  'shake_case -> camelCase',
-    P =  'snake_case -> PascalCase',
-    s =  'camelCase/PascalCase -> snake_case',
+  m = {
+    name = "+Surround",
+    O = "Type => Option<Type>",
+    R = "Type => Option<Type, Err>",
+    s = "val => Some(val)",
+    o = "val => Ok(val)",
+    e = "val => Err(val)",
+    ['('] = "val => (val)",
+    ["'"] = "val => 'val'",
+    ['"'] = 'val => "val"',
   },
   P = {
     name = "+Plug",
@@ -217,17 +242,22 @@ g.which_key_map = {
 
 -- TODO  (get this to work)
 function WhichKeyReverse()
-  local key_maps = g.which_key_map
-  key_maps.r.e = 'line'
-  key_maps.r.e.v = 'reverse'
-  g.which_key_map = key_maps
+  local key_maps = vim.g.which_key_map
+  key_maps.r = {
+    name = "+Line",
+  }
+  key_maps.r.e = {
+    name = "+Line"
+  }
+  key_maps.r.e.v = "reverse"
+  vim.g.which_key_map = key_maps
 end
 
 _G.WhichKey = {}
 
 -- TODO  (get this to work)
 WhichKey.SetKeyOnFT=function()
-  if vim.fn.mode() == "v" or vim.fn.mode() == "V" then
+  if vim.fn.mode() == "V" then
     WhichKeyReverse()
   end
 end

@@ -28,20 +28,15 @@ local bufs = {
     "/tmp/*,$TMPDIR/*,$TMP/*,$TEMP/*,*/shm/*,/private/var/*,.vault.vim",
     "setlocal noswapfile noundofile nobackup nowritebackup viminfo= shada="
   },
-  {
+  --[[ {
     "BufWritePost",
     "bash,c,cs,cpp,css,go,graphql,html,javascript,javascriptreact,jsdoc,julia,lua,python,rust,typescript,typescriptreact",
     "edit | TSBufEnable highlight"
-  },
+  }, ]]
+  {"BufLeave", "*", "silent! update"},
   {"BufWritePre", "COMMIT_EDITMSG", "setlocal noundofile"},
   {"BufWritePre", "MERGE_MSG", "setlocal noundofile"},
-  {"BufEnter,FocusGained,InsertLeave", "NvimTree", "set norelativenumber"},
-  {"BufEnter,FocusGained,InsertLeave", "WhichKey", "set norelativenumber"}, -- TODO
-  {"BufEnter,FocusGained,InsertLeave", "dashboard", "set norelativenumber"}, -- TODO
-  {"BufEnter,FocusGained,InsertLeave", "Telescope", "set norelativenumber"}, -- TODO
-  {"BufEnter,FocusGained,InsertLeave", "*", "set relativenumber"},
-  {"BufLeave,FocusLost,InsertEnter", "*", "set norelativenumber"},
-  {"BufEnter,WinEnter,InsertLeave,VimEnter", "*", "set cursorline"},
+  {"BufEnter,WinEnter,InsertLeave", "*", "set cursorline"},
   {"BufLeave,WinLeave,InsertEnter", "*", "set nocursorline"},
   {"BufWritePre", "*", ":call TrimWhitespace()"},
   {"BufWritePost", "plugins.lua", "PlugCompile"},
@@ -51,9 +46,6 @@ local bufs = {
 }
 
 local files = {
-  {"TermOpen", "*", "startinsert"},
-  {"BufLeave", "*", "silent! update"},
-  -- {"FileType", "*", "set showtabline=2"},
   {"FileType", "py", "set tabstop=4 shiftwidth=4"},
   {"FileType", "markdown", "set tabstop=4 shiftwidth=4 conceallevel=2"},
   {"FileType", "python", "noremap <F10> :lua require 'utils.funcs'.RunPython()<CR>"},
@@ -64,13 +56,14 @@ local files = {
 }
 
 local niceties = {
-  {"TextYankPost", "*", [[ silent! lua vim.highlight.on_yank({higroup="IncSearch", timeout=200})]]},
+  {"TextYankPost", "*", [[ silent! lua vim.highlight.on_yank({higroup="IncSearch", timeout=77})]]},
   {"Syntax", "*", [[if line('$') > 5000 | syntax sync minlines=300 | endif]]},
   {
     "BufWritePost",
     "*",
     [[nested  if &l:filetype ==# '' || exists('b:ftdetect') | unlet! b:ftdetect | filetype detect | endif]]
   },
+  -- Remember line number
   {
     "BufReadPost",
     "*",
@@ -79,6 +72,7 @@ local niceties = {
 }
 
 local windows = {
+  {"TermOpen", "*", "startinsert"},
   -- Equalize window dimensions when resizing vim window
   {"VimResized", "*", [[tabdo wincmd =]]},
   -- Force write shada on leaving nvim
@@ -97,8 +91,8 @@ local plugins = {
 local definitions = {
   bufs,
   files,
-  niceties,
   windows,
+  niceties,
   plugins
 }
 

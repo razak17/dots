@@ -15,10 +15,11 @@ if !exists('g:vscode')
   endif
 
   " Binds
+  vnoremap <Leader>rev :s/\%V.\+\%V./\=RevStr(submatch(0))<CR>gv
+
   " shake_case -> camelCase
   nnoremap <silent> <Leader>Cc viw<Leader>cc
   vnoremap <silent> <Leader>Cc :s/\%V_\(.\)/\U\1/g<CR>
-  vnoremap <Leader>rev :s/\%V.\+\%V./\=RevStr(submatch(0))<CR>gv
 
   " snake_case -> PascalCase
   nnoremap <silent> <Leader>CP viw<Leader>CP

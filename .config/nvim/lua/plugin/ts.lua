@@ -2,9 +2,13 @@ local api = vim.api
 local M = {}
 
 local synoff = function()
-  local filetypes = vim.fn.join({ "lua", "javascript", "javascripreact", "typescript", "typescriptreact", "c", "cpp", "query", "rust", "go", "json", "html", "css", "scheme", "sh", "fennel", "php", "python", "ruby", "toml" }, ",")
+  local filetypes = vim.fn.join({
+    "c", "cpp", "css", "go", "haskell", "html", "javascript", "jsdoc", "julia",  "json", "html",
+    "lua", "markdown", "python", "rust", "sh", "toml", "tsx", "typescript",
+    "vue", "yaml"
+  }, ",")
   vim.cmd("au FileType "..filetypes.." set syn=off")
-  vim.cmd("au FileType "..filetypes.." lua require'matchit'.setup()")
+  vim.cmd("au FileType "..filetypes.." lua require'utils.matchit'.setup()")
 end
 
 function M.setup()
@@ -17,9 +21,9 @@ function M.setup()
         enable = true,
         disable = {},
         keymaps = {
-          init_selection = "<leader>n",
+          init_selection = "<leader>en",
           node_incremental = "n",
-          scope_incremental = "<leader>m",
+          scope_incremental = "<leader>em",
           node_decremental = "m"
         }
       },
@@ -31,17 +35,17 @@ function M.setup()
         select = {
           enable = true,
           keymaps = {
-            ["<leader>V"] = "@function.outer", -- replace with block.inner and block.outer when its supported in more languages
-            ["<leader>v"] = "@function.inner"
+            ["<leader>eV"] = "@function.outer", -- replace with block.inner and block.outer when its supported in more languages
+            ["<leader>ev"] = "@function.inner"
           }
         },
         swap = {
           enable = true,
           swap_next = {
-            ["<leader>f"] = "@parameter.inner", -- replace with block.inner when its supported in more languages
+            ["<leader>ef"] = "@parameter.inner", -- replace with block.inner when its supported in more languages
           },
           swap_previous = {
-            ["<leader>a"] = "@parameter.inner",
+            ["<leader>ea"] = "@parameter.inner",
           },
         },
       },
@@ -49,17 +53,17 @@ function M.setup()
 
   api.nvim_set_keymap('n', 'R', ':write | edit | TSBufEnable highlight<CR>', {});
   api.nvim_exec([[
-    command! ToggleTsVtx lua require'ts'.toggle_ts_virt_text()
+    command! ToggleTsVtx lua require'plugin.ts'.toggle_ts_virt_text()
     hi TsVirtText guifg=#89ddff
     augroup TSVirtualText
       au!
-      au BufEnter,CursorMoved,CursorMovedI,WinEnter,CompleteDone,InsertEnter,InsertLeave * lua require'ts'.ts_virt_text()
+      au BufEnter,CursorMoved,CursorMovedI,WinEnter,CompleteDone,InsertEnter,InsertLeave * lua require'plugin.ts'.ts_virt_text()
     augroup END
 
-    command! ToggleTsHlGroups lua require'ts'.toggle_ts_hl_groups()
+    command! ToggleTsHlGroups lua require'plugin.ts'.toggle_ts_hl_groups()
     augroup TSVirtualTextHlGroups
       au!
-      au BufEnter,CursorMoved,CursorMovedI,WinEnter,CompleteDone,InsertEnter,InsertLeave * lua require'ts'.ts_hl_groups()
+      au BufEnter,CursorMoved,CursorMovedI,WinEnter,CompleteDone,InsertEnter,InsertLeave * lua require'plugin.ts'.ts_hl_groups()
     augroup END
   ]], '')
 end

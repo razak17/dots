@@ -115,14 +115,10 @@ if vim.fn.exists('g:vscode') ~= 1 then
   nnoremap('<Leader>aV', 'gg"+VG')
   nnoremap('<Leader>aD', 'gg"+VGd')
 
-
-  --- :: Visual mode insert text around visual block
   -- Replace type  with Option<Type>
   vnoremap("<leader>mO", [[:s/\%V\(.*\)\%V/Option<\1>/ <CR> <bar> :nohlsearch<CR>]])
   -- Replace type  with Result<Type, Err>
   vnoremap("<leader>mR", [[:s/\%V\(.*\)\%V/Result<\1, Err>/ <CR> <bar> :nohlsearch<CR>]])
-  -- Replace val  with Some(val)
-  vnoremap("<leader>ms", [[:s/\%V\(.*\)\%V/Some(\1)/ <CR> <bar> :nohlsearch<CR>]])
   -- Replace val  with Some(val)
   vnoremap("<leader>ms", [[:s/\%V\(.*\)\%V/Some(\1)/ <CR> <bar> :nohlsearch<CR>]])
   -- Replace val  with Ok(val)
@@ -170,6 +166,7 @@ if vim.fn.exists('g:vscode') ~= 1 then
   nnoremap("<Leader>gA", ":Git blame<CR>")
   nnoremap("<Leader>gb", ":GBranches<CR>")
   nnoremap("<Leader>gc", ":Git commit<CR>")
+  nnoremap("<Leader>gC", ":Git checkout -b ")
   nnoremap("<Leader>gd", ":Git diff<CR>")
   nnoremap("<Leader>gD", ":Gdiffsplit<CR>")
   nnoremap("<Leader>gh", ":diffget //3<CR>")
@@ -193,7 +190,7 @@ if vim.fn.exists('g:vscode') ~= 1 then
   vmap("<leader>/", "<Plug>kommentary_visual_default")
 
   -- Rooter
-  nnoremap('<Leader>cR', ':RooterToggle>CR>')
+  nnoremap('<Leader>cR', ':RooterToggle<CR>')
 
   -- Other remaps
   nnoremap('<Leader><CR>', ':so ~/.config/nvim/init.vim<CR>')
@@ -204,4 +201,9 @@ if vim.fn.exists('g:vscode') ~= 1 then
   nnoremap('<Leader>Ic', ':checkhealth<CR>')
   nnoremap('<Leader>vwm', ':lua require "utils.funcs".ColorMyPencils()<CR>')
   nnoremap('<Leader>aT', ':lua require "utils.funcs".OpenTerminal()<CR>')
+  nnoremap('<leader>ar', ':call EmptyRegisters()')
+  nnoremap('<leader>ao', ':lua require "utils.funcs".TurnOnGuides()<CR>')
+  nnoremap('<leader>ae', ':lua require "utils.funcs".TurnOffGuides()<CR>')
+  nnoremap('<leader>ev', ':lua require "plugin.ts".toggle_ts_virt_text()<CR>')
+  nnoremap('<leader>eh', ':lua require "plugin.ts".toggle_ts_hl_groups()<CR>')
 end
