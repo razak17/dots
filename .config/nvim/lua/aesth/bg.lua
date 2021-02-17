@@ -11,8 +11,6 @@ vim.cmd [[ colo onedark ]]
 -- colorscheme gruvbox
 -- colorscheme palenight
 
-
-
 cmd('autocmd ColorScheme * highlight clear SignColumn')
 cmd('autocmd ColorScheme * highlight Normal ctermbg=NONE guibg=NONE')
 

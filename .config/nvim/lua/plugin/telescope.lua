@@ -24,14 +24,18 @@ require('telescope').setup({
       '--column',
       '--smart-case'
     },
+    extensions = {
+      fzy_native = {
+        override_generic_sorter = false,
+        override_file_sorter = true,
+      }
+    },
     prompt_prefix = ">",
     initial_mode = "insert",
     selection_strategy = "reset",
     sorting_strategy = "descending",
     layout_strategy = "horizontal",
-    file_sorter =  require'telescope.sorters'.get_fzy_sorter,
     file_ignore_patterns = {"target/*"},
-    generic_sorter =  require'telescope.sorters'.get_generic_fuzzy_sorter,
     shorten_path = true,
     winblend = 0,
     width = 0.75,
@@ -44,11 +48,15 @@ require('telescope').setup({
     color_devicons = true,
     use_less = true,
     set_env = { ['COLORTERM'] = 'truecolor' },
+    file_sorter =  require'telescope.sorters'.get_fzy_sorter,
+    generic_sorter =  require'telescope.sorters'.get_generic_fuzzy_sorter,
     file_previewer = require'telescope.previewers'.vim_buffer_cat.new,
     grep_previewer = require'telescope.previewers'.vim_buffer_vimgrep.new,
     qflist_previewer = require'telescope.previewers'.vim_buffer_qflist.new,
   }
 })
+
+require('telescope').load_extension('fzy_native')
 
 -- Finder
 nnoremap('<C-k>', ':lua require("telescope.builtin").find_files()<CR>')
@@ -86,3 +94,7 @@ nnoremap('<Leader>fgc', ':lua require("telescope.builtin").git_commits()<CR>')
 nnoremap('<Leader>fgC', ':lua require("telescope.builtin").git_bcommits()<CR>')
 nnoremap('<Leader>fgf', ':lua require("telescope.builtin").git_files()<CR>')
 nnoremap('<Leader>fgs', ':lua require("telescope.builtin").git_status()<CR>')
+
+-- Extensions
+nnoremap('<leader>fee', ':lua require("telescope").extensions.packer.plugins()<CR>')
+

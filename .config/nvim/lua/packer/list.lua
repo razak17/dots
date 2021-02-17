@@ -12,10 +12,9 @@ function M.load_plugins()
     { repo = 'onsails/lspkind-nvim' },
     { repo = 'tweekmonster/startuptime.vim', cmd = "StartupTime" },
     { repo = 'kyazdani42/nvim-tree.lua' },
-    {
-      repo = 'glepnir/dashboard-nvim',
-      config = function() require 'plugin.dashboard' end
-    },
+    { repo = 'nvim-telescope/telescope-packer.nvim' },
+    { repo = 'nvim-telescope/telescope-fzy-native.nvim' },
+    { repo = 'glepnir/dashboard-nvim' },
     {
       repo = 'airblade/vim-rooter',
       config = function() require 'plugin.rooter' end
@@ -27,10 +26,6 @@ function M.load_plugins()
     {
       repo = 'mattn/emmet-vim',
       config = function() require 'plugin.emmet' end
-    },
-    {
-      repo = 'neovim/nvim-lspconfig',
-      config = function() require 'lsp.init'.setup() end
     },
     {
       repo = "akinsho/nvim-bufferline.lua",
@@ -85,35 +80,17 @@ function M.load_plugins()
       requires = {'kyazdani42/nvim-web-devicons'}
     },
     {
+      repo = 'neovim/nvim-lspconfig',
+      config = function() require 'lsp.init'.setup() end
+    },
+    {
       repo = 'nvim-treesitter/nvim-treesitter',
       run = ':TSUpdate',
       requires = {
         {'nvim-treesitter/playground', after = 'nvim-treesitter'},
         {'romgrk/nvim-treesitter-context', after = 'nvim-treesitter'}
       },
-      config = function() require 'plugin.ts' end,
-      ft = {
-        'sh',
-        'c',
-        'cs',
-        'cpp',
-        'css',
-        'go',
-        'haskell',
-        'html',
-        'javascript',
-        'jsdoc',
-        'julia',
-        'lua',
-        'markdown',
-        'python',
-        'rust',
-        'toml',
-        'tsx',
-        'typescript',
-        'vue',
-        'yaml'
-      },
+      config = function() require 'plugin.ts'.setup() end,
       event = 'VimEnter *'
     },
   }

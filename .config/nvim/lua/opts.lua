@@ -35,7 +35,7 @@ opt('o', 'history', 2000)                      -- History saving
 -- -- Editor UI Appearance
 opt('o', 'guicursor', 'n-v-c-sm:block,i-ci-ve:block,r-cr-o:block')
 opt('w', 'listchars' , 'tab:»·,nbsp:+,trail:·,precedes:,extends:')
-opt('o', 'display', 'lastline')
+-- opt('o', 'display', 'lastline')
 opt('o', 'termguicolors', true)
 opt('o', 'showbreak', '↳  ')
 opt('o', 'pumblend', 10)                       -- transparency for the popup-menu
@@ -45,8 +45,8 @@ opt('w', 'colorcolumn', '80')                  -- Highlight the 80th character l
 opt('w', 'number', true)                       -- Print line number
 opt('w', 'relativenumber', true)               -- Show line number relative to current line
 opt('w', 'list', true)                         -- Show hidden characters
-opt('w', 'cursorline', false)                  -- Don't Highlight the current line (handled by autocmd)
-opt('o', 'laststatus', 0)                      -- Always display the status line
+opt('w', 'cursorline', true)                   -- Highlight the current line
+opt('o', 'laststatus', 2)                      -- Always display the status line
 opt('o', 'background', 'dark')                 -- Tell vim what the background color looks like
 opt('o', 'cmdheight', 2)                       -- More space for displaying messages
 opt('o', 'showcmd', false)                     -- Don't show command in status line
