@@ -2,20 +2,20 @@ local api = vim.api
 local M = {}
 
 
-M.fts = {
+local fts = {
   "c", "cpp", "css", "graphql", "go", "haskell", "html", "javascript", "jsdoc",
   "julia", "json", "html", "lua", "python", "rust", "sh", "toml",
   "tsx", "typescript", "yaml"
 }
 
-M.parsers = {
+local parsers = {
   "bash", "c", "cpp", "css", "graphql", "go", "haskell", "html", "javascript", "jsdoc",
   "julia", "json", "html", "lua", "python", "rust", "toml",
   "tsx", "typescript", "yaml"
 }
 
 local synoff = function()
-  local filetypes = vim.fn.join(M.fts, ",")
+  local filetypes = vim.fn.join(fts, ",")
   vim.cmd("au FileType "..filetypes.." set syn=off")
   vim.cmd("au FileType "..filetypes.." lua require'utils.matchit'.setup()")
 end
@@ -23,15 +23,9 @@ end
 function M.setup()
   synoff()
   require'nvim-treesitter.configs'.setup {
-    -- ensure_installed = { "c", "cpp", "css", "graphql", "go", "haskell"},
-    ensure_installed = M.parsers,
+    ensure_installed = parsers,
     highlight = {
       enable = true,
-      --[[ disable = {
-        "java", "elm", "ql", "ledger", "gdscript", "vue", "dart", "ocaml",
-        "veilog", "ruby", "fennel", "rst", "c_sharp", "nix", "scala", "ocamllex",
-        "swift", "julia", "erlang", "php"
-      }, ]]
     },
     incremental_selection = {
       enable = true,
@@ -45,6 +39,12 @@ function M.setup()
     },
     indent = {
       enable = true,
+    },
+    playground = {
+      enable = true,
+      disable = {},
+      updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
+      persist_queries = false -- Whether the query persists across vim sessions
     },
     textobjects = {
       select = {
@@ -66,6 +66,9 @@ function M.setup()
     },
   }
 
+  vim.wo.foldmethod = "expr"
+  vim.wo.foldexpr = "nvim_treesitter#foldexpr()"
+
   api.nvim_set_keymap('n', 'R', ':write | edit | TSBufEnable highlight<CR>', {});
   api.nvim_exec([[
     command! ToggleTsVtx lua require'plugin.ts'.toggle_ts_virt_text()
@@ -82,6 +85,8 @@ function M.setup()
     augroup END
   ]], '')
 end
+
+
 
 local virt_enable = false
 

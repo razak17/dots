@@ -1,8 +1,8 @@
 local vim = vim
 local cmd = vim.cmd
 
-cmd("highlight LSPCurlyUnderline gui=undercurl")
-cmd("highlight LSPUnderline gui=underline")
+cmd("highlight! LSPCurlyUnderline gui=undercurl")
+cmd("highlight! LSPUnderline gui=underline")
 cmd("highlight! LspDiagnosticsUnderlineHint gui=undercurl")
 cmd("highlight! LspDiagnosticsUnderlineInformation gui=undercurl")
 cmd("highlight! LspDiagnosticsUnderlineWarning gui=undercurl guisp=darkyellow")

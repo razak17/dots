@@ -1,4 +1,5 @@
 local M = {}
+local vim = vim
 local api =  vim.api
 local G = require 'global'
 local HOME = G.home
@@ -42,6 +43,18 @@ function M.ColorMyPencils()
   vim.cmd('highlight qfFileName guifg=#aed75f')
   vim.cmd('hi TelescopeBorder guifg=#4dd2dc')
   vim.cmd('hi FloatermBorder guifg=#4dd2dc')
+  vim.cmd("hi TsVirtText guifg=#4dd2dc")
+end
+
+local fold = false
+function M.ToggleFold()
+  if fold then
+    fold = false
+    vim.cmd('set foldenable')
+  else
+    fold = true
+    vim.cmd('set nofoldenable')
+  end
 end
 
 function M.TurnOnGuides()

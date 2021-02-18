@@ -150,6 +150,11 @@ if vim.fn.exists('g:vscode') == 0 then
   nnoremap("<Leader>Sl", ":SLoad<CR>")
   nnoremap("<Leader>Ss", ":SSave<CR>")
 
+  -- Folds
+  nnoremap("<CR>", "za")
+  nnoremap("<S-Return>", "zMzvzt")
+  nnoremap("<Leader>af", ":lua require 'utils.funcs'.ToggleFold()<CR>")
+
   ------------------------------------------------------------------------------
   -- Plugins
   ------------------------------------------------------------------------------
