@@ -1,6 +1,9 @@
-require 'setup'
+if vim.fn.exists('g:vscode') ~= 1 then
+  require 'setup'
+  require 'conf'
+end
+
 require 'opts'
-require 'conf'
 require 'binds'
 require 'plugins'
 

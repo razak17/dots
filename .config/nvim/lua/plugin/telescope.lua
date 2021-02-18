@@ -59,7 +59,7 @@ require('telescope').setup({
 require('telescope').load_extension('fzy_native')
 
 -- Finder
-nnoremap('<C-k>', ':lua require("telescope.builtin").find_files()<CR>')
+nnoremap('<Leader>ff', ':lua require("telescope.builtin").find_files()<CR>')
 nnoremap('<Leader>fcs', ':lua require("utils.funcs").search_dotfiles()<CR>')
 
 -- Commands
