@@ -133,7 +133,11 @@ g.which_key_map = {
     a = 'fetch all',
     b = 'branches',
     A = 'blame',
-    c = 'commit',
+    c = {
+      name = '+Commit',
+      a = "amend",
+      m = "message",
+    },
     C = 'checkout',
     d = 'diff',
     D = 'diff split',
