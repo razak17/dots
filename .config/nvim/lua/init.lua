@@ -5,13 +5,13 @@ end
 
 require 'opts'
 require 'binds'
--- require 'plugins'
+require 'plugins'
 
 if vim.fn.exists('g:vscode') == 0 then
-  --[[ require 'autocmd'
+  require 'autocmd'
   require 'aesth.bg'
   require 'aesth.hijackc'
   require 'utils.plug_cmd'
   require 'plugin.nvim-tree'
-  require 'plugin.colorizer' ]]
+  require 'plugin.colorizer'
 end
