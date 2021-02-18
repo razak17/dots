@@ -147,11 +147,8 @@ g.which_key_map = {
     h = 'diffget',
     k = 'diffget',
     l = 'log',
-<<<<<<< HEAD
     e = 'push',
-=======
     p = 'push',
->>>>>>> 1c0e842 (P for pull and p for push)
     P = 'pull',
     r = 'remove',
     s = 'status',
