@@ -100,7 +100,7 @@ while [[ "$#" -gt 0 ]]; do
     run
     ;;
   "-f")
-    link $1
+    link_util $@
     ;;
   *) echo "Unavailable command... $curr"
   esac
