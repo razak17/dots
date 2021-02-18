@@ -152,7 +152,8 @@ g.which_key_map = {
   I = {
       name = "+Info",
       c = "check health",
-      L = "Lsp"
+      e = "treesitter",
+      L = "Lsp",
   },
   l = {
     name = "+Delete buffer",

@@ -91,7 +91,6 @@ function M.load_plugins()
         {'romgrk/nvim-treesitter-context', after = 'nvim-treesitter'}
       },
       config = function() require 'plugin.ts'.setup() end,
-      event = 'VimEnter *'
     },
   }
 end

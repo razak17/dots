@@ -28,11 +28,6 @@ local bufs = {
     "/tmp/*,$TMPDIR/*,$TMP/*,$TEMP/*,*/shm/*,/private/var/*,.vault.vim",
     "setlocal noswapfile noundofile nobackup nowritebackup viminfo= shada="
   },
-  --[[ {
-    "BufWritePost",
-    "bash,c,cs,cpp,css,go,graphql,html,javascript,javascriptreact,jsdoc,julia,lua,python,rust,typescript,typescriptreact",
-    "edit | TSBufEnable highlight"
-  }, ]]
   {"BufLeave", "*", "silent! update"},
   {"BufWritePre", "COMMIT_EDITMSG", "setlocal noundofile"},
   {"BufWritePre", "MERGE_MSG", "setlocal noundofile"},

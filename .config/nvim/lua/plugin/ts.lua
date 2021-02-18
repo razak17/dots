@@ -1,12 +1,21 @@
 local api = vim.api
 local M = {}
 
+
+M.fts = {
+  "c", "cpp", "css", "graphql", "go", "haskell", "html", "javascript", "jsdoc",
+  "julia", "json", "html", "lua", "python", "rust", "sh", "toml",
+  "tsx", "typescript", "yaml"
+}
+
+M.parsers = {
+  "bash", "c", "cpp", "css", "graphql", "go", "haskell", "html", "javascript", "jsdoc",
+  "julia", "json", "html", "lua", "python", "rust", "toml",
+  "tsx", "typescript", "yaml"
+}
+
 local synoff = function()
-  local filetypes = vim.fn.join({
-    "c", "cpp", "css", "go", "haskell", "html", "javascript", "jsdoc", "julia",  "json", "html",
-    "lua", "markdown", "python", "rust", "sh", "toml", "tsx", "typescript",
-    "vue", "yaml"
-  }, ",")
+  local filetypes = vim.fn.join(M.fts, ",")
   vim.cmd("au FileType "..filetypes.." set syn=off")
   vim.cmd("au FileType "..filetypes.." lua require'utils.matchit'.setup()")
 end
@@ -14,42 +23,48 @@ end
 function M.setup()
   synoff()
   require'nvim-treesitter.configs'.setup {
-      highlight = {
+    -- ensure_installed = { "c", "cpp", "css", "graphql", "go", "haskell"},
+    ensure_installed = M.parsers,
+    highlight = {
+      enable = true,
+      --[[ disable = {
+        "java", "elm", "ql", "ledger", "gdscript", "vue", "dart", "ocaml",
+        "veilog", "ruby", "fennel", "rst", "c_sharp", "nix", "scala", "ocamllex",
+        "swift", "julia", "erlang", "php"
+      }, ]]
+    },
+    incremental_selection = {
+      enable = true,
+      disable = {},
+      keymaps = {
+        init_selection = "<leader>en",
+        node_incremental = "n",
+        scope_incremental = "<leader>em",
+        node_decremental = "m"
+      }
+    },
+    indent = {
+      enable = true,
+    },
+    textobjects = {
+      select = {
         enable = true,
-      },
-      incremental_selection = {
-        enable = true,
-        disable = {},
         keymaps = {
-          init_selection = "<leader>en",
-          node_incremental = "n",
-          scope_incremental = "<leader>em",
-          node_decremental = "m"
+          ["<leader>eV"] = "@function.outer", -- replace with block.inner and block.outer when its supported in more languages
+          ["<leader>ev"] = "@function.inner"
         }
       },
-      indent = {
+      swap = {
         enable = true,
-      },
-      ensure_installed = 'all',
-      textobjects = {
-        select = {
-          enable = true,
-          keymaps = {
-            ["<leader>eV"] = "@function.outer", -- replace with block.inner and block.outer when its supported in more languages
-            ["<leader>ev"] = "@function.inner"
-          }
+        swap_next = {
+          ["<leader>ef"] = "@parameter.inner", -- replace with block.inner when its supported in more languages
         },
-        swap = {
-          enable = true,
-          swap_next = {
-            ["<leader>ef"] = "@parameter.inner", -- replace with block.inner when its supported in more languages
-          },
-          swap_previous = {
-            ["<leader>ea"] = "@parameter.inner",
-          },
+        swap_previous = {
+          ["<leader>ea"] = "@parameter.inner",
         },
       },
-    }
+    },
+  }
 
   api.nvim_set_keymap('n', 'R', ':write | edit | TSBufEnable highlight<CR>', {});
   api.nvim_exec([[

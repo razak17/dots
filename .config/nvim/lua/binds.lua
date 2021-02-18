@@ -22,7 +22,7 @@ xnoremap('J', ":m '>+1<CR>gv=gv")
 xnoremap('N', ":m '>+1<CR>gv=gv")
 
 -- no way
-if vim.fn.exists('g:vscode') ~= 1 then
+if vim.fn.exists('g:vscode') == 0 then
   -- Open url
   nnoremap('gx', ":sil !xdg-open <c-r><c-a><cr>")
 
@@ -199,12 +199,13 @@ if vim.fn.exists('g:vscode') ~= 1 then
   nnoremap('<Leader>,', ':e ~/.config/nvim/lua/init.lua<CR>')
   nnoremap('<Leader>fy', ':Format<CR>')
   nnoremap('<Leader>IL', ':LspInfo<CR>')
+  nnoremap('<Leader>Ie', ':TSInstallInfo<CR>')
   nnoremap('<Leader>Ic', ':checkhealth<CR>')
   nnoremap('<Leader>vwm', ':lua require "utils.funcs".ColorMyPencils()<CR>')
   nnoremap('<Leader>aT', ':lua require "utils.funcs".OpenTerminal()<CR>')
   nnoremap('<leader>ar', ':call EmptyRegisters()')
   nnoremap('<leader>ao', ':lua require "utils.funcs".TurnOnGuides()<CR>')
   nnoremap('<leader>ae', ':lua require "utils.funcs".TurnOffGuides()<CR>')
-  nnoremap('<leader>ev', ':lua require "plugin.ts".toggle_ts_virt_text()<CR>')
-  nnoremap('<leader>eh', ':lua require "plugin.ts".toggle_ts_hl_groups()<CR>')
+  nnoremap('<leader>ev', ':ToggleTsVtx<CR>')
+  nnoremap('<leader>eh', ':ToggleTsHlGroups<CR>')
 end

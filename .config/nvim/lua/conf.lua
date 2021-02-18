@@ -4,7 +4,7 @@ local G = require "global"
 
 -- Netrw
 -- Set map leader (needs to be set before mappings)
-if vim.fn.exists('g:vscode') ~= 1 then
+if vim.fn.exists('g:vscode') == 0 then
   g["mapleader"] = " "
   g["maplocalleader"] = " "
   g["completion_confirm_key"] = ""
