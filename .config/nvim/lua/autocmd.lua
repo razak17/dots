@@ -38,11 +38,11 @@ local bufs = {
   {"BufWritePost,BufRead", "*.md", "setlocal spell"},
   {"BufWritePre", "*.tmp,*.bak", "setlocal noundofile"},
   {"BufEnter", "*", "set fo-=c fo-=r fo -=o"},
+  {"BufEnter", "*.py", "set tabstop=4 shiftwidth=4"},
+  {"BufEnter", "*.md", "set tabstop=4 shiftwidth=4 conceallevel=2"},
 }
 
 local files = {
-  {"FileType", "py", "set tabstop=4 shiftwidth=4"},
-  {"FileType", "markdown", "set tabstop=4 shiftwidth=4 conceallevel=2"},
   {"FileType", "python", "noremap <F10> :lua require 'utils.funcs'.RunPython()<CR>"},
   {"FileType", "typescript", "noremap <F10> :lua require 'utils.funcs'.RunTS()<CR>"},
   {"FileType", "javascript", "noremap <F10> :lua require 'utils.funcs'.RunJS()<CR>"},

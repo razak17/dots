@@ -127,20 +127,25 @@ function M.setup()
     lspconfig.pyls.setup {
       cmd = {'pyls'},
       filetypes = {'python'},
+      preload = {enabled = true},
       --[[ jedi_completion = {enabled = true},
       jedi_hover = {enabled = true},
       jedi_references = {enabled = true},
       jedi_signature_help = {enabled = true},
-      jedi_symbols = {enabled = true, all_scopes = true},
-      mccabe = {enabled = true, threshold = 15}, ]]
-      preload = {enabled = true},
-      pycodestyle = {enabled = true},
+      jedi_symbols = {enabled = true, all_scopes = true}, ]]
       pydocstyle = {
-        enabled = false,
+        enabled = true,
         match = '(?!test_).*\\.py',
         matchDir = '[^\\.].*',
       },
+      pycodestyle = {
+        enabled = true,
+        hangClosing = true,
+        maxLineLength = 80
+      },
+      mccabe = {enabled = true, threshold = 15},
       rope_completion = {enabled = true},
+      pyflakes = {enabled = true},
       yapf = {enabled = true},
       on_attach = on_attach,
       root_dir = function(fname)

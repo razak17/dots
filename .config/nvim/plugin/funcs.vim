@@ -51,6 +51,13 @@ if !exists('g:vscode')
     return join(reverse(l:chars), '')
   endfunction
 
+  function! RunPython()
+    let s:current_file = expand("%")
+    enew|silent execute ".!python " . shellescape(s:current_file, 1)
+    setlocal buftype=nofile bufhidden=wipe noswapfile nowrap
+    setlocal nobuflisted
+  endfunction
+
   nnoremap <silent> <Leader>d  :call <SID>DellThisBuf()<CR>
   nnoremap <silent> <Leader>ld :call <SID>DellAllBuf()<CR> :q!<CR>
   nnoremap <silent> <Leader>lh :call <SID>DelToLeft()<CR>
