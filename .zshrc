@@ -10,6 +10,8 @@ typeset -g -A key
 zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
 
+autoload -U compinit && compinit
+
 zle_highlight=('paste:none')
 zshcache_time="$(date +%s%N)"
 

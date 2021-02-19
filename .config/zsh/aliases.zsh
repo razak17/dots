@@ -80,7 +80,7 @@ alias rcache="sudo pacman -Sc"
 
 # Tmux
 alias x="tmux -L Main"
-alias xi="tmux display -p '#{socket_path}'"
+alias xsp="tmux display -p '#{socket_path}'"
 alias xm="tmux -Ltest"
 alias xls="tmux ls"
 alias mxls="tmux -Ltest ls"
