@@ -1,7 +1,60 @@
 local G = require 'global'
 local packer = nil
-local utils = require 'packer.utils'
-local plug_list = require 'packer.list'.load_plugins
+
+local function load_plugins()
+  return {
+    { repo = 'christianchiarulli/nvcode-color-schemes.vim' },
+    { repo = 'norcalli/nvim-colorizer.lua' },
+    { repo = 'tpope/vim-fugitive' },
+    { repo = 'b3nj5m1n/kommentary' },
+    { repo = 'mbbill/undotree' },
+    { repo = 'tjdevries/lsp_extensions.nvim' },
+    { repo = 'glepnir/lspsaga.nvim' },
+    { repo = 'onsails/lspkind-nvim' },
+    { repo = 'tweekmonster/startuptime.vim', cmd = "StartupTime" },
+    { repo = 'kyazdani42/nvim-tree.lua' },
+    { repo = 'nvim-telescope/telescope-packer.nvim' },
+    { repo = 'nvim-telescope/telescope-fzy-native.nvim' },
+    { repo = 'glepnir/dashboard-nvim' },
+    { repo = 'brooth/far.vim' },
+    { repo = 'voldikss/vim-floaterm' },
+    { repo = 'AndrewRadev/tagalong.vim' },
+    { repo = 'romainl/vim-cool' },
+    { repo = 'RRethy/vim-illuminate' },
+    { repo = 'liuchengxu/vim-which-key' },
+    { repo = 'mattn/emmet-vim' },
+    { repo = "akinsho/nvim-bufferline.lua" },
+    { repo = "hrsh7th/nvim-compe" },
+    { repo = 'windwp/nvim-autopairs' },
+    { repo = 'neovim/nvim-lspconfig' },
+    { repo = 'airblade/vim-rooter' },
+    {
+      repo = 'glacambre/firenvim',
+      run = function() vim.fn['firenvim#install'](0) end
+    },
+    {
+      repo = "hrsh7th/vim-vsnip",
+      requires = {'hrsh7th/vim-vsnip-integ'}
+    },
+    {
+      repo = 'nvim-telescope/telescope.nvim',
+      requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}, {'kyazdani42/nvim-web-devicons'}}
+    },
+    {
+      repo = 'glepnir/galaxyline.nvim',
+      branch = 'main',
+      requires = {'kyazdani42/nvim-web-devicons'}
+    },
+    {
+      repo = 'nvim-treesitter/nvim-treesitter',
+      run = ':TSUpdate',
+      requires = {
+        {'nvim-treesitter/playground', after = 'nvim-treesitter'},
+        {'romgrk/nvim-treesitter-context', after = 'nvim-treesitter'}
+      },
+    },
+  }
+end
 
 local function init()
   if packer == nil then
@@ -32,6 +85,7 @@ local function init()
       }
     })
   end
+
   local use = packer.use
   packer.reset()
 
@@ -39,8 +93,8 @@ local function init()
   use 'tpope/vim-surround'
 
   if vim.fn.exists('g:vscode') == 0 then
-    for  _, item in ipairs(plug_list()) do
-      utils.load_plugin(use, item)
+    for  _, item in ipairs(load_plugins()) do
+      require 'utils.funcs'.plug_config(use, item)
     end
   end
 end

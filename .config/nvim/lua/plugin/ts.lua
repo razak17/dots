@@ -66,8 +66,6 @@ function M.setup()
     },
   }
 
-  vim.wo.foldexpr = "nvim_treesitter#foldexpr()"
-
   api.nvim_set_keymap('n', 'R', ':write | edit | TSBufEnable highlight<CR>', {});
   api.nvim_exec([[
     command! ToggleTsVtx lua require'plugin.ts'.toggle_ts_virt_text()

@@ -60,8 +60,8 @@ opt('o', 'cursorcolumn', false)                -- Highlight the current column
 
 -- Behavior
 opt('o', 'diffopt', 'filler,iwhite,internal,algorithm:patience')
--- opt('o', 'completeopt', 'menu,menuone,noselect,noinsert')
-opt('o', 'completeopt', 'menuone,noselect')
+opt('o', 'completeopt', 'menu,menuone,noselect,noinsert')
+-- opt('o', 'completeopt', 'menuone,noselect')
 opt('o', 'switchbuf', 'useopen,usetab,vsplit')
 opt('o', 'inccommand', 'nosplit')
 opt('w', 'concealcursor', 'niv')
@@ -98,7 +98,6 @@ opt('o', 'shiftround', true)                   -- Round indent to multiple of 's
 opt('o', 'cindent', true)                      -- Increase indent on line after opening brace
 
 -- Folds
-vim.wo.foldmethod = "expr"
 opt('w', 'foldmethod', 'expr')
 opt('w', 'foldcolumn', '0')
 opt('o', 'foldopen', 'hor,mark,percent,quickfix,search,tag,undo')
