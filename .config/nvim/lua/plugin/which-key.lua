@@ -116,7 +116,6 @@ g.which_key_map = {
         w = "workspace",
       }
     },
-    y = "format",
     g = {
       name = '+Git',
       b = "branches",
@@ -154,10 +153,14 @@ g.which_key_map = {
     s = 'status',
   },
   I = {
-      name = "+Info",
-      c = "check health",
-      e = "treesitter",
-      L = "Lsp",
+    name = "+Info",
+    c = "check health",
+    e = "treesitter",
+    l = {
+      name = "+Lsp",
+      i = "info",
+      l = "log",
+    },
   },
   l = {
     name = "+Delete buffer",

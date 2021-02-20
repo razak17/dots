@@ -183,7 +183,7 @@ if vim.fn.exists('g:vscode') == 0 then
   nnoremap("<Leader>gr", ":GRemove<CR>")
   nnoremap("<Leader>gs", ":G<CR>")
 
-  -- Terminal
+  -- Floaterm
   nnoremap("<Leader>Te", ":FloatermToggle<CR>")
   nnoremap("<Leader>Tn", ":FloatermNew node<CR>")
   nnoremap("<Leader>TN", ":FloatermNew<CR>")
@@ -200,17 +200,17 @@ if vim.fn.exists('g:vscode') == 0 then
 
   -- Other remaps
   nnoremap('<Leader><CR>', ':so ~/.config/nvim/init.vim<CR>')
-  nnoremap('<Leader>.', ':e $MYVIMRC<CR>')
-  nnoremap('<Leader>,', ':e ~/.config/nvim/lua/init.lua<CR>')
-  nnoremap('<Leader>fy', ':Format<CR>')
-  nnoremap('<Leader>IL', ':LspInfo<CR>')
-  nnoremap('<Leader>Ie', ':TSInstallInfo<CR>')
-  nnoremap('<Leader>Ic', ':checkhealth<CR>')
-  nnoremap('<Leader>vwm', ':lua require "utils.funcs".ColorMyPencils()<CR>')
-  nnoremap('<Leader>aT', ':lua require "utils.funcs".OpenTerminal()<CR>')
-  nnoremap('<leader>ar', ':call EmptyRegisters()')
-  nnoremap('<leader>ao', ':lua require "utils.funcs".TurnOnGuides()<CR>')
-  nnoremap('<leader>ae', ':lua require "utils.funcs".TurnOffGuides()<CR>')
-  nnoremap('<leader>ev', ':ToggleTsVtx<CR>')
-  nnoremap('<leader>eh', ':ToggleTsHlGroups<CR>')
+  nnoremap('<Leader>.',    ':e $MYVIMRC<CR>')
+  nnoremap('<Leader>,',    ':e ~/.config/nvim/lua/init.lua<CR>')
+  nnoremap('<Leader>Ie',   ':TSInstallInfo<CR>')
+  nnoremap('<Leader>Ic',   ':checkhealth<CR>')
+  nnoremap('<leader>ar',   ':call EmptyRegisters()')
+  nnoremap('<leader>ev',   ':ToggleTsVtx<CR>')
+  nnoremap('<leader>eh',   ':ToggleTsHlGroups<CR>')
+  nnoremap('<Leader>Ili',  ':LspInfo<CR>')
+  nnoremap('<Leader>Ill',  ':LspLog<CR>')
+  nnoremap('<Leader>vwm',  ':lua require "utils.funcs".ColorMyPencils()<CR>')
+  nnoremap('<Leader>aT',   ':lua require "utils.funcs".OpenTerminal()<CR>')
+  nnoremap('<leader>ao',   ':lua require "utils.funcs".TurnOnGuides()<CR>')
+  nnoremap('<leader>ae',   ':lua require "utils.funcs".TurnOffGuides()<CR>')
 end

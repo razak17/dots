@@ -66,7 +66,6 @@ function M.setup()
     },
   }
 
-  vim.wo.foldmethod = "expr"
   vim.wo.foldexpr = "nvim_treesitter#foldexpr()"
 
   api.nvim_set_keymap('n', 'R', ':write | edit | TSBufEnable highlight<CR>', {});

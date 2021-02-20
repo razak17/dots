@@ -96,6 +96,12 @@ opt('o', 'autoindent', true)                   -- Use same indenting on new line
 opt('o', 'shiftround', true)                   -- Round indent to multiple of 'shiftwidth'
 opt('o', 'cindent', true)                      -- Increase indent on line after opening brace
 
+-- Folds
+vim.wo.foldmethod = "expr"
+opt('w', 'foldmethod', 'expr')
+opt('w', 'foldcolumn', '0')
+opt('o', 'foldopen', 'hor,mark,percent,quickfix,search,tag,undo')
+
 -- Timing
 opt('o', 'ttimeout', true)
 opt('o', 'timeout', true)

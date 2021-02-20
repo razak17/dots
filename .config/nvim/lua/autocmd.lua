@@ -38,8 +38,8 @@ local bufs = {
   {"BufWritePost,BufRead", "*.md", "setlocal spell"},
   {"BufWritePre", "*.tmp,*.bak", "setlocal noundofile"},
   {"BufEnter", "*", "set fo-=c fo-=r fo -=o"},
-  {"BufEnter", "*.py", "set tabstop=4 shiftwidth=4"},
-  {"BufEnter", "*.md", "set tabstop=4 shiftwidth=4 conceallevel=2"},
+  {"BufEnter", "*.py", "setlocal tabstop=4 shiftwidth=4"},
+  {"BufEnter", "*.md", "setlocal tabstop=4 shiftwidth=4 conceallevel=2"},
 }
 
 local files = {
@@ -48,6 +48,8 @@ local files = {
   {"FileType", "javascript", "noremap <F10> :lua require 'utils.funcs'.RunJS()<CR>"},
   {"FileType", "c", "noremap <F10> :!gcc % -o %< && ./%< <CR>"},
   {"FileType", "cpp", "noremap <F10> :!g++ % -o %< && ./%< <CR>"},
+  {"FocusLost", "*", "silent! wall"},
+  {"BufEnter,FocusGained", "*", "silent! checktime"}
 }
 
 local niceties = {

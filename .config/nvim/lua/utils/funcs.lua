@@ -16,6 +16,14 @@ function M.makeScratch()
   vim.bo[0].swapfile=false
 end
 
+function M.restart_lsp()
+  local clients = vim.lsp.get_active_clients()
+  if not vim.tbl_isempty(clients) then
+    vim.lsp.stop_client(clients)
+    vim.defer_fn(function() vim.cmd('edit') end, 100)
+  end
+end
+
 function M.EmptyRegisters()
   local regs=vim.fn.split('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789/-"', '\zs')
   for _, r in ipairs(regs) do

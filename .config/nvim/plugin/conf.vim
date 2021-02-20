@@ -9,6 +9,35 @@ if !exists('g:vscode')
   \   'elixir': ['*.exs', '*.ex'],
   \ }
 
+  augroup file_types
+  autocmd!
+  for kv in items(s:additional_filetypes)
+    if type(kv[1]) == v:t_list
+      for ext in kv[1]
+        execute 'autocmd BufNewFile,BufRead ' . ext
+          \ . ' setlocal filetype=' . kv[0]
+      endfor
+    else
+      execute 'autocmd BufNewFile,BufRead ' . kv[1]
+        \ . ' setlocal filetype=' . kv[0]
+    endif
+  endfor
+
+  " json 5 comment
+  autocmd FileType json
+                 \ syntax region Comment start="//" end="$" |
+                 \ syntax region Comment start="/\*" end="\*/" |
+                 \ setlocal commentstring=//\ %s
+  augroup END
+
+  " Filetypes names where q does :q<CR>
+  let g:q_close_ft = ['help', 'list', 'fugitive']
+  let g:esc_close_ft = ['NvimTree']
+  let g:disable_line_numbers = [
+  \   'nerdtree', 'NvimTree', 'help',
+  \   'list', 'clap_input', 'TelescopePrompt',
+  \ ]
+
   if exists('+termguicolors')
     let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
     let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
@@ -31,6 +60,9 @@ if !exists('g:vscode')
 
   " snake_case -> kebab-case
   " TODO: implement
+
+  command! -nargs=0 RestartLsp lua require 'utils.funcs'.restart_lsp()
+  command! -nargs=0 LspLog execute 'edit ' . luaeval('vim.lsp.get_log_path()')
 
   augroup Razak_Mo
     autocmd!
