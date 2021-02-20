@@ -60,7 +60,8 @@ opt('o', 'cursorcolumn', false)                -- Highlight the current column
 
 -- Behavior
 opt('o', 'diffopt', 'filler,iwhite,internal,algorithm:patience')
-opt('o', 'completeopt', 'menu,menuone,noselect,noinsert')
+-- opt('o', 'completeopt', 'menu,menuone,noselect,noinsert')
+opt('o', 'completeopt', 'menuone,noselect')
 opt('o', 'switchbuf', 'useopen,usetab,vsplit')
 opt('o', 'inccommand', 'nosplit')
 opt('w', 'concealcursor', 'niv')

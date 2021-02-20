@@ -1,7 +1,7 @@
 local G = require "global"
 local g =  vim.g
 local mappings = require('utils.map')
-local xmap, inoremap, snoremap, imap, smap, nnoremap = mappings.xmap, mappings.inoremap, mappings.snoremap, mappings.imap, mappings.smap, mappings.nnoremap
+local xmap, imap, smap, nnoremap = mappings.xmap, mappings.imap, mappings.smap, mappings.nnoremap
 local npairs = require('nvim-autopairs')
 
 _G.MUtils = {}
@@ -62,5 +62,5 @@ imap("<S-Tab>", "v:lua.MUtils.s_tab()", opts)
 nnoremap('<Leader>cs', ':VsnipOpen<CR> 1<CR><CR>')
 imap("<C-l>", "vsnip#available(1) ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'", opts)
 smap("<C-l>", "vsnip#available(1) ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'", opts)
-inoremap('<C-space>', "vsnip#expandable() ? '<Plug>(vsnip-expand)' : '<C-space>'", opts)
-snoremap('<C-space>', "vsnip#expandable() ? '<Plug>(vsnip-expand)' : '<C-space>'", opts)
+imap('<C-y>', "vsnip#expandable() ? '<Plug>(vsnip-expand)' : '<C-space>'", opts)
+smap('<C-y>', "vsnip#expandable() ? '<Plug>(vsnip-expand)' : '<C-space>'", opts)

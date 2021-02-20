@@ -4,11 +4,14 @@ local opts = { expr = true }
 
 require('compe').setup {
   enabled = true;
+  autocomplete = true;
   debug = false;
-  min_length = 2;
+  min_length = 1;
   preselect = "enable";
+  throttle_time = 80;
   source_timeout = 200;
   incomplete_delay = 400;
+  documentation = true;
   allow_prefix_unmatch = false;
   source = {
     nvim_lsp = true;
@@ -16,6 +19,7 @@ require('compe').setup {
     calc = true,
     vsnip = true;
     path = true;
+    treesitter = true;
   };
 }
 

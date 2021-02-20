@@ -128,11 +128,6 @@ function M.setup()
       cmd = {'pyls'},
       filetypes = {'python'},
       preload = {enabled = true},
-      --[[ jedi_completion = {enabled = true},
-      jedi_hover = {enabled = true},
-      jedi_references = {enabled = true},
-      jedi_signature_help = {enabled = true},
-      jedi_symbols = {enabled = true, all_scopes = true}, ]]
       pydocstyle = {
         enabled = true,
         match = '(?!test_).*\\.py',
@@ -143,6 +138,7 @@ function M.setup()
         hangClosing = true,
         maxLineLength = 80
       },
+      pylint =  { enabled = false },
       mccabe = {enabled = true, threshold = 15},
       rope_completion = {enabled = true},
       pyflakes = {enabled = true},

@@ -7,10 +7,15 @@
         ],
         "description": "Code snippet for an if statement"
     },
-    "snippet": {
+    "print selected": {
       "prefix": ["print"],
       "body": [ "print($TM_SELECTED_TEXT)" ],
       "description": "print selected text"
+    },
+    "print": {
+      "prefix": ["pr"],
+      "body": [ "print(${1:expression})" ],
+      "description": "print"
     },
     "if/else": {
         "prefix": "if/else",
