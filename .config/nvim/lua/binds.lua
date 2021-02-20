@@ -151,9 +151,9 @@ if vim.fn.exists('g:vscode') == 0 then
   nnoremap("<Leader>Ss", ":SSave<CR>")
 
   -- Folds
-  nnoremap("<CR>", "za")
   nnoremap("<S-Return>", "zMzvzt")
-  nnoremap("<Leader>af", ":lua require 'utils.funcs'.ToggleFold()<CR>")
+  nnoremap("<Leader>afl", "za")
+  nnoremap("<Leader>afe", ":lua require 'utils.funcs'.ToggleFold()<CR>")
 
   ------------------------------------------------------------------------------
   -- Plugins
@@ -200,15 +200,15 @@ if vim.fn.exists('g:vscode') == 0 then
 
   -- Other remaps
   nnoremap('<Leader><CR>', ':so ~/.config/nvim/init.vim<CR>')
-  nnoremap('<Leader>.',    ':e $MYVIMRC<CR>')
   nnoremap('<Leader>,',    ':e ~/.config/nvim/lua/init.lua<CR>')
-  nnoremap('<Leader>Ie',   ':TSInstallInfo<CR>')
+  nnoremap('<Leader>.',    ':e $MYVIMRC<CR>')
+  nnoremap('<leader>ar',   ':call EmptyRegisters()<CR>')
   nnoremap('<Leader>Ic',   ':checkhealth<CR>')
-  nnoremap('<leader>ar',   ':call EmptyRegisters()')
-  nnoremap('<leader>ev',   ':ToggleTsVtx<CR>')
-  nnoremap('<leader>eh',   ':ToggleTsHlGroups<CR>')
+  nnoremap('<Leader>Ie',   ':TSInstallInfo<CR>')
   nnoremap('<Leader>Ili',  ':LspInfo<CR>')
   nnoremap('<Leader>Ill',  ':LspLog<CR>')
+  nnoremap('<leader>ev',   ':ToggleTsVtx<CR>')
+  nnoremap('<leader>eh',   ':ToggleTsHlGroups<CR>')
   nnoremap('<Leader>vwm',  ':lua require "utils.funcs".ColorMyPencils()<CR>')
   nnoremap('<Leader>aT',   ':lua require "utils.funcs".OpenTerminal()<CR>')
   nnoremap('<leader>ao',   ':lua require "utils.funcs".TurnOnGuides()<CR>')
