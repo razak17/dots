@@ -1,38 +1,37 @@
-local load_plugin_config = require 'utils.funcs'.load_plugin_config
+local load_config = require 'utils.funcs'.load_config
 
 if vim.fn.exists('g:vscode') == 0 then
-  require 'setup'
-  require 'conf'
+  load_config('setup')
+  load_config('conf')
 end
 
-require 'opts'
-require 'binds'
-require 'plugins'
+load_config('opts')
+load_config('binds')
+load_config('plugins')
 
 if vim.fn.exists('g:vscode') == 0 then
-  require 'autocmd'
-  require 'aesth.bg'
-  require 'aesth.hijackc'
-  require 'aesth.statusline'
-  require 'utils.plug_cmd'
-  -- require 'plugin.ts'.setup()
+  load_config('autocmd')
+  load_config('aesth', 'bg')
+  load_config('aesth', 'hijackc')
+  load_config('aesth', 'statusline')
+  load_config('utils', 'plug_cmd')
 
   -- Plugins
-  load_plugin_config('ts')
-  load_plugin_config('autopairs')
-  load_plugin_config('bufferline')
-  load_plugin_config('colorizer')
-  load_plugin_config('compe')
-  load_plugin_config('cool')
-  load_plugin_config('emmet')
-  load_plugin_config('far')
-  load_plugin_config('floaterm')
-  load_plugin_config('illuminate')
-  load_plugin_config('lsp')
-  load_plugin_config('rooter')
-  load_plugin_config('tagalong')
-  load_plugin_config('telescope')
-  load_plugin_config('tree')
-  load_plugin_config('vsnip')
-  load_plugin_config('which-key')
+  load_config('plugin', 'ts', 'stp')
+  load_config('plugin', 'autopairs')
+  load_config('plugin', 'bufferline')
+  load_config('plugin', 'colorizer')
+  load_config('plugin', 'compe')
+  load_config('plugin', 'cool')
+  load_config('plugin', 'emmet')
+  load_config('plugin', 'far')
+  load_config('plugin', 'floaterm')
+  load_config('plugin', 'illuminate')
+  load_config('plugin', 'lsp')
+  load_config('plugin', 'rooter')
+  load_config('plugin', 'tagalong')
+  load_config('plugin', 'telescope')
+  load_config('plugin', 'tree')
+  load_config('plugin', 'vsnip')
+  load_config('plugin', 'which-key')
 end

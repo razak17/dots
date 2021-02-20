@@ -9,11 +9,13 @@ function _G.dump(...)
   print(unpack(objects))
 end
 
-function M.load_plugin_config(plugin)
-  if plugin == 'ts' then
-    require('plugin.' .. plugin).setup()
+function M.load_config(dir, plugin, stp)
+  if plugin and stp then
+    require(dir .. '.' .. plugin).setup()
+  elseif plugin then
+    require(dir .. '.' .. plugin)
   else
-    require('plugin.' .. plugin)
+    require(dir)
   end
 end
 
