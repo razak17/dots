@@ -3,7 +3,7 @@ schemes:
   spacemacs_light: &light
     primary:
       foreground: '#655370'
-      background: '1e2127'
+      background: '#1e2127'
       # background: '#fbf8ef'
       # background: "#2E3440"
     cursor:
@@ -80,7 +80,7 @@ font:
 
 draw_bold_text_with_bright_colors: true
 
-background_opacity: 0.70
+background_opacity: 0.75
 # background_opacity: 1.00
 
 selection:

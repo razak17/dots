@@ -8,14 +8,6 @@ dirs=(
   '.config/zsh'
 )
 
-link_util() {
-  if [[ "$#" -gt 1 ]]; then
-    ln -s $1 $2
-  else
-    echo missing args
-  fi
-}
-
 create_dirs() {
   for d in ${dirs[@]}; do
     echo creating dir: $d
@@ -34,8 +26,10 @@ run () {
   # create directories
   create_dirs
 
-  link_util ~/dots/.config/nvim/ ~/.config/
-  link_util ~/dots/.config/nvim/init.vim /home/razak/.config/nvim/init.vim
+  ln -s /home/razak/dots/.config/nvim/ /home/razak/.config/nvim
+  ln -s /home/razak/dots/.config/nvim/init.vim /home/razak/.config/nvim/init.vim
+  ln -s /home/razak/dots/.local/bin/statusbar /home/razak/.local/bin/statusbar
+  ln -s /home/razak/dots/.local/bin/dwm /home/razak/.local/bin/dwm
 
   # alacritty
   for f in `find ./.config/alacritty -regex ".*\.yml$"`; do
@@ -98,9 +92,6 @@ while [[ "$#" -gt 0 ]]; do
     ;;
   "-r")
     run
-    ;;
-  "-f")
-    link_util $@
     ;;
   *) echo "Unavailable command... $curr"
   esac

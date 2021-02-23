@@ -35,7 +35,7 @@ opt('o', 'history', 2000)                      -- History saving
 -- -- Editor UI Appearance
 opt('o', 'guicursor', 'n-v-c-sm:block,i-ci-ve:block,r-cr-o:block')
 opt('w', 'listchars' , 'tab:»·,nbsp:+,trail:·,precedes:,extends:')
--- opt('o', 'display', 'lastline')
+opt('o', 'display', 'lastline')
 opt('o', 'termguicolors', true)
 opt('o', 'showbreak', '↳  ')
 opt('o', 'pumblend', 10)                       -- transparency for the popup-menu

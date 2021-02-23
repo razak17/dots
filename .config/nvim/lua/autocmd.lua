@@ -31,6 +31,7 @@ local bufs = {
   {"BufLeave", "*", "silent! update"},
   {"BufWritePre", "COMMIT_EDITMSG", "setlocal noundofile"},
   {"BufWritePre", "MERGE_MSG", "setlocal noundofile"},
+  {"BufEnter", "*", "set relativenumber number"},
   {"BufEnter,WinEnter,InsertLeave", "*", "set cursorline"},
   {"BufLeave,WinLeave,InsertEnter", "*", "set nocursorline"},
   {"BufWritePre", "*", ":call TrimWhitespace()"},
@@ -48,6 +49,8 @@ local files = {
   {"FileType", "javascript", "noremap <F10> :lua require 'utils.funcs'.RunJS()<CR>"},
   {"FileType", "c", "noremap <F10> :!gcc % -o %< && ./%< <CR>"},
   {"FileType", "cpp", "noremap <F10> :!g++ % -o %< && ./%< <CR>"},
+  {"FileType", "cpp", "setlocal tabstop=4 shiftwidth=4"},
+  {"FileType", "c", "setlocal tabstop=4 shiftwidth=4"},
   {"FocusLost", "*", "silent! wall"},
   {"BufEnter,FocusGained", "*", "silent! checktime"}
 }

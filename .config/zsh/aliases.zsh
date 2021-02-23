@@ -13,6 +13,8 @@ alias zs='source ~/.zshrc'
 alias zc="nvim ~/.zshrc"
 alias b="bash"
 alias so="source"
+alias sx="startx"
+alias kx="killall xinit"
 alias m="mkdir"
 alias e="touch"
 alias wd="pwd"
@@ -30,6 +32,11 @@ alias ndsm="nvim ~/dots/install.sh"
 alias nxsh="nvim ~/Dev/Scripts/tmux.sh"
 alias rnscd="systemctl restart nscd"
 alias dls="cat ~/Documents/L400-1/assignments/deadlines.txt"
+alias br='sudo brightnessctl set'
+# alias brx='echo -e "enter brightness:\n"; read val; xrandr --output eDP-1 --brightness "${val}"'
+alias brx='xrandr --output eDP-1 --brightness'
+
+# xrandr --output eDP-1 --brightness 2
 
 # General
 alias i='sudo'
@@ -48,6 +55,8 @@ alias imodem="systemctl start ModemManager.service"
 alias xrdbc="xrdb ~/.Xdefaults"
 alias xs="startx"
 alias rmf="rm -r"
+alias irmf="sudo rm -r"
+alias icpf="sudo cp -r"
 alias lh="ls -a"
 alias slss="sudo /opt/lampp/lampp start"
 alias sls="sudo /opt/lampp/lampp stop"

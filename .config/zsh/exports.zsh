@@ -34,7 +34,9 @@ plugins=(
   zsh-syntax-highlighting
 )
 
-path=("$HOME/.local/bin" "$GOPATH" "$FNMPATH" "$node_modules_alt"  "$node_modules" "$path[@]")
+LOCAL="$HOME/.local/bin"
+
+path=("$LOCAL" "$LOCAL/dwm" "$LOCAL/statusbar" "$GOPATH" "$FNMPATH" "$node_modules_alt"  "$node_modules" "$path[@]")
 
 export PATH
 export npm_config_prefix="$NODE/lib/node_modules"
