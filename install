@@ -27,6 +27,8 @@ run () {
   create_dirs
 
   ln -s /home/razak/dots/.config/nvim/ /home/razak/.config/nvim
+  ln -s /home/razak/dots/.config/sh/ /home/razak/.config/sh
+  ln -s /home/razak/dots/.config/zsh/ /home/razak/.config/zsh
   ln -s /home/razak/dots/.config/nvim/init.vim /home/razak/.config/nvim/init.vim
   ln -s /home/razak/dots/.local/bin/statusbar /home/razak/.local/bin/statusbar
   ln -s /home/razak/dots/.local/bin/dwm /home/razak/.local/bin/dwm
@@ -52,7 +54,14 @@ run () {
     ln -s ~/dots/$f ~/$f
   done
 
-  # zshrc
+  # .bashrc
+  for f in `find . -regex ".*\.bashrc$\|.*\.bash_history$"`; do
+    echo f: $f
+    rm -rf ~/$f
+    ln -s ~/dots/$f ~/$f
+  done
+
+  # .zshrc
   for f in `find . -regex ".*\.zshrc$\|.*\.zsh_history$"`; do
     echo f: $f
     rm -rf ~/$f
@@ -61,6 +70,13 @@ run () {
 
   # zsh
   for f in `find ./.config/zsh -regex ".*\.zsh$"`; do
+    echo f: $f
+    rm -rf ~$f
+    ln -s ~/dots/$f ~/$f
+  done
+
+  # sh
+  for f in `find ./.config/sh -regex ".*\.sh$"`; do
     echo f: $f
     rm -rf ~$f
     ln -s ~/dots/$f ~/$f
