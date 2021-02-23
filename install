@@ -27,11 +27,21 @@ run () {
   create_dirs
 
   ln -s /home/razak/dots/.config/nvim/ /home/razak/.config/nvim
-  ln -s /home/razak/dots/.config/sh/ /home/razak/.config/sh
-  ln -s /home/razak/dots/.config/zsh/ /home/razak/.config/zsh
   ln -s /home/razak/dots/.config/nvim/init.vim /home/razak/.config/nvim/init.vim
+
+  ln -s /home/razak/dots/.config/sh/ /home/razak/.config/sh
+
+  ln -s /home/razak/dots/.config/zsh/ /home/razak/.config/zsh
+
+  # dwm
   ln -s /home/razak/dots/.local/bin/statusbar /home/razak/.local/bin/statusbar
   ln -s /home/razak/dots/.local/bin/dwm /home/razak/.local/bin/dwm
+
+  # vscode
+  ln -s /home/razak/dots/.config/VSCodium/User/snippets/ /home/razak/.config/VSCodium/User/snippets
+  ln -s /home/razak/dots/.config/VSCodium/User/settings.json /home/razak/.config/VSCodium/User/settings.json
+  ln -s /home/razak/dots/.config/VSCodium/User/keybindings.json /home/razak/.config/VSCodium/User/keybindings.json
+
 
   # alacritty
   for f in `find ./.config/alacritty -regex ".*\.yml$"`; do
@@ -65,20 +75,6 @@ run () {
   for f in `find . -regex ".*\.zshrc$\|.*\.zsh_history$"`; do
     echo f: $f
     rm -rf ~/$f
-    ln -s ~/dots/$f ~/$f
-  done
-
-  # zsh
-  for f in `find ./.config/zsh -regex ".*\.zsh$"`; do
-    echo f: $f
-    rm -rf ~$f
-    ln -s ~/dots/$f ~/$f
-  done
-
-  # sh
-  for f in `find ./.config/sh -regex ".*\.sh$"`; do
-    echo f: $f
-    rm -rf ~$f
     ln -s ~/dots/$f ~/$f
   done
 
