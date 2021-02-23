@@ -99,6 +99,9 @@ alias dce="docker-compose exec"
 alias dci="docker-compose up"
 alias dcd="docker-compose down"
 
+# Git
+alias gis="git status"
+
 # Ranger
 alias f="ranger"
 alias rc='ranger ~/.config'

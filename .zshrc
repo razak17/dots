@@ -7,10 +7,6 @@ typeset -g -A key
 [ -f $HOME/.config/zsh/func.zsh ]    && source $HOME/.config/zsh/func.zsh
 [ -f $HOME/.config/zsh/prompt.zsh ]  && source $HOME/.config/zsh/prompt.zsh
 
-
-eval "$(fnm env)"
-source $ZSH/oh-my-zsh.sh
-
 zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
 

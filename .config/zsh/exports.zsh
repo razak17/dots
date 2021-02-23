@@ -70,6 +70,9 @@ export XDG_DATA_HOME="$HOME/.local/share"
 export FZF_DEFAULT_COMMAND="rg --files --hidden --follow --glob '!.git'"
 export FZF_DEFAULT_OPTS="--layout=reverse --inline-info --height=80% --color=dark"
 
+eval "$(fnm env)"
+source $ZSH/oh-my-zsh.sh
+
 # This is the list for lf icons:
 export LF_ICONS="di=📁:\
 fi=📃:\
