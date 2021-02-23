@@ -1,3 +1,29 @@
+ex ()
+{
+if [ -f $1 ]; then
+	case $1 in
+	*.tar.bz2)	tar xjf $1	;;
+	*.tar.gz)	tar xzf $1	;;
+	*.bz2)		bunzip2 $1	;;
+	*.gz)		gunzip $1	;;
+	*.rar)		unrar x $1	;;
+	*.tar)		tar xf $1	;;
+	*.tbz2)		tar xjf $1	;;
+	*.tgz)		tar xzf $1	;;
+	*.zip)		unzip $1	;;
+	*.Z)		uncompress $1	;;
+	*.7z)		7z x $1		;;
+	*.deb)		ar x $1		;;
+	*.tar.xz)	tar xf $1	;;
+	*.tar.zst)	unzstd $1	;;
+	*)		echo "'$1' cannot be extracted via ex()" ;;
+
+    esac
+else
+    echo "'$1'is not a valid file"
+fi
+}
+
 alias ali='alias | bat --style=numbers,grid -l cpp'
 # Zsh
 alias ohmyzsh='nvim ~/.oh-my-zsh'
@@ -21,7 +47,7 @@ alias wd="pwd"
 alias swap="cat /proc/sys/vm/swappiness"
 alias sw="i swapon"
 alias sf="sudo swapoff -v"
-alias ex="exit"
+# alias ex="exit"
 alias cdnm="/home/razak/.asdf/installs/nodejs/15.5.1/.npm/lib/node_modules"
 alias ir="sudo rm"
 alias irm="sudo rm -r"
