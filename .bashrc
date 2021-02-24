@@ -17,3 +17,5 @@ shopt -s autocd
 
 # Vim movements in terminal
 # set -o vi
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash

@@ -33,6 +33,8 @@ run () {
 
   ln -s /home/razak/dots/.config/zsh/ /home/razak/.config/zsh
 
+  ln -s /home/razak/dots/.config/autokey/ /home/razak/.config/autokey
+
   # dwm
   ln -s /home/razak/dots/.local/bin/statusbar /home/razak/.local/bin/statusbar
   ln -s /home/razak/dots/.local/bin/dwm /home/razak/.local/bin/dwm
@@ -65,18 +67,34 @@ run () {
   done
 
   # .bashrc
-  for f in `find . -regex ".*\.bashrc$\|.*\.bash_history$"`; do
+  for f in `find . -regex ".*\.bashrc$"`; do
     echo f: $f
     rm -rf ~/$f
     ln -s ~/dots/$f ~/$f
   done
 
   # .zshrc
-  for f in `find . -regex ".*\.zshrc$\|.*\.zsh_history$"`; do
+  for f in `find . -regex ".*\.zshrc$"`; do
     echo f: $f
     rm -rf ~/$f
     ln -s ~/dots/$f ~/$f
   done
+
+  # .xinitrc
+  for f in `find . -regex ".*\.xinitrc$"`; do
+    echo f: $f
+    rm -rf ~/$f
+    ln -s ~/dots/$f ~/$f
+  done
+
+  # .Xresources
+  for f in `find . -regex ".*\.Xresources$"`; do
+    echo f: $f
+    rm -rf ~/$f
+    ln -s ~/dots/$f ~/$f
+  done
+
+
 
   # tmux
   for f in `find ./.config/tmux -regex ".*\.conf$"`; do

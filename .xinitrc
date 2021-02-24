@@ -1,4 +1,4 @@
-/usr/bin/xmodmap -e "clear mod5"
+usr/bin/xmodmap -e "clear mod5"
 /usr/bin/xmodmap -e "keycode 108 = Alt_L"
 
 fehbg &

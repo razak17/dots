@@ -1,6 +1,7 @@
 local G = require 'global'
 local packer = nil
 
+
 local function load_plugins()
   return {
     { repo = 'christianchiarulli/nvcode-color-schemes.vim' },
@@ -111,4 +112,3 @@ local plugins =
 )
 
 return plugins
-

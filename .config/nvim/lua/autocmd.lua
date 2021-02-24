@@ -85,7 +85,7 @@ local plugins = {
     "*.rs",
     [[ lua require'lsp_extensions'.inlay_hints{ prefix = '', highlight = "Comment", enabled = {"TypeHint", "ChainingHint", "ParameterHint"}} ]]
   },
-  {"BufEnter", "*", "call v:lua.WhichKey.SetKeyOnFT()"},
+  -- {"BufEnter", "*", "call v:lua.WhichKey.SetKeyOnFT()"},
 }
 
 local definitions = {

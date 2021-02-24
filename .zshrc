@@ -30,3 +30,9 @@ zstyle ':completion:*' cache-path ~/.cache/zsh
 zstyle ':completion::complete:*' gain-privileges 1
 zstyle ':urlglobber' url-other-schema
 zmodload -i zsh/complist
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# fnm
+export PATH=/home/razak/.fnm:$PATH
+eval "`fnm env`"
