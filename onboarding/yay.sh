@@ -6,7 +6,7 @@ yay_packages=(
   # 'vscodium-bin'
   # 'packettracer'
   'ttf-ancient-fonts'
-  'wps-office'
+  # 'wps-office'
 )
 
 for i in ${yay_packages[@]}; do
