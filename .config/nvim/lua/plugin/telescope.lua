@@ -10,9 +10,11 @@ require('telescope').setup({
       i = {
         ["<esc>"] = actions.close,
         ["<C-x>"] = false,
-        ["<C-e>"] = actions.selection_tabedit,
+        ["<C-e>"] = actions.select_tab,
+        ["<CR>"] = actions.select_default,
         ["<C-b>"] = actions.move_selection_previous,
-        ["<C-y>"] = actions.selection_split,
+        ["<C-v>"] = actions.select_vertical,
+        ["<C-i>"] = actions.select_horizontal,
       },
     },
     vimgrep_arguments = {
