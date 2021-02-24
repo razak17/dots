@@ -14,7 +14,7 @@ if vim.fn.exists('g:vscode') == 0 then
   load_config('autocmd')
   load_config('aesth', 'bg')
   load_config('aesth', 'hijackc')
-  load_config('aesth', 'statusline')
+  -- load_config('aesth', 'statusline')
 
   -- Plugins
   load_config('plugin', 'ts', 'stp')
