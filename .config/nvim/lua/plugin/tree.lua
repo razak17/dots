@@ -22,7 +22,7 @@ g.nvim_tree_show_icons = {
   files = 1,
 }
 
-g.nvim_tree_bindings = {
+--[[ g.nvim_tree_bindings = {
   edit = { '<CR>', 'o' },
   edit_vsplit = '<C-v>',
   edit_split  = '<C-x>',
@@ -41,7 +41,7 @@ g.nvim_tree_bindings = {
   paste = 'p',
   prev_git_item = '[c',
   next_git_item = ']c',
-}
+} ]]
 
 g.nvim_tree_icons = {
   default =  '',

@@ -27,11 +27,10 @@ case $BLOCK_BUTTON in
 esac
 
 # pacman -Qu | grep -Fcv "[ignored]" | sed "s/^/📦/;s/^📦0$//g"
-upgrades=$(pacman -Qu | grep -Fcv "[ignored]" | sed "s/^//;s/^0$//g")
+installed=$(pacman -Q | grep -Fcv "[ignored]" | sed "s/^//;s/^0$//g")
 
-if [[ -z "$upgrades" ]]; then
+if [[ -z "$installed" ]]; then
   echo "0 "
 else
-  echo -e "$upgrades "
+  echo -e "$installed "
 fi
-

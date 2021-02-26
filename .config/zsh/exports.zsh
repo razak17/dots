@@ -36,7 +36,7 @@ plugins=(
 
 LOCAL="$HOME/.local/bin"
 
-path=("$LOCAL" "$LOCAL/dwm" "$LOCAL/statusbar" "$GOPATH" "$FNMPATH" "$node_modules_alt"  "$node_modules" "$path[@]")
+path=("$LOCAL" "$LOCAL/dwm" "$LOCAL/sb" "$LOCAL/statusbar" "$GOPATH" "$FNMPATH" "$node_modules_alt"  "$node_modules" "$path[@]")
 
 export PATH
 export npm_config_prefix="$NODE/lib/node_modules"

@@ -33,6 +33,7 @@ alias xh="nvim ~/Dev/Scripts/tmux.sh"
 alias cdd="cd -"
 alias cdlo="cd ~/.local"
 alias vc="nvim ~/.config/nvim/init.vim"
+alias loc="locate"
 # alias vc="nvim ~/.config/nvim/init.lua"
 alias lc="nvim ~/.config/nvim/lua/init.lua"
 alias zs='source ~/.zshrc'
@@ -50,6 +51,8 @@ alias sf="sudo swapoff -v"
 # alias ex="exit"
 alias cdnm="/home/razak/.asdf/installs/nodejs/15.5.1/.npm/lib/node_modules"
 alias xs="startx"
+alias rmf="sudo rm -r"
+alias cpf="sudo cp -r"
 alias irm="sudo rm"
 alias icp="sudo cp"
 alias imv="sudo mv"
@@ -59,6 +62,7 @@ alias imvf="sudo mv"
 alias lh="ls -a"
 alias lsl="ls -l"
 alias xsh="~/dots/tmux.sh"
+alias kxc="~/dots/kx.sh"
 alias nxsh="nvim ~/dots/tmux.sh"
 alias dsm="~/dots/install.sh"
 alias ndsm="nvim ~/dots/install.sh"
@@ -89,6 +93,14 @@ alias slss="sudo /opt/lampp/lampp start"
 alias sls="sudo /opt/lampp/lampp stop"
 alias fm="firefox -ProfileManager"
 
+# Keepassxc
+db=/home/razak/Dev/Scripts/rescache/system32.kdbx
+keyfile=/home/razak/Dev/Scripts/rescache/scanerr
+alias kxloc="keepassxc-cli locate -q -k ${keyfile} ${db}"
+alias kxshow="keepassxc-cli show -q -k ${keyfile} ${db}"
+alias kxclip="keepassxc-cli clip -q -k ${keyfile} ${db} 30"
+alias kxclipuser="keepassxc-cli clip -q -k ${keyfile} -a username ${db} 30"
+
 # Docker and Docker Compose
 alias di="docker"
 alias dirm="docker rmi"
@@ -103,6 +115,10 @@ alias dcd="docker-compose down"
 # Git
 alias gis="git status"
 
+# Nord VPN
+alias nord="nordvpn"
+alias me="curl ifconfig.me"
+
 # Ranger
 alias f="ranger"
 alias rc='ranger ~/.config'
@@ -112,6 +128,8 @@ alias repos='ranger ~/Repos'
 alias p='sudo pacman -S'
 alias emerge='sudo pacman -S'
 alias r='sudo pacman -Rs'
+alias wp='pacman -Qs'
+alias wpl='pacman -Ql'
 alias y='yay -S'
 alias upd='sudo pacman -Syu'
 alias am="sudo pacman -Rs -"

@@ -15,7 +15,7 @@ function G.load_variables()
   G.modules_dir = G.vim_path .. 'modules'
   G.fnm = home .. path_sep .. '.fnm' .. path_sep .. 'node-versions' .. path_sep
   G.python3 = G.cache_dir .. 'venv' .. path_sep .. 'neovim' .. path_sep
-  G.node = G.fnm .. "v15.5.1/installation/bin/neovim-node-host"
+  G.node = G.fnm .. "v15.5.1/installation/lib/node_modules/bin/neovim-node-host"
   G.local_nvim = G.share .. 'nvim' .. path_sep
   G.plugins = G.share .. 'nvim' .. path_sep .. 'site' .. path_sep .. 'pack' .. path_sep
   G.sumneko_root_path = G.cache_dir .. 'nvim_lsp' .. path_sep .. 'lua-language-server' .. path_sep
