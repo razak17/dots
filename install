@@ -5,7 +5,7 @@ dirs=(
   '.config/ranger'
   '.config/redshift'
   '.config/tmux'
-  '.config/zsh'
+  '.config/mpv'
 )
 
 create_dirs() {
@@ -22,10 +22,7 @@ link_folders() {
   done
 }
 
-run () {
-  # create directories
-  create_dirs
-
+simple() {
   ln -s /home/razak/dots/.config/nvim/ /home/razak/.config/nvim
   ln -s /home/razak/dots/.config/nvim/init.vim /home/razak/.config/nvim/init.vim
 
@@ -35,6 +32,10 @@ run () {
 
   ln -s /home/razak/dots/.config/autokey/ /home/razak/.config/autokey
 
+  ln -s /home/razak/dots/.gtkrc-2.0 /home/razak/.gtkrc-2.0
+
+  ln -s /home/razak/dots/.config/gtk-3.0 /home/razak/.config/gtk-3.0
+
   # dwm
   ln -s /home/razak/dots/.local/bin/statusbar /home/razak/.local/bin/statusbar
   ln -s /home/razak/dots/.local/bin/dwm /home/razak/.local/bin/dwm
@@ -43,10 +44,24 @@ run () {
   ln -s /home/razak/dots/.config/VSCodium/User/snippets/ /home/razak/.config/VSCodium/User/snippets
   ln -s /home/razak/dots/.config/VSCodium/User/settings.json /home/razak/.config/VSCodium/User/settings.json
   ln -s /home/razak/dots/.config/VSCodium/User/keybindings.json /home/razak/.config/VSCodium/User/keybindings.json
+}
 
+run () {
+  # create directories
+  create_dirs
+
+  # link simple dots
+  simple
 
   # alacritty
   for f in `find ./.config/alacritty -regex ".*\.yml$"`; do
+    echo f: $f
+    rm -rf ~$f
+    ln -s ~/dots/$f ~/$f
+  done
+
+  # mpv
+  for f in `find ./.config/mpv -regex ".*\.conf$"`; do
     echo f: $f
     rm -rf ~$f
     ln -s ~/dots/$f ~/$f
@@ -94,8 +109,6 @@ run () {
     ln -s ~/dots/$f ~/$f
   done
 
-
-
   # tmux
   for f in `find ./.config/tmux -regex ".*\.conf$"`; do
     echo f: $f
@@ -105,10 +118,10 @@ run () {
 }
 
 demo() {
-  # tmux
-  for f in `find ./.config/tmux -regex ".*\.conf$"`; do
+  # mpv
+  for f in `find ./.config/mpv -regex ".*\.conf$"`; do
     echo f: $f
-    rm -rf ~/$f
+    rm -rf ~$f
     ln -s ~/dots/$f ~/$f
   done
 }
