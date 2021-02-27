@@ -1,3 +1,5 @@
+#!/bin/zsh
+
 PROMPT="%B%{$fg[blue]%}[%{$fg[white]%}%\r%{$fg[red]%}@%{$fg[white]%}%\m%{$fg[blue]%}]%{$reset_color%}%  %(?:%{$fg_bold[green]%}➜ :%{$fg_bold[red]%}➜ )"
 PROMPT+=' %{$fg[cyan]%}%c%{$reset_color%}'
 PROMPT+=' $(git_prompt_info)'

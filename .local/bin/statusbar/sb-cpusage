@@ -7,7 +7,13 @@ cpu() {
             read cpu a b c idle rest < /proc/stat
           total=$((a+b+c+idle))
             cpu=$((100*( (total-prevtotal) - (idle-previdle) ) / (total-prevtotal) ))
+            if [[ "$cpu" -gt 99 ]]; then
+              echo -e "$cpu%"
+            elif [[ "$cpu" -gt 9 ]]; then
               echo -e " $cpu%"
+            else
+              echo -e "  $cpu%"
+            fi
           }
 echo " $(cpu)"
 

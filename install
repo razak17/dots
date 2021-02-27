@@ -44,6 +44,11 @@ simple() {
   ln -s /home/razak/dots/.config/VSCodium/User/snippets/ /home/razak/.config/VSCodium/User/snippets
   ln -s /home/razak/dots/.config/VSCodium/User/settings.json /home/razak/.config/VSCodium/User/settings.json
   ln -s /home/razak/dots/.config/VSCodium/User/keybindings.json /home/razak/.config/VSCodium/User/keybindings.json
+
+  ln -s /home/razak/dots/.config/x11/ /home/razak/.config/x11
+  ln -s /home/razak/dots/.zprofile /home/razak/.zprofile
+  ln -s /home/razak/dots/.xprofile /home/razak/.xprofile
+  ln -s /home/razak/dots/.profile /home/razak/.profile
 }
 
 run () {

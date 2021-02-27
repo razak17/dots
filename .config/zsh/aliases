@@ -1,3 +1,5 @@
+#!/bin/zsh
+
 ex ()
 {
 if [ -f $1 ]; then
@@ -27,7 +29,7 @@ fi
 alias ali='alias | bat --style=numbers,grid -l cpp'
 # Zsh
 alias ohmyzsh='nvim ~/.oh-my-zsh'
-alias a="nvim ~/.config/zsh/aliases.zsh"
+alias a="nvim ~/.config/zsh/aliases"
 alias cx="nvim ~/docs/x/x.txt"
 alias xh="nvim ~/Dev/Scripts/tmux.sh"
 alias cdd="cd -"
@@ -61,11 +63,11 @@ alias icpf="sudo cp -r"
 alias imvf="sudo mv"
 alias lh="ls -a"
 alias lsl="ls -l"
-alias xsh="~/dots/tmux.sh"
-alias kxc="~/dots/kx.sh"
+alias xsh="~/dots/.bin/tmux.sh"
+alias kxc="~/dots/.bin/kx.sh"
 alias nxsh="nvim ~/dots/tmux.sh"
 alias dsm="~/dots/install"
-alias ndsm="nvim ~/dots/install.sh"
+alias ndsm="nvim ~/dots/install"
 alias rnscd="systemctl restart nscd"
 alias dls="cat ~/Documents/L400-1/assignments/deadlines.txt"
 alias br='sudo brightnessctl set'
@@ -116,8 +118,11 @@ alias dcd="docker-compose down"
 alias gis="git status"
 
 # Nord VPN
+alias vn="nordvpn"
 alias nord="nordvpn"
-alias me="curl ifconfig.me"
+alias cvn="nordvpn connect"
+alias dvn="nordvpn disconnect"
+alias me="curl icanhazip.com/"
 
 # Ranger
 alias f="ranger"

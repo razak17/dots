@@ -25,4 +25,11 @@ else
 	icon="🔉"
 fi
 
-echo " $icon $vol% "
+# echo "$icon $vol%"
+if [[ "$vol" -gt 99 ]]; then
+  echo "$icon$vol%"
+elif [[ "$vol" -gt 9 ]]; then
+  echo "$icon $vol%"
+else
+  echo "$icon  $vol%"
+fi
