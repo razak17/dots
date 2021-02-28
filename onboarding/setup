@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # grep razak /etc/passwd
 # chsh --shell /bin/zsh razak
 # grep razak /etc/passwd

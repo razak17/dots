@@ -1,3 +1,5 @@
+#!/bin/bash
+
 wget http://download.redis.io/redis-stable.tar.gz
 tar xvzf redis-stable.tar.gz
 cd redis-stable
@@ -34,5 +36,3 @@ sudo /etc/init.d/redis_6379 start
 # Try pinging your instance with redis-cli.
 # Do a test save with redis-cli save and check that the dump file is correctly stored into /var/redis/6379/ (you should find a file called dump.rdb).
 # Check that your Redis instance is correctly logging in the log file.
-
-

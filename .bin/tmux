@@ -15,7 +15,7 @@ NVIM=$HOME/.config/nvim
 C_NVIM=$HOME/.cache/nvim
 DOCS=/run/media/razak/55CD-9C80/Portable/Documents/Docs
 
-getPaneId) {
+getPaneId() {
   tag=$1
   sessionOrWindowId=$2
   if [[ "$tag" == "-p" ]]; then
@@ -28,7 +28,7 @@ getPaneId) {
     paneId=$($X list-panes -a -F '#D')
   fi
   echo $paneId
-
+}
 
 getWindowId() {
   tag=$1
@@ -43,13 +43,18 @@ getWindowId() {
 
 panesList() {
   tag=$1
-  session=$2
+  shift
   if [[ "$tag" == "-a" ]]; then
     panes=$($X list-panes -a -F '#D')
   elif [[ "$tag" == "-w" ]]; then
     panes=$($X list-panes -F '#D')
   elif [[ "$tag" == "-s" ]]; then
-    panes=$($X list-panes -s -F '#D' -t $session)
+    if [[ $# -gt 0 ]]; then
+      panes=$($X list-panes -sF "#D" -t "$@")
+    else
+      echo "option requires an argument a target session"
+      exit 1
+    fi
   fi
   echo $panes
 }
@@ -128,57 +133,95 @@ while [[ "$#" -gt 0 ]]; do
   shift
 
   case "$curr" in
-  "-h")
-    echo -h: help
-    echo -r: resize
-    echo -a: send \"zs\" to all panes
-    echo -m: moneyportal
-    echo -s: create session. followed by \"-session-name\".
-    echo -w: website
-    echo -n: regular sessions. followed by \"-name\".
-    echo -name:
-    echo "    -c: coding_challenges"
-    echo "    -d: demos"
-    echo "    -ds: ds_and_algos"
-    echo "    -m: m_"
-    echo "    -s: scripts"
-    echo -cmd:
-    echo -c: regular commands. followed by \"-cmd\".
-    echo "    -w: window name"
+    "-h")
+      echo -h: help
+      echo -r: resize
+      echo -m: moneyportal
+      echo -s: "create session. followed by <session-name>"
+      echo -w: website
+      echo -n: regular sessions. followed by \"-name\"
+      echo -name:
+      echo "    -c: coding_challenges"
+      echo "    -d: demos"
+      echo "    -ds: ds_and_algos"
+      echo "    -m: m_"
+      echo "    -s: scripts"
+      echo -c: regular commands. followed by \"-cmd\"
+      echo -cmd:
+      echo "    -zs": send \"zs\" to all panes
+      echo "    -cls" send \"clear\" to all panes
+      echo "    -w: window name"
+      echo "    -p: pane id"
+      echo "    -pt: pane title"
+      ;;
+    "-c")
+      arg=$1
+      if [[ -z $arg ]]; then
+        echo "-c should have the next argument contain -target"
+        exit 1
+      fi
+      shift
+      case "$arg" in
+        "-a")
+          panes=$(panesList -a)
+          ;;
+        "-w")
+          panes=$(panesList -w)
+          ;;
+        "-s")
+          echo session: $1
+          if [[ $# -lt 2 ]]; then
+            echo "provide session name or command"
+            exit 1
+          else
+            panes=$(panesList -s $1)
+          fi
+          ;;
+        *) echo "Unavailables ... $cmd"
+      esac
+      if [[ $arg == "-s" ]]; then
+        shift
+      fi
+      echo panes: $panes
+      cmd=$1
+      if [[ -z $arg ]]; then
+        echo "next argument must contain the actual command"
+        exit 1
+      fi
+      echo cmd: $cmd
+      IFS=' ' read -ra ids <<< "$panes"
+      for i in ${panes[@]}; do
+        echo sending cmd: $cmd to $i
+        $X send-keys -t $i $cmd "C-m"
+      done
+      shift
     ;;
-  "-c")
+  "-k")
     arg=$1
     if [[ -z $arg ]]; then
-      echo "-n should have the next argument contain actual session"
+      echo "-c should have the next argument contain -target"
       exit 1
     fi
     shift
     case "$arg" in
-    "-p")
-      $($X run-shell -b 'echo pane id is #{pane_id}')
-      ;;
-    "-pt")
-      $($X run-shell -b 'echo pane title is #{pane_title}')
-      ;;
-    "-w")
-      $($X run-shell -b 'echo window name is #{window_name}')
-      ;;
-    *) echo "Unavailable command... $arg"
-  esac
-  ;;
+      "-p")
+        $($X run-shell -b 'echo pane id is #{pane_id}')
+        ;;
+      "-pt")
+        $($X run-shell -b 'echo pane title is #{pane_title}')
+        ;;
+      "-w")
+        $($X run-shell -b 'echo window name is #{window_name}')
+        ;;
+      *) echo "Unavailables ... $cmd"
+    esac
+    ;;
   "-r")
     resizePane
     ;;
   "-ap")
     OUTPUT=$(pwd)
     echo pwd: "${OUTPUT}"
-    ;;
-  "-a")
-    panes=$(panesList -a)
-    IFS=' ' read -ra ids <<< "$panes"
-    for i in ${panes[@]}; do
-      $X send-keys -t $i "zs" "C-m"
-    done
     ;;
   "-s")
     session=$1
