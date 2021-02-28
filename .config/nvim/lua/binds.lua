@@ -179,10 +179,10 @@ if vim.fn.exists('g:vscode') == 0 then
   nnoremap("<Leader>gk", ":diffget //2<CR>")
   nnoremap("<Leader>gl", ":Git log<CR>")
   nnoremap("<Leader>ge", ":Git push<CR>")
-  nnoremap("<Leader>gp", ":Git poosh")
+  nnoremap("<Leader>gp", ":Git poosh<CR>")
   nnoremap("<Leader>gP", ":Git pull<CR>")
   nnoremap("<Leader>gr", ":GRemove<CR>")
-  nnoremap("<Leader>gs", ":G<CR>")
+  nnoremap("<Leader>gs", ":vertical G<CR>")
 
   -- Floaterm
   nnoremap("<Leader>Te", ":FloatermToggle<CR>")
