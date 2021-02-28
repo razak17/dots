@@ -34,9 +34,10 @@ alias cx="nvim ~/docs/x/x.txt"
 alias xh="nvim ~/Dev/Scripts/tmux.sh"
 alias cdd="cd -"
 alias cdlo="cd ~/.local"
+alias cdbin="cd ~/.local/bin"
 alias vc="nvim ~/.config/nvim/init.vim"
-alias loc="locate"
 # alias vc="nvim ~/.config/nvim/init.lua"
+alias loc="locate"
 alias lc="nvim ~/.config/nvim/lua/init.lua"
 alias zs='source ~/.zshrc'
 alias zc="nvim ~/.zshrc"
@@ -50,7 +51,6 @@ alias wd="pwd"
 alias swap="cat /proc/sys/vm/swappiness"
 alias sw="i swapon"
 alias sf="sudo swapoff -v"
-# alias ex="exit"
 alias cdnm="/home/razak/.asdf/installs/nodejs/15.5.1/.npm/lib/node_modules"
 alias xs="startx"
 alias rmf="sudo rm -r"
@@ -63,9 +63,9 @@ alias icpf="sudo cp -r"
 alias imvf="sudo mv"
 alias lh="ls -a"
 alias lsl="ls -l"
-alias xsh="~/dots/.bin/tmux.sh"
-alias kxc="~/dots/.bin/kx.sh"
-alias nxsh="nvim ~/dots/tmux.sh"
+alias xsh="~/dots/.bin/tmux"
+alias kxc="~/dots/.bin/kx"
+alias nxsh="nvim ~/dots/.bin/tmux"
 alias dsm="~/dots/install"
 alias ndsm="nvim ~/dots/install"
 alias rnscd="systemctl restart nscd"
@@ -73,6 +73,8 @@ alias dls="cat ~/Documents/L400-1/assignments/deadlines.txt"
 alias br='sudo brightnessctl set'
 # alias brx='echo -e "enter brightness:\n"; read val; xrandr --output eDP-1 --brightness "${val}"'
 alias brx='xrandr --output eDP-1 --brightness'
+alias uadd='sudo usermod -aG'
+alias crole='sudo -iu'
 
 # xrandr --output eDP-1 --brightness 2
 
@@ -141,47 +143,19 @@ alias am="sudo pacman -Rs -"
 alias rcache="sudo pacman -Sc"
 
 # Tmux
-alias x="tmux -L Main"
+alias x="tmux"
+alias xd="tmuxd"
+alias xb="tmuxb"
 alias xsp="tmux display -p '#{socket_path}'"
-alias xm="tmux -Ltest"
 alias xls="tmux ls"
-alias mxls="tmux -Ltest ls"
-alias nx='tmux new -s'
-alias mnx="tmux -Ltest new -s"
-alias ax='tmux attach -t'
-alias max="tmux -Ltest attach -t"
+alias nx='tmux n -s'
+alias ax='tmux a -t'
 alias xc="nvim ~/.config/tmux/tmux.conf"
 
 # Youtube DL
 alias dydl='youtube_dl'
 alias ydlformat='youtube_dl -F'
 alias ydldf='youtube_dl -f'
-
-# Sudo
-# alias p='sudo apt-get install'
-# alias sg='sudo apt-get install'
-# alias r='sudo apt-get remove'
-# alias rg='sudo apt-get remove'
-# alias am='sudo apt autoremove'
-# alias ag='apt list --upgradable'
-# alias upd='sudo apt-get update'
-# alias upg='sudo apt-get upgrade'
-# alias upgf='sudo apt full-upgrade'
-# Allow third-party repos (Parrot os)
-# alias insecupd='sudo apt-get update --allow-insecure-repositories'
-# alias unauthupd='sudo apt-get update --allow-unauthenticated'
-# Add your user to a group
-alias uadd='sudo usermod -aG'
-# Connect to role
-alias crole='sudo -i -u'
-# Apt installs
-# alias pl='sudo apt list --installed'
-# Install from list
-alias ipl='sudo xargs -a packages_list.txt apt install'
-# Installs count
-# alias ipc='sudo dpkg-query -f '${binary:Package}\n' -W | wc -l'
-# Save list of all installed packages to txt file
-# alias ipcf='sudo dpkg-query -f '${binary:Package}\n' -W > packages_list.txt'
 
 # Others
 alias plague='curl https://corona-stats.online/states/us'

@@ -1,3 +1,5 @@
+#!/bin/sh
+
 SERVER="Main"
 HOME="/home/razak"
 DEV=$HOME/Dev
@@ -13,7 +15,7 @@ NVIM=$HOME/.config/nvim
 C_NVIM=$HOME/.cache/nvim
 DOCS=/run/media/razak/55CD-9C80/Portable/Documents/Docs
 
-getPaneId() {
+getPaneId) {
   tag=$1
   sessionOrWindowId=$2
   if [[ "$tag" == "-p" ]]; then
@@ -26,7 +28,7 @@ getPaneId() {
     paneId=$($X list-panes -a -F '#D')
   fi
   echo $paneId
-}
+
 
 getWindowId() {
   tag=$1

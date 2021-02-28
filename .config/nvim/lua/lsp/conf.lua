@@ -1,7 +1,7 @@
 local vim, fn = vim, vim.fn
-local lspconfig = require('lspconfig')
+local lspconfig = require 'lspconfig'
 local on_attach = require 'lsp.on_attach'
-local G = require('global')
+local G = require 'global'
 local M = {}
 
 -- List of servers where config = {on_attach = on_attach}
@@ -22,11 +22,20 @@ function M.setup()
         "bash-language-server",
         "start"
       },
+      cmd_env = {
+        GLOB_PATTERN = "*@(.sh|.zsh|.inc|.bash|.command)"
+      },
       filetypes = {
         "sh",
         "zsh"
       },
-      root_dir = lspconfig.util.root_pattern(".git"),
+      root_dir = function(fname)
+      return lspconfig.util.root_pattern(
+        '.git',
+        '.gitignore'
+      )(fname)
+      or lspconfig.util.find_git_ancestor(fname) or vim.loop.os_homedir()
+      end,
       on_attach = on_attach
     }
   end
@@ -39,7 +48,13 @@ function M.setup()
         "sass",
         "scss"
       },
-      root_dir = lspconfig.util.root_pattern("package.json", ".git"),
+      root_dir = function(fname)
+      return lspconfig.util.root_pattern(
+        '.git',
+        'package.json'
+      )(fname)
+      or lspconfig.util.find_git_ancestor(fname) or vim.loop.os_homedir()
+      end,
       on_attach = on_attach
     }
   end
@@ -89,8 +104,14 @@ function M.setup()
         "typescriptreact",
         "typescript.tsx"
       },
-      -- root_dir = lspconfig.util.root_pattern("package.json", "tsconfig.json", ".git"),
-      root_dir = vim.loop.cwd,
+      root_dir = function(fname)
+      return lspconfig.util.root_pattern(
+        'tsconfig.json',
+        'package.json',
+          '.git'
+      )(fname)
+      or lspconfig.util.find_git_ancestor(fname) or vim.loop.os_homedir()
+      end,
       on_attach = on_attach
     }
   end

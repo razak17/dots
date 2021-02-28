@@ -10,7 +10,7 @@ load_config('binds')
 load_config('plugins')
 
 if vim.fn.exists('g:vscode') == 0 then
-  load_config('utils', 'plug_cmd')
+  load_config('utils', 'cmd')
   load_config('autocmd')
   load_config('aesth', 'bg')
   load_config('aesth', 'hijackc')

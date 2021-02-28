@@ -39,13 +39,30 @@ alias ydlformat='youtube_dl -F'
 alias ydldf='youtube_dl -f'
 
 # Sudo
+# alias p='sudo apt-get install'
+# alias sg='sudo apt-get install'
+# alias r='sudo apt-get remove'
+# alias rg='sudo apt-get remove'
+# alias am='sudo apt autoremove'
+# alias ag='apt list --upgradable'
+# alias upd='sudo apt-get update'
+# alias upg='sudo apt-get upgrade'
+# alias upgf='sudo apt full-upgrade'
+# Allow third-party repos (Parrot os)
+# alias insecupd='sudo apt-get update --allow-insecure-repositories'
+# alias unauthupd='sudo apt-get update --allow-unauthenticated'
+# Add your user to a group
 alias uadd='sudo usermod -aG'
 # Connect to role
-alias crole='sudo -i -u'
+alias crole='sudo -iu'
 # Apt installs
-alias pl='sudo apt list --installed'
+# alias pl='sudo apt list --installed'
 # Install from list
-alias ipl='sudo xargs -a packages_list.txt apt install'
+# alias ipl='sudo xargs -a packages_list.txt apt install'
+# Installs count
+# alias ipc='sudo dpkg-query -f '${binary:Package}\n' -W | wc -l'
+# Save list of all installed packages to txt file
+# alias ipcf='sudo dpkg-query -f '${binary:Package}\n' -W > packages_list.txt'
 
 # Others
 alias plague='curl https://corona-stats.online/states/us'
