@@ -241,6 +241,18 @@ while [[ "$#" -gt 0 ]]; do
     shift
     echo YAY $arg
     ;;
+  "-env")
+    session="env"
+    createSession $session "dots" $HOME/dots
+    createWindow $session "dwm" -c $HOME/skless/dwm
+    createWindow $session "dwmblocks" -c $HOME/skless/dwmblocks
+    createWindow $session "nvim" -c $HOME/.config/nvim
+    tw=$(getTarget $session 0 -w)
+    first=$(getTarget $tw 0 -p)
+    splitPane -v -c $HOME/dots -t $first
+    tw=$(getTarget $session -1 -w)
+    splitPane -v -c $HOME/env -t $(getTarget $tw 0 -p)
+    ;;
   "-m")
     session="money-portal"
     createSession $session "code" $MONEYPORTAL
@@ -255,13 +267,13 @@ while [[ "$#" -gt 0 ]]; do
     # Second Window
     tw=$(getTarget $session 1 -w)
     first=$(getTarget $tw 0 -p)
-    $X send-keys -t $first "yarn --help" "C-m"
+    $X send-keys -t $first "yarn dev" "C-m"
     splitPane -v -c $MONEYPORTAL/server -t $first
     second=$(getTarget $tw 1 -p)
-    $X send-keys -t $second "yarn --help" "C-m"
+    $X send-keys -t $second "yarn watch" "C-m"
     splitPane -h -c $MONEYPORTAL/server -t $second
     third=$(getTarget $tw 2 -p)
-    $X send-keys -t $third "yarn --help" "C-m"
+    $X send-keys -t $third "yarn dev" "C-m"
 
     # Third Window
     tw=$(getTarget $session 2 -w)
@@ -276,7 +288,7 @@ while [[ "$#" -gt 0 ]]; do
     first=$(getTarget $tw 0 -p)
     $X send-keys -t $first "docker info" "C-m"
     splitPane -v -c $MONEYPORTAL/server -t $first
-    $X send-keys -t $(getTarget $tw -1 -p) "docker info" "C-m"
+    $X send-keys -t $(getTarget $tw -1 -p) "az --h" "C-m"
     ;;
   "-w")
     session="website"
@@ -346,6 +358,7 @@ while [[ "$#" -gt 0 ]]; do
     "-s")
       session="scripts"
       createSession $session main $SCRIPTS
+      createWindow $session "bin" -c $HOME/.local/bin
       tw=$(getTarget $session 0 -w)
       first=$(getTarget $tw 0 -p)
       splitPane -v -c $SCRIPTS -t $first

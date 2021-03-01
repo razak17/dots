@@ -7,6 +7,7 @@ export BROWSER="firefox"
 
 #autoload -U colors && colors
 export CLICOLOR=1
+
 export MANPAGER='nvim +Man!'
 export MANWIDTH=999
 
@@ -28,42 +29,53 @@ export XDG_DATA_HOME="$HOME/.local/share"
 export SUDO_ASKPASS="$HOME/.local/bin/dmenupass"
 
 if [ -d "/home/razak/.oh-my-zsh" ]; then
-  export ZSH="/home/razak/.oh-my-zsh"
-fi
-
-if [ -x "~/.fzf.zsh" ]; then
-  source ~/.fzf.zsh
+  ZSH="/home/razak/.oh-my-zsh"
 fi
 
 if [ -x "/usr/bin/go" ]; then
-  export GOPATH="$HOME/.local/share/go"
+  GOPATH="$HOME/.local/share/go"
 fi
 
-if [ -x "$HOME/lib/azure-cli" ]; then
-  source '$HOME/lib/azure-cli/az.completion'
+if [ -x "$HOME/lib/azure-cli/bin/az" ]; then
+  AZ_BIN=$HOME/lib/azure-cli/bin
 fi
 
-# fnm                                                                              │
 if [ -x "$HOME/.fnm/fnm" ]; then
-  export FNMPATH="/home/razak/.fnm"
-  NODE="$FNMPATH/node-versions/v15.5.1/installation"
-  node_modules="$PATH:$NODE/bin"
-  node_modules_alt="$PATH:$NODE/lib/node_modules/bin"
+  FNMPATH="/home/razak/.fnm"
+  FNM_PREFIX="$FNMPATH/node-versions/v15.5.1/installation"
+  FNM_BIN="$FNM_PREFIX/bin"
+  FNM_PACKAGES="$FNM_PREFIX/lib/node_modules/bin"
 fi
 
 LOCAL="$HOME/.local/bin"
 
-path=("$LOCAL" "$LOCAL/dwm" "$LOCAL/sb" "$LOCAL/statusbar" "$GOPATH" "$FNMPATH" "$node_modules_alt"  "$node_modules" "$path[@]")
+path=(
+  "$LOCAL"
+  "$LOCAL/dmenu"
+  "$LOCAL/dwm"
+  "$LOCAL/sb"
+  "$LOCAL/statusbar"
+  "$GOPATH"
+  "$AZ_BIN"
+  "$FNMPATH"
+  "$FNM_BIN"
+  "$FNM_PACKAGES"
+  "$path[@]"
+)
 
 export PATH
-export npm_config_prefix="$NODE/lib/node_modules"
+# export npm_config_prefix="$FNM_PREFIX/lib/node_modules"
 
-# Enable a better reverse search experience.
-export FZF_DEFAULT_COMMAND="rg --files --hidden --follow --glob '!.git'"
-export FZF_DEFAULT_OPTS="--layout=reverse --inline-info --height=80% --color=dark"
+if [ -x "~/.fzf.zsh" ]; then
+  source ~/.fzf.zsh
+  # Enable a better reverse search experience.
+  export FZF_DEFAULT_COMMAND="rg --files --hidden --follow --glob '!.git'"
+  export FZF_DEFAULT_OPTS="--layout=reverse --inline-info --height=80% --color=dark"
+fi
 
 eval "$(fnm env)"
 source $ZSH/oh-my-zsh.sh
+source $HOME/lib/azure-cli/az.completion
 
 # This is the list for lf icons:
 export LF_ICONS="di=📁:\
