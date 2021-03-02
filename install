@@ -23,22 +23,18 @@ link_folders() {
 }
 
 simple() {
-  ln -s /home/razak/dots/.config/nvim/ /home/razak/.config/nvim
-  ln -s /home/razak/dots/.config/nvim/init.vim /home/razak/.config/nvim/init.vim
+  # Fron env
+  ln -s /home/razak/env/lscripts/dwm/ /home/razak/.local/bin/dwm
+  ln -s /home/razak/env/lscripts/dmenu/ /home/razak/.local/bin/dmenu
+  ln -s /home/razak/env/lscripts/statusbar/ /home/razak/.local/bin/statusbar
+  ln -s /home/razak/env/lscripts/tmuxb /home/razak/.local/bin/tmuxb
+  ln -s /home/razak/env/lscripts/tmuxd /home/razak/.local/bin/tmuxd
 
   ln -s /home/razak/dots/.config/sh/ /home/razak/.config/sh
-
   ln -s /home/razak/dots/.config/zsh/ /home/razak/.config/zsh
 
-  ln -s /home/razak/dots/.config/autokey/ /home/razak/.config/autokey
-
   ln -s /home/razak/dots/.gtkrc-2.0 /home/razak/.gtkrc-2.0
-
   ln -s /home/razak/dots/.config/gtk-3.0 /home/razak/.config/gtk-3.0
-
-  # dwm
-  ln -s /home/razak/dots/.local/bin/statusbar /home/razak/.local/bin/statusbar
-  ln -s /home/razak/dots/.local/bin/dwm /home/razak/.local/bin/dwm
 
   # vscode
   ln -s /home/razak/dots/.config/VSCodium/User/snippets/ /home/razak/.config/VSCodium/User/snippets
