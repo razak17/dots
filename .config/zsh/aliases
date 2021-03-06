@@ -1,32 +1,7 @@
 #!/bin/zsh
 
-ex ()
-{
-if [ -f $1 ]; then
-	case $1 in
-	*.tar.bz2)	tar xjf $1	;;
-	*.tar.gz)	tar xzf $1	;;
-	*.bz2)		bunzip2 $1	;;
-	*.gz)		gunzip $1	;;
-	*.rar)		unrar x $1	;;
-	*.tar)		tar xf $1	;;
-	*.tbz2)		tar xjf $1	;;
-	*.tgz)		tar xzf $1	;;
-	*.zip)		unzip $1	;;
-	*.Z)		uncompress $1	;;
-	*.7z)		7z x $1		;;
-	*.deb)		ar x $1		;;
-	*.tar.xz)	tar xf $1	;;
-	*.tar.zst)	unzstd $1	;;
-	*)		echo "'$1' cannot be extracted via ex()" ;;
-
-    esac
-else
-    echo "'$1'is not a valid file"
-fi
-}
-
 alias ali='alias | bat --style=numbers,grid -l cpp'
+alias alive="ping google.com"
 # Zsh
 alias ohmyzsh='nvim ~/.oh-my-zsh'
 alias a="nvim ~/.config/zsh/aliases"
@@ -38,7 +13,7 @@ alias cdbin="cd ~/.local/bin"
 alias vc="nvim ~/.config/nvim/init.vim"
 # alias vc="nvim ~/.config/nvim/init.lua"
 alias loc="locate"
-alias lc="nvim ~/.config/nvim/lua/init.lua"
+alias lc="nvim ~/.config/nvim/lua/core/init.lua"
 alias zs='source ~/.zshrc'
 alias zc="nvim ~/.zshrc"
 alias nvc="nvim config.h"
@@ -54,8 +29,8 @@ alias sw="i swapon"
 alias sf="sudo swapoff -v"
 alias cdnm="/home/razak/.asdf/installs/nodejs/15.5.1/.npm/lib/node_modules"
 alias xs="startx"
-alias rmf="sudo rm -r"
-alias cpf="sudo cp -r"
+alias rmf="rm -r"
+alias cpf="cp -r"
 alias irm="sudo rm"
 alias icp="sudo cp"
 alias imv="sudo mv"
@@ -116,7 +91,7 @@ alias dii="docker images"
 alias dc="docker-compose"
 alias dce="docker-compose exec"
 alias dci="docker-compose up"
-alias dcd="docker-compose down"
+alias dcd="docker-compose down -v"
 
 # Git
 alias gis="git status"
@@ -126,6 +101,7 @@ alias vn="nordvpn"
 alias nord="nordvpn"
 alias cvn="nordvpn connect"
 alias dvn="nordvpn disconnect"
+alias svn="nordvpn status"
 alias me="curl icanhazip.com/"
 
 # Ranger
