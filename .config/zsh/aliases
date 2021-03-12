@@ -13,10 +13,13 @@ alias cdbin="cd ~/.local/bin"
 alias vc="nvim ~/.config/nvim/init.vim"
 # alias vc="nvim ~/.config/nvim/init.lua"
 alias loc="locate"
-alias lc="nvim ~/.config/nvim/lua/core/init.lua"
+alias lc="nvim ~/env/nvim/lua/core/init.lua"
 alias zs='source ~/.zshrc'
 alias zc="nvim ~/.zshrc"
 alias nvc="nvim config.h"
+alias nvi="nvim init.lua"
+alias imi="sudo make install"
+alias imci="sudo make clean install"
 alias b="bash"
 alias so="source"
 alias sx="startx"
@@ -128,6 +131,7 @@ alias xsp="tmux display -p '#{socket_path}'"
 alias xls="tmux ls"
 alias nx='tmux n -s'
 alias ax='tmux a -t'
+alias axd='tmux -L Main a -t'
 alias xc="nvim ~/.config/tmux/tmux.conf"
 
 # Youtube DL

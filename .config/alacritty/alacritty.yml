@@ -6,9 +6,9 @@ schemes:
       background: '#1e2127'
       # background: '#fbf8ef'
       # background: "#2E3440"
-    cursor:
-      cursor:     '#100a14'
-      text:       '#efeae9'
+    # cursor:
+    #   cursor:     '#100a14'
+    #   text:       '#efeae9'
     normal:
       black:      '#d2ceda'
       red:        '#f2241f'
@@ -18,15 +18,15 @@ schemes:
       magenta:    '#a31db1'
       cyan:       '#21b8c7'
       white:      '#655370'
-  bright:
-    black:      '#efeae9'
-    red:        '#DF201C'
-    green:      '#29A0AD'
-    yellow:     '#DB742E'
-    blue:       '#3980C2'
-    magenta:    '#2C9473'
-    cyan:       '#6B3062'
-    white:      '#a094a2'
+    bright:
+      black:      '#efeae9'
+      red:        '#DF201C'
+      green:      '#29A0AD'
+      yellow:     '#DB742E'
+      blue:       '#3980C2'
+      magenta:    '#2C9473'
+      cyan:       '#6B3062'
+      white:      '#a094a2'
 
   spacemacs_dark: &dark
     primary:
@@ -45,17 +45,17 @@ schemes:
       magenta:    '#a31db1'
       cyan:       '#21b8c7'
       white:      '#b2b2b2'
-  bright:
-    black:      '#42444a'
-    red:        '#DF201C'
-    green:      '#29A0AD'
-    yellow:     '#DB742E'
-    blue:       '#3980C2'
-    magenta:    '#2C9473'
-    cyan:       '#6B3062'
-    white:      '#686868'
+    bright:
+      black:      '#42444a'
+      red:        '#DF201C'
+      green:      '#29A0AD'
+      yellow:     '#DB742E'
+      blue:       '#3980C2'
+      magenta:    '#2C9473'
+      cyan:       '#6B3062'
+      white:      '#686868'
 
-colors: *dark
+# colors: *dark
 
 font:
   size: 8
@@ -74,13 +74,13 @@ font:
   offset:
     x: 0
     y: 3
-  # glyph_offset:
-  #   x: 0
-  #   y: 0
+  glyph_offset:
+    x: 0
+    y: 0
 
 draw_bold_text_with_bright_colors: true
 
-background_opacity: 0.75
+background_opacity: 0.90
 # background_opacity: 1.00
 
 selection:
