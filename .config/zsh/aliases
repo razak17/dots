@@ -17,7 +17,9 @@ alias lc="nvim ~/env/nvim/lua/core/init.lua"
 alias zs='source ~/.zshrc'
 alias zc="nvim ~/.zshrc"
 alias nvc="nvim config.h"
+alias nvz="nvim ~/.zsh_history"
 alias nvi="nvim init.lua"
+alias nvr="nvim "
 alias imi="sudo make install"
 alias imci="sudo make clean install"
 alias b="bash"
@@ -98,6 +100,7 @@ alias dcd="docker-compose down -v"
 
 # Git
 alias gis="git status"
+alias gii="git init"
 
 # Nord VPN
 alias vn="nordvpn"
@@ -113,6 +116,10 @@ alias rc='ranger ~/.config'
 alias repos='ranger ~/Repos'
 
 # Pacman
+alias Qi="pacman -Qi"
+alias Si="pacman -Si"
+alias Ql="pacman -Ql"
+alias Fl="pacman -Fl"
 alias p='sudo pacman -S'
 alias emerge='sudo pacman -S'
 alias r='sudo pacman -Rs'
@@ -173,7 +180,7 @@ export cc=~/Dev/Code
 export co=~/.config
 export mo=~/.mozilla/firefox/profiles
 export nca=~/.cache/nvim
-export sw=~/.local/share/nvim/swap
+export nsh=~/.local/share/nvim
 export pr=~/Dev/Code/projects
 export ut=~/Dev/Code/m_
 export cmp=~/Dev/Code/cp
@@ -198,7 +205,7 @@ alias cdcc='cd "$cc"'
 alias cdco='cd "$co"'
 alias cdmo='cd "$mo"'
 alias cdnca='cd "$nca"'
-alias cdsw='cd "$sw"'
+alias cdnsh='cd "$nsh"'
 alias cdpr='cd "$pr"'
 alias cdut='cd "$ut"'
 alias cdcp='cd "$cmp"'
@@ -217,3 +224,4 @@ alias cdpa='cd "$pa"'
 alias cdza='cd "$za"'
 alias cdce='cd "$ce"'
 alias code="$vs"
+alias cdasdf='cd "$ASDF_INSTALLS"'

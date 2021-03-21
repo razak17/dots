@@ -2,60 +2,52 @@
 schemes:
   spacemacs_light: &light
     primary:
-      foreground: '#655370'
-      background: '#1e2127'
-      # background: '#fbf8ef'
-      # background: "#2E3440"
-    # cursor:
-    #   cursor:     '#100a14'
-    #   text:       '#efeae9'
+      foreground: "#7ec0ee"
+      # background: '#1e2127'
     normal:
-      black:      '#d2ceda'
-      red:        '#f2241f'
-      green:      '#67b11d'
-      yellow:     '#b1951d'
-      blue:       '#3a81c3'
-      magenta:    '#a31db1'
-      cyan:       '#21b8c7'
-      white:      '#655370'
+      black: "#d2ceda"
+      red: "#d2241f"
+      green: "#67b11d"
+      yellow: "#b1951d"
+      blue: "#3a81c3"
+      magenta: "#a31db1"
+      cyan: "#21b8c7"
+      white: "#655370"
     bright:
-      black:      '#efeae9'
-      red:        '#DF201C'
-      green:      '#29A0AD'
-      yellow:     '#DB742E'
-      blue:       '#3980C2'
-      magenta:    '#2C9473'
-      cyan:       '#6B3062'
-      white:      '#a094a2'
+      black: "#6e6e6e"
+      red: "#DF201C"
+      green: "#00ccaa"
+      yellow: "#DB743E"
+      blue: "#7ec0ee"
+      magenta: "#2C9473"
+      cyan: "#00d0d0"
+      # cyan:       '#6B3062'
+      white: "#dedede"
 
   spacemacs_dark: &dark
     primary:
-      foreground: '#b2b2b2'
+      foreground: "#7ec0ee"
       # background: '#292b2e'
-      # background: '#1e2127'
-    cursor:
-      # cursor:     '#e3dedd'
-      text:       '#212026'
     normal:
-      black:      '#0a0814'
-      red:        '#f2241f'
-      green:      '#67b11d'
-      yellow:     '#b1951d'
-      blue:       '#3a81c3'
-      magenta:    '#a31db1'
-      cyan:       '#21b8c7'
-      white:      '#b2b2b2'
+      black: "#0a0814"
+      red: "#f2241f"
+      green: "#67b11d"
+      yellow: "#b1951d"
+      blue: "#3a81c3"
+      magenta: "#a31db1"
+      cyan: "#21b8c7"
+      white: "#b2b2b2"
     bright:
-      black:      '#42444a'
-      red:        '#DF201C'
-      green:      '#29A0AD'
-      yellow:     '#DB742E'
-      blue:       '#3980C2'
-      magenta:    '#2C9473'
-      cyan:       '#6B3062'
-      white:      '#686868'
+      black: "#42444a"
+      red: "#DF201C"
+      green: "#29A0AD"
+      yellow: "#DB742E"
+      blue: "#3980C2"
+      magenta: "#2C9473"
+      cyan: "#6B3062"
+      white: "#686868"
 
-# colors: *dark
+colors: *light
 
 font:
   size: 8
@@ -80,8 +72,8 @@ font:
 
 draw_bold_text_with_bright_colors: true
 
-background_opacity: 0.85
-# background_opacity: 1.00
+# background_opacity: 0.90
+background_opacity: 1.00
 
 selection:
   semantic_escape_chars: ',│`|:"'' ()[]{}<>'
@@ -110,29 +102,32 @@ mouse:
   hide_when_typing: true
   url:
     launcher:
-     program: xdg-open
-     args: []
+      program: xdg-open
+      args: []
     modifiers: Shift
 
 key_bindings:
-  - { key: V,              mods: Control|Shift, mode: ~Vi,        action: Paste            }
-  - { key: C,              mods: Control|Shift,                   action: Copy             }
-  - { key: F,              mods: Control|Shift, mode: ~Search,    action: SearchForward    }
-  - { key: B,              mods: Control|Shift, mode: ~Search,    action: SearchBackward   }
-  - { key: C,              mods: Control|Shift, mode: Vi|~Search, action: ClearSelection   }
-  - { key: Insert,         mods: Shift,                           action: PasteSelection   }
-  - { key: Key0,           mods: Control,                         action: ResetFontSize    }
-  - { key: Key9,           mods: Control,                         action: IncreaseFontSize }
-  - { key: Equals,         mods: Control,                         action: IncreaseFontSize }
-  - { key: Plus,           mods: Control,                         action: IncreaseFontSize }
-  - { key: NumpadAdd,      mods: Control,                         action: IncreaseFontSize }
-  - { key: Key8,           mods: Control,                         action: DecreaseFontSize }
-  - { key: Minus,          mods: Control,                         action: DecreaseFontSize }
-  - { key: NumpadSubtract, mods: Control,                         action: DecreaseFontSize }
-  - { key: Up,             mods: Shift,     chars: "shift+up pressed" }
-  - { key: Down,           mods: Shift,     chars: "shift+down pressed" }
-  - { key: Left,           mods: Alt|Shift, chars: "alt+shift+left pressed" }
-  - { key: Right,          mods: Alt|Shift, chars: "alt+shift+right pressed" }
+  - { key: Y, mode: Vi|~Search, action: Copy }
+  - { key: N, mode: Vi|~Search, action: Down }
+  - { key: Space, mods: Shift|Control, mode: ~Search, action: ToggleViMode }
+  - { key: C, mods: Control, mode: Vi|~Search, action: ToggleViMode }
+  - { key: V, mods: Control|Shift, mode: ~Vi, action: Paste }
+  - { key: C, mods: Control|Shift, mode: Vi|~Search, action: ClearSelection }
+  - { key: F, mods: Control|Shift, mode: ~Search, action: SearchForward }
+  - { key: B, mods: Control|Shift, mode: ~Search, action: SearchBackward }
+  - { key: C, mods: Control|Shift, action: Copy }
+  - { key: Insert, mods: Shift, action: PasteSelection }
+  - { key: Key0, mods: Control, action: ResetFontSize }
+  - { key: Key9, mods: Control, action: IncreaseFontSize }
+  - { key: Equals, mods: Control, action: IncreaseFontSize }
+  - { key: Plus, mods: Control, action: IncreaseFontSize }
+  - { key: NumpadAdd, mods: Control, action: IncreaseFontSize }
+  - { key: Key8, mods: Control, action: DecreaseFontSize }
+  - { key: Minus, mods: Control, action: DecreaseFontSize }
+  - { key: NumpadSubtract, mods: Control, action: DecreaseFontSize }
+  - { key: Up, mods: Shift, chars: "shift+up pressed" }
+  - { key: Down, mods: Shift, chars: "shift+down pressed" }
+  - { key: Left, mods: Alt|Shift, chars: "alt+shift+left pressed" }
+  - { key: Right, mods: Alt|Shift, chars: "alt+shift+right pressed" }
 
 live_config_reload: true
-

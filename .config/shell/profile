@@ -23,6 +23,7 @@ export LESS_TERMCAP_ue=$'\E[0m'             # end underline
 export LESS_TERMCAP_us=$'\E[04;38;5;146m'   # begin underline
 
 LOCAL="$HOME/.local/bin"
+ASDF_INSTALLS="$HOME/.asdf/installs"
 
 # XDG directories
 export XDG_CONFIG_HOME="$HOME/.config"
@@ -30,9 +31,13 @@ export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_DATA_HOME="$HOME/.local/share"
 export SUDO_ASKPASS="$LOCAL/dmenu/dmenupass"
 
+if [ -d "$HOME/Dev/Code" ]; then
+  DEV_HOME="$HOME/Dev/Code"
+fi
 
-if [ -x "/usr/bin/go" ]; then
-  GOPATH="$HOME/.local/share/go"
+if [ -d "$ASDF_INSTALLS/golang/*/go" ]; then
+  GOPATH="$ASDF_INSTALLS/golang/1.16.2/go/bin"
+  GO_PACKAGES="$ASDF_INSTALLS/golang/1.16.2/packages/bin"
 fi
 
 if [ -x "$HOME/lib/azure-cli/bin/az" ]; then
@@ -45,8 +50,7 @@ if [ -x "$HOME/.fnm/fnm" ]; then
 fi
 
 if [ -d "$HOME/.asdf" ]; then
-  ASDF_PREFIX="$HOME/.asdf/installs/nodejs/15.5.1"
-  ASDF_PACKAGES="$ASDF_PREFIX/.npm/bin"
+  ASDF_PACKAGES="$ASDF_INSTALLS/nodejs/15.5.1/.npm/bin"
 fi
 
 if [ -x "~/.fzf.zsh" ]; then
@@ -62,19 +66,15 @@ path=(
   "$LOCAL/dwm"
   "$LOCAL/sb"
   "$LOCAL/statusbar"
-  "$GOPATH"
+  "$GO_PACKAGES"
   "$CONDA"
   "$AZ_BIN"
-  # "$FNM_PACKAGES"
   "$ASDF_PACKAGES"
   "$path[@]"
 )
 
 export PATH
-# export npm_config_prefix="$FNM_PREFIX/lib/node_modules"
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/home/razak/.miniconda/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
@@ -86,9 +86,5 @@ else
     fi
 fi
 unset __conda_setup
-# <<< conda initialize <<<
 
-# eval "$(fnm env)"
 source $HOME/.oh-my-zsh/oh-my-zsh.sh
-source $HOME/lib/azure-cli/az.completion
-source $HOME/.asdf/asdf.sh

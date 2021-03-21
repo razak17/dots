@@ -3,9 +3,9 @@
 /usr/bin/xmodmap -e "clear mod5"
 /usr/bin/xmodmap -e "keycode 108 = Alt_L"
 
-xset r rate 300 50 &
 fehbg &
 picom &
+xset r rate 300 50 &
 redshift -O3500 &
 dwmblocks &
 autokey-gtk &
