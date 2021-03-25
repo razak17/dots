@@ -111,6 +111,7 @@ key_bindings:
   - { key: N, mode: Vi|~Search, action: Down }
   - { key: Space, mods: Shift|Control, mode: ~Search, action: ToggleViMode }
   - { key: C, mods: Control, mode: Vi|~Search, action: ToggleViMode }
+  - { key: Return, mode: Vi|~Search, action: ToggleViMode }
   - { key: V, mods: Control|Shift, mode: ~Vi, action: Paste }
   - { key: C, mods: Control|Shift, mode: Vi|~Search, action: ClearSelection }
   - { key: F, mods: Control|Shift, mode: ~Search, action: SearchForward }

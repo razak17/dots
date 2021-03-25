@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 SERVER="Main"
 HOME="/home/razak"
@@ -88,16 +88,17 @@ getTarget() {
 }
 
 resizePane() {
-  active=$($X display -p -F '#{pane_id}')
-  # echo $active
-  cmd="$X resizep -x 50% -y 50%"
-  eval $cmd
+  eval "$X resizep -x 50% -y 50%"
+}
+
+breakPane() {
+  eval "$X break-pane -dP -F '#{session_name}:#{window_index}.#{pane_index}' -n 'break'"
 }
 
 createSession() {
   session=$1
   window=$2
-  hasSession=$($X list-sessions | grep $session)
+  hasSession=$($X list-sessions | grep "$session")
   shift
   shift
 
@@ -109,7 +110,7 @@ createSession() {
     fi
     eval $cmd
   else
-    echo duplicate session: $session
+    echo duplicate session: "$session"
   fi
 
 }
@@ -218,6 +219,9 @@ while [[ "$#" -gt 0 ]]; do
     ;;
   "-r")
     resizePane
+    ;;
+  "-b")
+    breakPane
     ;;
   "-ap")
     OUTPUT=$(pwd)

@@ -1,27 +1,5 @@
 #!/bin/zsh
 
-# Default programs:
-export EDITOR="nvim"
-export TERMINAL="alacritty"
-export BROWSER="firefox"
-
-#autoload -U colors && colors
-export CLICOLOR=1
-
-export MANPAGER='nvim +Man!'
-export MANWIDTH=999
-
-# Colorful Man Pages
-export PAGER=less
-export LESS=-R
-export LESS_TERMCAP_mb=$'\E[01;31m'         # begin blinking
-export LESS_TERMCAP_md=$'\E[01;38;5;74m'    # begin bold
-export LESS_TERMCAP_me=$'\E[0m'             # end mode
-export LESS_TERMCAP_se=$'\E[0m'             # end standout-mode
-export LESS_TERMCAP_so=$'\E[38;5;246m'      # begin standout-mode - info box
-export LESS_TERMCAP_ue=$'\E[0m'             # end underline
-export LESS_TERMCAP_us=$'\E[04;38;5;146m'   # begin underline
-
 LOCAL="$HOME/.local/bin"
 ASDF_INSTALLS="$HOME/.asdf/installs"
 
@@ -33,11 +11,6 @@ export SUDO_ASKPASS="$LOCAL/dmenu/dmenupass"
 
 if [ -d "$HOME/Dev/Code" ]; then
   DEV_HOME="$HOME/Dev/Code"
-fi
-
-if [ -d "$ASDF_INSTALLS/golang/*/go" ]; then
-  GOPATH="$ASDF_INSTALLS/golang/1.16.2/go/bin"
-  GO_PACKAGES="$ASDF_INSTALLS/golang/1.16.2/packages/bin"
 fi
 
 if [ -x "$HOME/lib/azure-cli/bin/az" ]; then
@@ -66,7 +39,6 @@ path=(
   "$LOCAL/dwm"
   "$LOCAL/sb"
   "$LOCAL/statusbar"
-  "$GO_PACKAGES"
   "$CONDA"
   "$AZ_BIN"
   "$ASDF_PACKAGES"
