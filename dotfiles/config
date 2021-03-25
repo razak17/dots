@@ -1,0 +1,13 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+	bare = true
+[remote "origin"]
+	url = https://github.com/razak17/dots
+[status]
+	showUntrackedFiles = no
+[credential]
+	helper = store
+[branch "main"]
+	remote = origin
+	merge = refs/heads/main
